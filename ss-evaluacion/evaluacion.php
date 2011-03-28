@@ -1,6 +1,6 @@
 <?
 include_once '../clases/evaluar.php';
-// a ver... 
+// a ver... ya quedo esto?
 $matricula=$_POST['matricula'];
 $nombre=$_POST['nombre'];
 $criterio=$_POST['criterio'];
