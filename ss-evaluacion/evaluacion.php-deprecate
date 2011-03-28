@@ -1,0 +1,40 @@
+<?
+include_once '../script/php/functions.php';
+$matricula=$_POST['matricula'];
+$nombre=$_POST['nombre'];
+conectar();
+$result=mysql_query("SELECT * FROM criterios_ss_fca") or die(mysql_error());
+$max=mysql_fetch_array(mysql_query("SELECT count(nombreCriterio) as total FROM criterios_ss_fca;"));
+$tabla=mysql_query("SELECT * FROM evaluacion_MEIFv1") or die(mysql_error());
+$campo=array();
+$h=2; 
+for($r=0;$r<$max['total'];$r++){
+    array_push($campo,mysql_field_name($tabla, $h));
+    $h+=3;
+}
+$campo=array_reverse($campo);
+$te=0;
+while($te<10){
+echo $campo[$te]."*<br/>";
+$te++;
+}
+
+$serie_campos="";
+?>
+
+<p>Matricula:<? echo $matricula; ?></p>
+
+<p>Alumno:<strong><?echo $nombre; ?></strong></p>
+<form id="evaluacion" name="evaluacion" method="post" action="javascript:crearContenidosArreglo('matricula,nombre,<? if($j==11)  echo $serie_campos; ?>','<? echo $matricula; ?>,<? echo $nombre; ?>','ss-evaluacion/evaluacion.php');">
+<input type="hidden" value="<? echo $matricula; ?>" name="matricula"/>
+<input type="hidden" value="<? echo $nombre; ?>" name="nombre"/>
+<? $j=1; while($rows=mysql_fetch_array($result)){ $j++; ?>
+<? $serie_campos.=strtolower(sin_acentos_espacios(utf8_encode($rows['evaluar']))); if($j<11) $serie_campos.=","; ?>
+  <label><? echo utf8_encode($rows['evaluar']); ?> (max. <? echo utf8_encode($rows['valor']); ?>%)
+  <input type="text" class="camp" name="<? echo strtolower(sin_acentos_espacios(utf8_encode($rows['evaluar']))); ?>" tabindex="<? echo $j?>" size="5"/>
+  </label>
+<? } ?>
+
+    <input type="submit" name="guardar" value="Guardar" tabindex="<? echo $j; ?>" />
+</form>
+

@@ -1,0 +1,482 @@
+ /*Aquí vamos a definir las propiedades de la página en general, más adelante definiremos las de las cajas principales*/
+       /*formatos de párrafo, linea de separacion, encabezados 1 al 6, tablas, vínculos (en sus 4 estados) y body respectivamente*/
+body {
+	font:11px Verdana, Arial, Helvetica, sans-serif;
+	background-color:#FFF;
+/*	text-align : justify;*/
+	line-height: 10px;
+}
+
+p {
+	font-size:12px;
+	color: #586885;
+	line-height: 120%;
+}
+hr {
+	display:none;
+ }
+h1 {
+	font-size:25px;
+	text-align : left;
+	color : #666666;
+	margin:0;
+}
+h2 {
+	font-size:20px;
+	text-align : left;
+	color:#486895;
+	text-transform: capitalize;
+}
+h3 {
+	font-size:18px;
+	text-align : left;
+	color : #666666;
+}
+h4 {
+	font-size:15px;
+	text-align : left;
+	color : #666666;
+}
+h5 {
+	font-size: 13px;
+	text-align : left;
+	color : #666666;
+}
+h6 {
+	font-size:12px;
+	text-align : left;
+	color : #666666;
+}
+/*td {
+	font-size: 12px;
+	text-align : center;
+	color : #586885;
+}*/
+a {
+	font-size:12px;
+	color:#325FA0;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color:#325FA0;
+}
+a:hover {
+	text-decoration: none;
+	color:#000066;
+}
+a:active {
+	text-decoration: none;
+	color:#0099CC;
+}
+
+#container {
+
+       border:solid 1px;
+       border-color:#000000;
+       margin-left: auto;
+       margin-right: auto;       
+       width:1100px;
+       height:auto;
+}
+
+.test{
+       width:auto;
+       height:140px;
+       background-color: #045baa;
+       border-bottom-style:solid;
+       border-bottom-color:#000000;
+       margin:0 0 10px 0;
+}
+
+#header {
+                                                 
+       width:auto;
+       height:100px;
+       background-image:  url('../images/banner3.png') ;
+       border-bottom-style:solid;
+       border-bottom-color:#000000;
+       margin:0 0 10px 0;
+
+}
+
+.header{
+       background:url(/images/banner.png);                                                      
+       width:auto;
+       height:100px;
+       background-color: #045baa;
+       border-bottom-style:solid;
+       border-bottom-color:#000000;
+       margin:0 0 10px 0;
+}
+
+.header h1{
+       padding-left: 5px;
+       padding-top: 10px;
+}
+
+.izquierda{
+       width:125px;
+       height:auto;
+       margin:0 0px 0 5px;
+       float:left;
+       padding:0px;
+}
+
+.izquierda ul {
+       font:bold 11px Verdana, Arial, Helvetica, sans-serif;
+       color:#586885;
+       list-style:none;
+       text-transform:capitalize;
+       padding:0px;
+
+}
+
+.izquierda li {
+       margin:2px;
+       padding:3px;
+
+}
+
+.izquierda li a {
+	display:block; //Convertimos el vínculo en un bloque. 
+	width:10%; 
+    padding:4.5px;
+	text-decoration:none;
+	text-align:left;
+	font-size:12px;
+	color: #FFF;
+	background-color:#01ac4e;
+}
+
+.izquierda li a:hover {
+	color:#FFF;
+	background-color:#045baa;
+}
+
+
+
+#derecha{
+       width:180px;
+
+
+       margin:4px 7px;
+       float:right;
+
+
+}
+
+
+
+.derecha{
+       width:150px;
+       height:auto;
+       background-color:#FFFFDD;
+       border-style:solid;
+       border-width:1px;
+       border-color:#000000;
+       margin:0 5px 0 0;
+       float:right;
+       padding:5px;
+}
+
+.parr {
+       font:13px Verdana, Arial, Helvetica, sans-serif;
+	   text-align : justify;
+}
+
+#contenido{
+
+       width:85.3%;
+       height:auto;
+       background-color:#FFF;
+       border-style:solid;
+       border-width:1px;
+       border-color:#000000;
+       margin:0 5px 0 135px;
+       padding:10px;
+
+
+}
+.principal{
+
+       width:800px;
+       height:auto;
+       background-color:#FFF;
+       border-style:solid;
+       border-width:1px;
+       border-color:#000000;
+       margin:0 5px 0 170px;
+       padding:10px;
+}
+
+#footer {
+       width:auto;
+       height:30px;
+       background-color:#005baa;
+       border-style:solid;
+       border-width:1px;
+       border-color:#000000;
+       margin:5px;
+}
+
+
+.footer {
+       width:auto;
+       height:30px;
+       background-color:#005baa;
+       border-style:solid;
+       border-width:1px;
+       border-color:#000000;
+       margin:5px;
+}
+
+.footer h6{
+       text-align:center;
+       text-transform:uppercase;
+       margin:5px auto;
+       color:#FFF;
+       font-size:10px;
+}  
+
+/* Formularios */
+
+
+
+label {
+  display: block;
+  width: 500px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  margin: 5px 0;
+}
+
+.evaspan{
+
+}
+
+.inisesion  {
+
+       margin:0 300px 0 0;
+       float:right;
+       padding:3px;
+}
+
+.camp  {
+       width:50px;
+       height:auto;
+       margin:0 5px 0 0;
+       float:right;
+       padding:3px;
+}
+
+input, textarea, select {
+  margin: 0;
+  padding: 2px;
+  font-size: 1em;
+  color: #666666;
+  background: #F5F5F5;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+
+}   
+
+input:focus, textarea:focus, select:focus {
+  border: 1px solid #999;
+  background-color: #FFFFFF;
+}
+
+input.button {
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  width: 90px;
+  height: 28px;
+  margin-left: 150px;
+}
+
+
+/* Tabla */
+
+
+/* 
+	Blue Dream
+	Written by Teylor Feliz  http://www.admixweb.com
+*/
+
+
+table { 
+
+ background:#D3E4E5;
+ border:1px solid gray;
+ border-collapse:collapse;
+ color:#fff;
+
+}
+
+caption { 
+ border:1px solid #5C443A;
+ color:#5C443A;
+ font-weight:bold;
+ letter-spacing:20px;
+ padding:6px 4px 8px 0px;
+ text-align:center;
+ text-transform:uppercase;
+}
+
+th  { 
+ font:12px  Arial, Verdana, Helvetica, sans-serif;
+ color:#363636;
+ padding:.4em;
+} 
+
+td { 
+ font:10px Verdana, Arial, Helvetica, sans-serif;
+ color:#363636;
+ padding:.4em;
+}
+
+.ancho1 {
+ width:170px;
+
+}
+
+.ancho2{
+ width:50px;
+}
+
+tr { 
+ border:1px dotted gray;
+}
+
+thead th, tfoot th { 
+ background:#5C443A;
+ color:#FFFFFF;
+ padding:3px 10px 3px 10px;
+ text-align:left;
+ text-transform:uppercase;
+}
+
+tbody td a { 
+ color:#363636;
+ text-decoration:none;
+
+}
+
+tbody td a:visited { 
+ color:gray;
+/* text-decoration:line-through;*/
+}
+
+tbody td a:hover { 
+ text-decoration:underline;
+}
+
+tbody th a { 
+ color:#363636;
+ font-weight:normal;
+ text-decoration:none;
+}
+
+tbody th a:hover { 
+ color:#363636;
+}
+
+tbody td+td+td+td a { 
+ 
+ background-position:left center;
+ background-repeat:no-repeat;
+ color:#03476F;
+ padding-left:15px;
+}
+
+
+tbody th, tbody td { 
+ text-align:left;
+ vertical-align:top;
+}
+
+tfoot td { 
+ background:#5C443A;
+ color:#FFFFFF;
+ padding-top:3px;
+}
+
+.odd { 
+ background:#fff;
+}
+tbody tr:hover { background:#99BCBF;
+ border:1px solid #03476F;
+ color:#000000;
+}
+
+
+/* Menu principal */
+.menu,
+.menu ul {
+    font:bold 11px Verdana, Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.menu {
+       width:125px;
+       height:auto;
+       margin:0 0px 0 5px;
+       float:left;
+       padding:0px;
+}
+
+.menu li {
+    margin:0;
+    padding:0;
+    margin-bottom:1px;
+}
+
+.menu a {
+    display:block;
+    padding:2px 5px;
+    color:#000;
+    text-decoration:none;
+    color: #FFF;
+	background-color:#088A08;
+}
+
+.menu a:hover {
+	color:#FFF;
+	background-color:#045baa;
+}
+
+.menu ul li {
+    color:#586885;
+    padding-left:15px;
+}
+
+.menu ul a {
+	color: #FFF;
+	background-color:#01ac4e;
+}
+
+.hidden {
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
