@@ -21,7 +21,7 @@
 
 <title>SISSA - UV </title>
 <link rel="stylesheet" href="script/js/jscalendar/calendar-blue.css" type="text/css" />
-<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 
 <script type="text/javascript" src="script/js/jscalendar/calendar.js"></script>
 <script type="text/javascript" src="script/js/jscalendar/lang/calendar-en.js"></script>

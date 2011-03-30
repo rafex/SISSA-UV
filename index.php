@@ -20,11 +20,11 @@ if($cerrar==1){
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15"/>
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus/>
             </label>
             
             <label>Contraseña
-                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15"/>
+                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15" placeholder="Contraseña"/>
             </label>    
             <!--input type="submit" value="Iniciar" tabindex="3"  /-->
             <input value="Iniciar" tabindex="3" type="submit" />
@@ -36,11 +36,11 @@ if(!($_SESSION['activa']==true)) {
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15"/>
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus />
             </label>
             
             <label>Contraseña
-                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15"/>
+                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15"placeholder="Contraseña" />
             </label>    
             <!--input type="submit" value="Iniciar" tabindex="3"  /-->
             <input value="Iniciar" tabindex="3" type="submit" />
@@ -59,11 +59,11 @@ if(!($_SESSION['activa']==true)) {
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15"/>
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus />
             </label>
             
             <label>Contraseña
-                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15"/>
+                <input type="password" class="inisesion" name="contrasenia" id="contrasenia" tabindex="2" size="15" placeholder="Contraseña" />
             </label>    
             <!--input type="submit" value="Iniciar" tabindex="3"  /-->
             <input value="Iniciar" tabindex="3" type="submit" />

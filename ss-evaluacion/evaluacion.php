@@ -22,7 +22,7 @@ $evaluar->guardarCalf($valores);
 
   <label class="etiqueta"><? echo $evaluar->listaCampos($i); ?>
   <input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" size="5" type="text" value="<? if($evaluar->mostrarCalif(($i+1))!=-1) echo $evaluar->mostrarCalif(($i+1)); ?>">
-  <a href="#" class="modal"><img class="nota" src="images/32px/nota3.png" /></a>
+  <a href="#" onlclick="javascript:mostrar();"><img class="nota" src="images/32px/nota3.png" /></a>
   </label>
 <? } ?>
 
