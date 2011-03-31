@@ -66,6 +66,30 @@ function crearContenidosArreglo(nombres,valores,pagina){
         
 }
 
+function comentario(nombres,valores,pagina){
+        
+
+        ajax=objetoAjax();
+        ajax.open('GET',pagina,true);
+        ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+				
+				result = ajax.responseText;
+				document.getElementById('comentario').innerHTML=result;
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+      var enviar="";
+      for(var i=0;i<noms.length;i++){
+        enviar+=noms[i]+"=";
+        enviar+=vals[i]+"&";  
+      }
+	  ajax.send('&formulario='+valoresEval+'&'+enviar);
+        
+        
+}
+
+
 function evaluar(nombres,valores,pagina){
         var valoresEval=[];
         var campos=document.evaluacion.elements;

@@ -12,6 +12,14 @@ class Evaluar extends Conexion {
     
     }
 
+    public function alumno(){
+        $this->getConexion();
+        $sql="SELECT NombreAlu as alumno FROM alumno_ss_fca WHERE MatriculaAlu='".$this->matricula."' ;";
+        $result=mysql_query($sql) or die(mysql_error());
+        $fila=mysql_fetch_array($result);
+        return $fila['alumno'];
+    }
+
     
     public function inicia(){
         $this->getConexion();
@@ -19,6 +27,28 @@ class Evaluar extends Conexion {
         $result=mysql_query($sql) or die(mysql_error());
         if(!mysql_fetch_array($result)){
             mysql_query("INSERT INTO evaluacion_".$this->criterio." (MatriculaAlu) values('".$this->matricula."');") or die(mysql_error());
+        }
+    }
+
+    public function hayComentario(){
+        $this->getConexion();
+        $sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu='$this->matricula' AND Evaluacion='$this->criterio';";
+        $result=mysql_query($sql) or die(mysql_error());
+        if($comentario=mysql_fetch_array($result)){
+            return $comentario['Nota'];
+        }else{
+            return "No hay comentarios.";
+        }
+    }    
+
+    public function comentario($nota){
+        $this->getConexion();
+        if(!is_null($nota) && $nota!="No hay comentarios."){
+            $sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`) VALUES ('$this->matricula', '$this->criterio', '".trim($nota)."', '".date('o-m-d')."');";
+            $result=mysql_query($sql) or die(mysql_error());
+            if($result){
+                echo "<p style='color:#1cc91c;'><strong>Comentario guardado correctamente.</strong></p>";
+            }
         }
     }
     
@@ -85,6 +115,18 @@ class Evaluar extends Conexion {
         
     }
 
+    public function evaluacion($indice){
+        $this->getConexion();
+        $evaluacion=array();
+        $sql="SELECT * FROM `evaluacion_".$this->criterio."` ;";
+        $result=mysql_query($sql) or die(mysql_error());
+        for($i=1;$i<=$this->numCampos();$i++){
+                array_push($evaluacion,utf8_encode(mysql_field_name($result,$i)));
+        
+        }
+
+        return $evaluacion[$indice];
+    }
 
     public function guardarCalf($valores){
         $this->getConexion();

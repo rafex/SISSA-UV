@@ -1,5 +1,9 @@
-<? include('header.php') ?>
 
+<? include('header.php') ?>
+<link rel="stylesheet" href="script/js/jscalendar/calendar-blue.css" type="text/css" />
+<script type="text/javascript" src="script/js/jscalendar/calendar.js"></script>
+<script type="text/javascript" src="script/js/jscalendar/lang/calendar-en.js"></script>
+<script type="text/javascript" src="script/js/jscalendar/calendar-setup.js"></script>
     <? include('menu.php') ?>
 	<? include('derecho.php') ?>
 	<div id="contenido">

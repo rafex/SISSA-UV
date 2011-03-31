@@ -20,16 +20,12 @@
 
 
 <title>SISSA - UV </title>
-<link rel="stylesheet" href="script/js/jscalendar/calendar-blue.css" type="text/css" />
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-<script type="text/javascript" src="script/js/jscalendar/calendar.js"></script>
-<script type="text/javascript" src="script/js/jscalendar/lang/calendar-en.js"></script>
-<script type="text/javascript" src="script/js/jscalendar/calendar-setup.js"></script>
-<script type="text/javascript" src="script/js/togglemenu.js"></script>
 <script type="text/javascript" src="script/js/script.js"></script>
-<script type="text/javascript" src="script/js/jquery-1.5.js"></script>
-<script type="text/javascript" src="script/js/efectos.js"></script>
+<!--script type="text/javascript" src="script/js/jquery-1.5.js"></script-->
+
 
 
 </head>
