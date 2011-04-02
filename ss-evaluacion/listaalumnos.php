@@ -2,7 +2,7 @@
 $carrera=$_POST['carrera'];
 include_once '../script/php/functions.php';
 include_once '../clases/evaluar.php';
-
+session_start();
 conectar();
 $result=mysql_query("SELECT NombreAlu,MatriculaAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' ORDER BY NombreAlu  ") or die(mysql_error());
 $result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='MEIFv1' ; ") or die(mysql_error());
@@ -27,7 +27,11 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
   <tr>
 
     <td><? echo $n++; ?></td>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>','ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <? if($_SESSION['nivel']=='admin'){ ?>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <?}elseif($_SESSION['nivel']=='evaluador'){?>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <? } ?>
 <? for($i=0;$i<$j;$i++){ ?>
     <td><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "SinEval"; }else{ echo $calfif; }?></td>
 <?}?>

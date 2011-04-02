@@ -1,14 +1,14 @@
 
-<? include('header.php') ?>
-<link rel="stylesheet" href="script/js/jscalendar/calendar-blue.css" type="text/css" />
-<script type="text/javascript" src="script/js/jscalendar/calendar.js"></script>
-<script type="text/javascript" src="script/js/jscalendar/lang/calendar-en.js"></script>
-<script type="text/javascript" src="script/js/jscalendar/calendar-setup.js"></script>
-    <? include('menu.php') ?>
-	<? include('derecho.php') ?>
+<? include('../header.php') ?>
+<link rel="stylesheet" href="/SISSA-UV/script/js/jscalendar/calendar-blue.css" type="text/css" />
+<script type="text/javascript" src="/SISSA-UV/script/js/jscalendar/calendar.js"></script>
+<script type="text/javascript" src="/SISSA-UV/script/js/jscalendar/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/SISSA-UV/script/js/jscalendar/calendar-setup.js"></script>
+    <? include_once '../menus/menu_admin.html'; ?>
+	<? include('../derecho.php') ?>
 	<div id="contenido">
 	<? $campos=$_POST["numero_criterios"]; ?>
-        <form method="post" action="ss-config/crearbd.php">
+        <form method="post" action="/SISSA-UV/ss-config/crearbd.php">
         <label><strong>Nombre del Criterio de Evaluación</strong>
         <input type="text"  name="nombre_criterio" tabindex="1" size="40" /></label>
 <?
@@ -21,7 +21,7 @@ for($i=0;$i<$campos;$i++){
         <label>Valor del criterio <? echo ($i+1); ?> en (%)  
         <input type="text"  name="valor<? echo $i; ?>"  tabindex="<? echo (++$j);?>" size="5" /></label>
         <label>De:<input type="text" name="fechaA<? echo $i; ?>" id="fechaA<? echo $i; ?>" readonly="1" size="11" />
-        <img src="images/img.gif" id="f_trigger_cA<? echo $i; ?>"
+        <img src="/SISSA-UV/images/img.gif" id="f_trigger_cA<? echo $i; ?>"
             style="cursor: pointer; border: 1px solid red;,"
             title="Date selector"
             onmouseover="this.style.background='red';"
@@ -35,7 +35,7 @@ for($i=0;$i<$campos;$i++){
             });
         </script></label>
         <label>Al:<input type="text" name="fechaE<? echo $i; ?>" id="fechaE<? echo $i; ?>" readonly="1" size="11" />
-        <img src="images/img.gif" id="f_trigger_cB<? echo $i; ?>"
+        <img src="/SISSA-UV/images/img.gif" id="f_trigger_cB<? echo $i; ?>"
             style="cursor: pointer; border: 1px solid red;,"
             title="Date selector"
             onmouseover="this.style.background='red';"
@@ -58,4 +58,4 @@ for($i=0;$i<$campos;$i++){
 
 	</div> <!-- Aqui termina Contenido -->
 
-<? include('footer.php') ?>
+<? include('../footer.php') ?>

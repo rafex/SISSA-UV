@@ -17,7 +17,7 @@ for($ii=0;$ii<$cuantos;$ii++){
 }
 
 for($i=0;$i<$cuantos;$i++){
-        echo "estoy en el for<br/>";
+       
         $sql;        
         //$criterio=$_POST['criterio'.$i];
         $valor=$_POST['valor'.$i];
@@ -39,6 +39,14 @@ for($i=0;$i<$cuantos;$i++){
         
         
 }
-
-
 ?>
+<? include_once('../header.php') ?>
+
+    <? include_once('../menus/menu_admin.html') ?>
+	<? include_once('../derecho.php') ?>
+    <div id="contenido">
+
+    Listo.!
+	</div> <!-- Aqui termina Contenido -->
+
+<? include('../footer.php') ?>

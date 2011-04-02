@@ -2,20 +2,26 @@
 include_once 'conectar.php';
 class Sesion extends Conexion {
 
-    function __construct(){
+    private $valores;
 
-    
+    function __construct(){
+   
+    }
+
+    public function getValores($str){
+        return $this->valores["$str"];
+
     }
     
     public function iniciar($usr,$pw){
         $this->getConexion();
-
+        //session_start();
         $result=mysql_query("SELECT * FROM `usuarios_ss_fca` WHERE contrasenia=password('$pw') and usuario='$usr';") or die(mysql_error());
         if($rows=mysql_fetch_array($result)){
-
-            $_SESSION['usuario']=$rows['nombre'];
+            $this->valores=array("activa"=>true , "nombre"=>$rows['nombre'] , "nivel"=>$rows['nivel'] );
+            /*$_SESSION['nombre']=$rows['nombre'];
             $_SESSION['nivel']=$rows['nivel'];
-            $_SESSION['activa']=true;
+            $_SESSION['activa']=true;*/
             return true;
         }else{
 
@@ -24,7 +30,7 @@ class Sesion extends Conexion {
     }
     
     public function cerrar(){
-        $_SESSION['activa']=false;
+        $this->valores=array( "activa"=>false);
         session_unset();
         session_destroy();
     }

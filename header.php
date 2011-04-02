@@ -1,8 +1,7 @@
-<? 
-    session_start();
-
-    include_once './script/php/functions.php';
-
+<?  session_start();
+    include_once 'script/php/functions.php'; 
+    include_once 'clases/sesion.php';
+    $sesion=new Sesion();    
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21,10 +20,10 @@
 
 <title>SISSA - UV </title>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="/SISSA-UV/css/style.css" type="text/css" />
 
-<script type="text/javascript" src="script/js/script.js"></script>
-<!--script type="text/javascript" src="script/js/jquery-1.5.js"></script-->
+<script type="text/javascript" src="/SISSA-UV/script/js/script.js"></script>
+<script type="text/javascript" src="/SISSA-UV/script/js/togglemenu.js"></script>
 
 
 
@@ -33,5 +32,5 @@
 <body>
 
  <div id="container">
-    <a href="index.php"><div id="header"></div></a>
+    <a href="/SISSA-UV/index.php"><div id="header"></div></a>
 

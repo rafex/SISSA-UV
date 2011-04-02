@@ -1,6 +1,6 @@
 <?
 include_once '../clases/evaluar.php';
-
+session_start();
 $matricula=$_POST['matricula'];
 $nombre=$_POST['nombre'];
 $criterio=$_POST['criterio'];
@@ -22,8 +22,13 @@ $evaluar->guardarCalf($valores);
 
   <label class="etiqueta"><? echo $evaluar->listaCampos($i); ?>
   <input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" size="5" type="text" value="<? if($evaluar->mostrarCalif(($i+1))!=-1) echo $evaluar->mostrarCalif(($i+1)); ?>">
-  <a href="#" onclick="window.open('ss-evaluacion/comentario.php?criterio=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="images/32px/nota3.png" /></a>
+    <? if($_SESSION['nivel']=='admin'){ ?>  
+    <a href="#" onclick="window.open('../ss-evaluacion/comentario.php?criterio=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="/SISSA-UV/images/32px/nota3.png" /></a>
+    <?}elseif($_SESSION['nivel']=='evaluador'){?>
+    <a href="#" onclick="window.open('comentario.php?criterio=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="/SISSA-UV/images/32px/nota3.png" /></a>
+    <? } ?>
   </label>
+
 <? } ?>
 
 

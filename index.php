@@ -1,20 +1,18 @@
 <?
-include_once 'clases/sesion.php';
-$sesion=new Sesion();
+// index principal
+
 $usr=$_POST['usuario'];
 $pass=$_POST['contrasenia'];
 $cerrar=$_GET['cerrar'];
 
 ?>
-<? include('header.php'); ?>
+<? include_once('header.php'); ?>
 
-    <? include('menu.php'); ?>
-	<? include('derecho.php');   ?>
+    <? include_once('menus/menu_principal.html'); ?>
+
 
 	<div id="contenido">
-
-<?
-if($cerrar==1){
+<?if($cerrar==1){
     $sesion->cerrar();?>
 
 	    <h2>Inicio de Sesión</h2>
@@ -30,7 +28,7 @@ if($cerrar==1){
             <input value="Iniciar" tabindex="3" type="submit" />
         </form>    
 <?}else{
-if(!($_SESSION['activa']==true)) { 
+if($_SESSION['activa']!=true) { 
     if(!$usr && !$pass) { ?>
     
 	    <h2>Inicio de Sesión</h2>
@@ -46,13 +44,21 @@ if(!($_SESSION['activa']==true)) {
             <input value="Iniciar" tabindex="3" type="submit" />
         </form>
 <?  }else { 
-    if($sesion->iniciar($usr,$pass)){ ?>
+    if($sesion->iniciar($usr,$pass)){
+        $_SESSION['nombre']=$sesion->getValores('nombre');
+        $_SESSION['nivel']=$sesion->getValores('nivel');
+        $_SESSION['activa']=$sesion->getValores('activa'); 
+        if($_SESSION['activa']){
+                if($_SESSION['nivel']=='admin'){
+                    
+                    header ("Location: ss-admin/index.php"); 
 
-        <script>
-            cargarContenido('principal.php');
+                }elseif($_SESSION['nivel']=='evaluador'){
+                    header ("Location: ss-evaluacion/index.php"); 
+                }
+        }
 
-        </script>      
-    <? }else{ ?>
+       }else{ ?>
         <script>
             alert('Error al Iniciar Sesión');
         </script>
@@ -72,14 +78,19 @@ if(!($_SESSION['activa']==true)) {
 
 
     } 
-}else{?>	
+}else{	
 
-        <script>
-            cargarContenido('principal.php');
-                
-        </script>
+    if($_SESSION['activa']){
+                if($_SESSION['nivel']=='admin'){
+                    
+                    header ("Location: ss-admin/index.php"); 
 
-<? } // si la sesion ya inicio
+                }elseif($_SESSION['nivel']=='evaluador'){
+                    header ("Location: ss-evaluacion/index.php"); 
+                }
+        }
+
+   } // si la sesion ya inicio
 }// este cierra la sesion?>
 
 	</div> <!-- Aqui termina Contenido -->
@@ -90,5 +101,5 @@ if(!($_SESSION['activa']==true)) {
 
 
 
-<? include('footer.php'); ?>
+<? include_once('footer.php'); ?>
 
