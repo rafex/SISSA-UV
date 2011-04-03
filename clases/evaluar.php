@@ -12,6 +12,17 @@ class Evaluar extends Conexion {
     
     }
 
+    /*
+        Nos da la lista de alumnos por carrera
+    */
+    public function listaAlumnos($carrera){
+        $this->getConexion();
+        $sql="SELECT NombreAlu,MatriculaAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' ORDER BY NombreAlu ";
+        $result=mysql_query($sql) or die(mysql_error());
+        $fila=mysql_fetch_array($result);
+
+    }
+
     public function alumno(){
         $this->getConexion();
         $sql="SELECT NombreAlu as alumno FROM alumno_ss_fca WHERE MatriculaAlu='".$this->matricula."' ;";

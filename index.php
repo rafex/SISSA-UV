@@ -18,7 +18,7 @@ $cerrar=$_GET['cerrar'];
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus/>
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" />
             </label>
             
             <label>Contraseña
@@ -34,7 +34,7 @@ if($_SESSION['activa']!=true) {
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus />
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario"  />
             </label>
             
             <label>Contraseña
@@ -65,7 +65,7 @@ if($_SESSION['activa']!=true) {
 	    <h2>Inicio de Sesión</h2>
         <form id="sesion" name="sesion" method="post" action="javascript:validarIni();">
             <label>Usuario
-                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario" autofocus />
+                <input type="text" class="inisesion" name="usuario" id="usuario" tabindex="1" size="15" placeholder="Usuario"  />
             </label>
             
             <label>Contraseña

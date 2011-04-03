@@ -29,6 +29,20 @@ function cargarContenido(pagina){
 	  ajax.send();
 }
 
+function cargarBusqueda(nombre,valor,pagina){ 
+        ajax=objetoAjax();
+        ajax.open('POST',pagina,true);
+        ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+				
+				result = ajax.responseText;
+				document.getElementById('contenido').innerHTML=result;
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  ajax.send('&'+nombre+'='+valor);
+}
+
 function cargarMenu(menu){ 
       ajax= objetoAjax();
 	  ajax.open('POST', menu,true);

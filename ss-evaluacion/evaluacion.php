@@ -5,14 +5,24 @@ $matricula=$_POST['matricula'];
 $nombre=$_POST['nombre'];
 $criterio=$_POST['criterio'];
 $valores=$_POST['formulario'];
+$carrera=$_POST['carrera'];
 $evaluar=new Evaluar($matricula,$criterio);
 
 $evaluar->inicia();
 $evaluar->guardarCalf($valores);
 
+if($carrera=='lsca'){
+    $carrera='Sistemas Computacionales Administrativos</strong>';
+}elseif($carrera=='lc'){
+    $carrera='Cantaduría';
+}elseif($carrera=='la'){
+    $carrera='Administración';
+}elseif($carrera=='lg'){
+    $carrera='Gestion de Negocios';
+}
 ?>
 
-<p>Matricula:<? echo $matricula; ?></p>
+<p>Matricula:<? echo $matricula; ?> Carrera: <?echo $carrera;?></p>
 
 <p>Alumno:<strong><?echo $nombre; ?></strong></p>
 <p>Tipo de evaluación: <?echo $criterio; ?></p>
