@@ -29,7 +29,11 @@ if($carrera=='lsca'){
 }
 
 ?>
+<? if($_SESSION['nivel']=='admin'){ ?>
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera',document.buscar.patron.value+',<?echo $carrera;?>','../ss-evaluacion/buscar.php');">
+<?}elseif($_SESSION['nivel']=='evaluador'){?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera',document.buscar.patron.value+',<?echo $carrera;?>','buscar.php');">
+<? } ?>
     <input type="text" name="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <input type="submit" value="Buscar"  />
 </form>
