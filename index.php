@@ -49,13 +49,17 @@ if($_SESSION['activa']!=true) {
         $_SESSION['nivel']=$sesion->getValores('nivel');
         $_SESSION['activa']=$sesion->getValores('activa'); 
         if($_SESSION['activa']){
-                if($_SESSION['nivel']=='admin'){
-                    
-                    header ("Location: ss-admin/index.php"); 
+                if($_SESSION['nivel']=='admin'){ ?>
+                    <script>
+						location.href = "ss-admin/index.php";
+					</script>
 
-                }elseif($_SESSION['nivel']=='evaluador'){
-                    header ("Location: ss-evaluacion/index.php"); 
-                }
+              <?  }elseif($_SESSION['nivel']=='evaluador'){ ?>
+                    <script>
+						location.href = "ss-evaluacion/index.php";
+					</script>
+
+              <?  }
         }
 
        }else{ ?>
@@ -81,13 +85,17 @@ if($_SESSION['activa']!=true) {
 }else{	
 
     if($_SESSION['activa']){
-                if($_SESSION['nivel']=='admin'){
-                    
-                    header ("Location: ss-admin/index.php"); 
+                if($_SESSION['nivel']=='admin'){ ?>
+                    <script>
+						location.href = "ss-admin/index.php";
+					</script>
 
-                }elseif($_SESSION['nivel']=='evaluador'){
-                    header ("Location: ss-evaluacion/index.php"); 
-                }
+              <?  }elseif($_SESSION['nivel']=='evaluador'){ ?>
+                    <script>
+						location.href = "ss-evaluacion/index.php";
+					</script>
+
+              <?  }
         }
 
    } // si la sesion ya inicio
