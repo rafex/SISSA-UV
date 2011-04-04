@@ -4,7 +4,7 @@ include_once '../script/php/functions.php';
 include_once '../clases/evaluar.php';
 session_start();
 conectar();
-$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' ORDER BY NombreAlu  ") or die(mysql_error());
+$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='ENERO2011-JUNIO2011' ORDER BY NombreAlu  ") or die(mysql_error());
 $result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='MEIFv1' ; ") or die(mysql_error());
 
 if($carrera=='lsca'){
