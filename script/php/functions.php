@@ -1,5 +1,5 @@
 <?
-    @ include_once './clases/conectar.php';
+    @ include_once '../clases/conectar.php';
 
         function sin_acentos_espacios($text){
             $text=elimina_acentos($text);

@@ -99,7 +99,7 @@ if($_SESSION['activa']!=true) {
         }
 
    } // si la sesion ya inicio
-}// este cierra la sesion?>
+}// este cierra la sesion ?>
 
 	</div> <!-- Aqui termina Contenido -->
 	
