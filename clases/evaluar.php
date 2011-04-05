@@ -41,9 +41,9 @@ class Evaluar extends Conexion {
         }
     }
 
-    public function hayComentario(){
+    public function hayComentario($campoEvaluar){
         $this->getConexion();
-        $sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu='$this->matricula' AND Evaluacion='$this->criterio';";
+        $sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu='$this->matricula' AND Evaluacion='$campoEvaluar';";
         $result=mysql_query($sql) or die(mysql_error());
         if($comentario=mysql_fetch_array($result)){
             return $comentario['Nota'];
@@ -52,11 +52,16 @@ class Evaluar extends Conexion {
         }
     }    
 
-    public function comentario($nota){
+    public function comentario($campoEvaluar,$nota){
         $this->getConexion();
         if(!is_null($nota) && $nota!="No hay comentarios."){
-            $sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`) VALUES ('$this->matricula', '$this->criterio', '".trim($nota)."', '".date('o-m-d')."');";
-            $result=mysql_query($sql) or die(mysql_error());
+            $sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`) VALUES ('$this->matricula', '$campoEvaluar', '".trim($nota)."', '".date('o-m-d')."');";
+            $result=mysql_query($sql);
+            if($result==0){
+                $set="update `notas_ss_fca` SET `Nota`='$nota' WHERE `MatriculaAlu`='$this->matricula' AND `Evaluacion`='$campoEvaluar' LIMIT 1";
+                $result=mysql_query($set);
+            }
+
             if($result){
                 echo "<p style='color:#1cc91c;'><strong>Comentario guardado correctamente.</strong></p>";
             }
@@ -74,6 +79,17 @@ class Evaluar extends Conexion {
         return $listaCampos[$i];
     }
     
+    public function listaValoresCampos($i){
+        $this->getConexion();
+        $listaValoresCampos=array();
+        $sql="SELECT valor FROM criterios_ss_fca WHERE nombreCriterio='".$this->criterio."' ; ";
+        $result=mysql_query($sql) or die(mysql_error());
+        while($fila=mysql_fetch_array($result)){
+            array_push($listaValoresCampos,utf8_encode($fila['valor']));
+        }
+        return $listaValoresCampos[$i];
+    }
+
     public function todosCampos(){
         $this->getConexion();
         $listaCampos=array();
@@ -163,7 +179,7 @@ class Evaluar extends Conexion {
                     $fila=mysql_fetch_array($result2);
                     $numero=$fila['actual'];
                     if($numero!=$tmp){
-                        $mensaje=false;                       
+                     
                         echo "Ya tiene esta calificación en: <strong>".$this->listaCampos(($i-1))."</strong><br>";
                     }                    
                 }else{
@@ -171,14 +187,13 @@ class Evaluar extends Conexion {
                     $sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' ;";
                     mysql_query($sql) or die(mysql_error());
                     $mensaje=true;
-                    
                 }
                 
             } // recupera las columnas para poder insertar
-            if($mensaje){
-                echo "<p style='color:#1cc91c;'><strong>La calificación se han guardado correctamente.</strong></p>";
-            }
             
+            if($mensaje){
+                echo "<p style='color:#1cc91c; font-size:15px;'><strong>La calificación se han guardado correctamente.</strong></p>";
+            }
         }// end if
     }
 

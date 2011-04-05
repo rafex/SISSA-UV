@@ -1,11 +1,12 @@
 <?
 include_once '../clases/evaluar.php';
 $alumno=$_GET['alumno'];
-$criterio=$_GET['criterio'];
+$campoEvaluar=$_GET['campoEvaluar'];
 $matricula=$_GET['matricula'];
 $nota=$_GET['comentario'];
+$criterio=$_GET['criterio'];
 $evaluar=new Evaluar($matricula,$criterio);
-$evaluar->comentario($nota);
+$evaluar->comentario($campoEvaluar,$nota);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,7 +43,7 @@ $evaluar->comentario($nota);
             <input type="hidden" name="alumno" value="<? echo $alumno;?>">
             <input type="hidden" name="matricula" value="<? echo $matricula;?>">
             <input type="hidden" name="criterio" value="<? echo $criterio;?>">
-            <textarea name="comentario" cols="40" rows="5" autofocus><?echo $evaluar->hayComentario();?></textarea>
+            <textarea name="comentario" cols="40" rows="5" autofocus><?echo $evaluar->hayComentario($campoEvaluar);?></textarea>
             <br>
             <input type="submit" value="Guardar" />
         </form>
