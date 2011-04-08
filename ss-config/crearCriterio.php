@@ -1,5 +1,5 @@
 
-<? include('../header.php') ?>
+<? @ include('../header.php') ?>
 <link rel="stylesheet" href="/SISSA-UV/script/js/jscalendar/calendar-blue.css" type="text/css" />
 <script type="text/javascript" src="/SISSA-UV/script/js/jscalendar/calendar.js"></script>
 <script type="text/javascript" src="/SISSA-UV/script/js/jscalendar/lang/calendar-en.js"></script>

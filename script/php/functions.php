@@ -88,7 +88,7 @@
         }
         
         function fecha(){
-            echo (date('d')."/".date('m')."/".date('o'));
+            echo (date('d')."/".date('m')."/".date('Y'));
         }
         
         function hora(){

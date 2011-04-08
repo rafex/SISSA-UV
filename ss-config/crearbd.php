@@ -1,5 +1,5 @@
 <?
-include_once '../script/php/functions.php';
+@ include_once '../script/php/functions.php';
 
 $cuantos=$_POST["cuantos"];
 $nomcriterio=$_POST['nombre_criterio'];
@@ -25,8 +25,8 @@ for($i=0;$i<$cuantos;$i++){
         $fechaE=$_POST['fechaE'.$i]; 
         $sql="INSERT INTO criterios_ss_fca(nombreCriterio,evaluar,valor,fechaInicio,fechaEntrega) values ('".$nomcriterio."','".(utf8_decode(trim($criterios[$i])))."',$valor,'$fechaA','$fechaE'); ";
         mysql_query($sql) or die(mysql_error());                
-        $criterio= elimina_acentos($criterio);
-        $criterio = espacios_blancos($criterio);
+        $criterio[$i]= elimina_acentos($criterio[$i]);
+        $criterio[$i] = espacios_blancos($criterio[$i]);
         //mysql_query("INSERT INTO evaluacion_ss_fca(nombreCriterio,criterio) values ('".$nomcriterio."','".($criterio=trim($criterio))."'); ") or die(mysql_error());
                 
         if($i==0){

@@ -35,6 +35,7 @@ $j=0;
 while($rows2=mysql_fetch_array($result2)){ $j++  ?>
     <th  class="ancho1"><? echo utf8_encode($rows2['evaluar']); ?></th>
 <? } ?>
+	<th  class="ancho1">Total</th>
   </tr>
 <? $n=1; while($rows = mysql_fetch_array($result)){  
 
@@ -48,9 +49,10 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
     <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
-<? for($i=0;$i<$j;$i++){ ?>
-    <td><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ echo $calfif; }?></td>
-<?}?>
+<? $total=0; for($i=0;$i<$j;$i++){ ?>
+    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
+<? }?>
+    <td><strong><? echo $total;?></strong></td>
   </tr>
 <? }?>
 </table>

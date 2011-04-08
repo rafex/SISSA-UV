@@ -36,13 +36,14 @@ $evaluar->comentario($campoEvaluar,$nota);
 <body>
 
  <div id="comentario">
-    <p>Comentando la evaluación:  <?echo $criterio;?><p>
-    <p>Alumno:  <?echo $evaluar->alumno();?><p>
+    <p>Comentando la evaluación:  <?echo $campoEvaluar;?><p>
+    <p>Alumno:  <? echo $evaluar->alumno();?><p>
     
         <form name="comentarios" method="get" action="comentario.php">
             <input type="hidden" name="alumno" value="<? echo $alumno;?>">
             <input type="hidden" name="matricula" value="<? echo $matricula;?>">
             <input type="hidden" name="criterio" value="<? echo $criterio;?>">
+            <input type="hidden" name="campoEvaluar" value="<? echo $campoEvaluar;?>">			
             <textarea name="comentario" cols="40" rows="5" autofocus><?echo $evaluar->hayComentario($campoEvaluar);?></textarea>
             <br>
             <input type="submit" value="Guardar" />
