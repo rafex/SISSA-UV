@@ -52,6 +52,14 @@ class Evaluar extends Conexion {
         }
     }    
 
+	public function comentarioAlu(){
+        $this->getConexion();
+		$sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu=`$this->matricula` AND Evaluacion=`$campoEvaluar`";
+		$result=mysql_query($sql) or die(mysql_error());
+		
+
+	}
+
     public function comentario($campoEvaluar,$nota){
         $this->getConexion();
         if(!is_null($nota) && $nota!="No hay comentarios."){

@@ -6,7 +6,7 @@ session_start();
 conectar();
 $result=mysql_query("SELECT MatriculaAlu,NombreAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='ENERO2011-JUNIO2011' ORDER BY NombreAlu  ") or die(mysql_error());
 $result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='MEIFv1' ; ") or die(mysql_error());
-
+$evalu=array();
 if($carrera=='lsca'){
     echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';
 }elseif($carrera=='lc'){
@@ -26,16 +26,17 @@ if($carrera=='lsca'){
     <input type="text" name="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <input type="submit" value="Buscar"  />
 </form>
-<table id="listaalu" width="100%" border="0" cellspacing="0">
+<table id="listaalu" width="100%" border="1" cellspacing="0">
   <tr>
     <th  width="15" height="35" scope="col">#</th>
-    <th  class="ancho1">Nombre</th>
+    <th>Nombre</th>
 <?
 $j=0;
+
 while($rows2=mysql_fetch_array($result2)){ $j++  ?>
-    <th  class="ancho1"><? echo utf8_encode($rows2['evaluar']); ?></th>
+    <th><? echo utf8_encode($rows2['evaluar']); ?></th>
 <? } ?>
-	<th  class="ancho1">Total</th>
+	<th>Total</th>
   </tr>
 <? $n=1; while($rows = mysql_fetch_array($result)){  
 
@@ -50,7 +51,7 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
     <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 <? $total=0; for($i=0;$i<$j;$i++){ ?>
-    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
+    <td title="<? echo utf8_encode($rows2['evaluar']); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
 <? }?>
     <td><strong><? echo $total;?></strong></td>
   </tr>
