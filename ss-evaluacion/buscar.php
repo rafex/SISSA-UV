@@ -40,13 +40,12 @@ if($carrera=='lsca'){
 <table id="listaalu" width="100%" border="0" cellspacing="0">
   <tr>
     <th  width="15" height="35" scope="col">#</th>
-    <th>Nombre <? echo $_SESSION["usuario"];?></th>
+    <th  class="ancho1">Nombre <? echo $_SESSION["usuario"];?></th>
 <?
 $j=0;
 while($rows2=mysql_fetch_array($result2)){ $j++  ?>
-    <th><? echo utf8_encode($rows2['evaluar']); ?></th>
+    <th  class="ancho1"><? echo utf8_encode($rows2['evaluar']); ?></th>
 <? } ?>
-	<th>Total</th>
   </tr>
 <? $n=1; while($rows = mysql_fetch_array($result)){  
 
@@ -60,8 +59,8 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
     <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
-<? $total=0; for($i=0;$i<$j;$i++){ ?>
-    <td title="<? echo $evaluar->hayComentario(elimina_acentos(sin_acentos_espacios(utf8_encode($rows2['evaluar'])))); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ echo $calfif; }?></td>
+<? for($i=0;$i<$j;$i++){ ?>
+    <td><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ echo $calfif; }?></td>
 <?}?>
   </tr>
 <? }?>
