@@ -2,7 +2,7 @@
 conectar();
 $sql="SELECT `perido` FROM `configuraciones_ss_fca`";
 $result=mysql_query($sql) or die();
-$sql2="SELECT `nombreCriterio` from `criterios_ss_fca` ORDER BY `nombreCriterio`";
+$sql2="SELECT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
 $result2=mysql_query($sql2) or die();
 ?>
 <form name="pre-evaluacion">
@@ -12,16 +12,15 @@ $result2=mysql_query($sql2) or die();
     <? } ?>
 </select>
 <select name="criterio">
-    <? $veces=0; $num=0; while($fila2=mysql_fetch_array($result2)){
-        $actual=$fila2[$num];
-        $anterior;
-        if($num!=0){$anterior=$fila2[$num-1];}
-        if($fila2[$num]!=$anterior){?>
-            <option value="<?echo $fila2[$num];?>"><?echo $fila2[$num];?></option>
+    <? $anterior; while($fila2=mysql_fetch_array ($result2)){
+
+        if($fila2['criterio']!=$anterior){?>
+            <option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
+
         <?  
-            $anterior=$actual;
-        }// fin if
-    $num++;
+			$anterior=$fila2['criterio'];
+        }// fin 
+		$num++;
     } // fin while?>
 
 </select>
