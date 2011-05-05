@@ -1,11 +1,13 @@
 <?php
 $carrera=$_POST['carrera'];
+$periodo=$_POST['periodo'];
+$criterioS=$_POST['criterioS'];
 include_once '../script/php/functions.php';
 include_once '../clases/evaluar.php';
 session_start();
 conectar();
-$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='ENERO2011-JUNIO2011' ORDER BY NombreAlu  ") or die(mysql_error());
-$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='MEIFv1' ; ") or die(mysql_error());
+$result=mysql_query("SELECT MatriculaAlu,NombreAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' ORDER BY NombreAlu  ") or die(mysql_error());
+$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='$criterioS' ; ") or die(mysql_error());
 
 if($carrera=='lsca'){
     echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';
@@ -39,15 +41,15 @@ while($rows2=mysql_fetch_array($result2)){ $j++  ?>
   </tr>
 <? $n=1; while($rows = mysql_fetch_array($result)){  
 
-$evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['CriterioAlu']));
+$evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),$criterioS);
 ?>
   <tr>
 
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $carrera;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 <? $total=0; for($i=0;$i<$j;$i++){ ?>
     <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
