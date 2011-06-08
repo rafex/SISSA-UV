@@ -1,6 +1,6 @@
 <?
 include_once 'clases/sesion.php';
-session_start();
+@ session_start();
 $usr=$_POST['usuario'];
 $pw=$_POST['contrasenia'];
 $c=$_GET['cerrar'];
@@ -14,17 +14,25 @@ if(!empty($usr) && !empty($pw))
 	{
 		
 		if($_SESSION['nivel']=='admin')
-		{ 
-			header ("Location: ss-admin/index.php");
-
-		}
-		elseif($_SESSION['nivel']=='evaluador')
-		{ 
-			header ("Location: ss-evaluacion/index.php");
-		}
-	}else{
-		
-		header ("Location: errorsesion.php");
+		{ ?>
+        	<script>
+				location.href = "ss-admin/index.php";
+			</script>
+<?  	} 
+		elseif($_SESSION['nivel']=='evaluador'){ ?>
+            <script>
+				location.href = "ss-evaluacion/index.php";
+			</script>
+<?  	}
+	}
+	else
+	{
+?>
+            <script>
+				location.href = "errorsesion.php";
+			</script>
+<?  		
+		//header ("Location: errorsesion.php");
 	}
 
 }
@@ -34,7 +42,12 @@ if(!empty($c))
 	if($c==1)
 	{
 		$sesion->cerrar();
-		header ("Location: index.php");
+?>
+            <script>
+				location.href = "index.php";
+			</script>
+<?		
+		//header ("Location: index.php");
 	}
 }
 ?>
