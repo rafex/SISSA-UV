@@ -34,6 +34,7 @@ if(!empty($c))
 	if($c==1)
 	{
 		$sesion->cerrar();
+		header ("Location: index.php");
 	}
 }
 ?>
