@@ -19,9 +19,9 @@ class Sesion extends Conexion {
         $result=mysql_query("SELECT * FROM `usuarios_ss_fca` WHERE contrasenia=password('$pw') and usuario='$usr';") or die(mysql_error());
         if($rows=mysql_fetch_array($result)){
             $this->valores=array("activa"=>true , "nombre"=>$rows['nombre'] , "nivel"=>$rows['nivel'] );
-            /*$_SESSION['nombre']=$rows['nombre'];
+            $_SESSION['nombre']=$rows['nombre'];
             $_SESSION['nivel']=$rows['nivel'];
-            $_SESSION['activa']=true;*/
+            $_SESSION['activa']=true;
             return true;
         }else{
 

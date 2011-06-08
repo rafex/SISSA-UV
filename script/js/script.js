@@ -205,7 +205,7 @@ function validarIni(){
         enviar+=1;
     }    
     if(enviar==2){
-        document.forms.sesion.action="index.php";
+        document.forms.sesion.action="login.php";
         document.sesion.submit();
     }
 

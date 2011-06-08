@@ -44,7 +44,9 @@ Iniciar Sesion
 <h1 id="logo">
 		<a href="index.php" title="">*</a>
 	</h1>
-
+<script>
+	alert('Error al Iniciar Sesión');
+</script>
 <form id="sesion" name="sesion" class="wufoo  page" autocomplete="off" enctype="multipart/form-data" method="post" action="javascript:validarIni();" novalidate>
 
 <header id="header" class="info">
