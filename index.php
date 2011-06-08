@@ -35,6 +35,7 @@ if($_SESSION['activa']){
 
 
 <!-- CSS -->
+<link href="images/logouv.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="css/structure.css" type="text/css" />
 <link rel="stylesheet" href="css/form.css" type="text/css" />
 

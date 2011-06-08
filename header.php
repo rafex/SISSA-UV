@@ -19,7 +19,7 @@
 
 
 <title>SISSA - UV </title>
-
+<link href="/SISSA-UV/images/logouv.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="/SISSA-UV/css/style.css" type="text/css" />
 
 <script type="text/javascript" src="/SISSA-UV/script/js/script.js"></script>
