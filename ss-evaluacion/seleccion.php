@@ -4,7 +4,7 @@ $carrera=$_POST['carrera'];
 conectar();
 $sql="SELECT `periodo` FROM `configuraciones_ss_fca`";
 $result=mysql_query($sql) or die();
-$sql2="SELECT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
+$sql2="select distinct nombrecriterio as criterio from criterios_ss_fca";
 $result2=mysql_query($sql2) or die();
 
 if($carrera=='lsca'){
@@ -34,16 +34,13 @@ if($carrera=='lsca'){
 </select>
 <br>
 <select name="criterioS">
-    <? $anterior; while($fila2=mysql_fetch_array ($result2)){
+    <? $anterior; while($fila2=mysql_fetch_array ($result2)){?>
 
-        if($fila2['criterio']!=$anterior){?>
+
             <option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
 
-        <?  
-			$anterior=$fila2['criterio'];
-        }// fin 
-		$num++;
-    } // fin while?>
+<?    } // fin while 
+?>
 
 </select>
 <br>
