@@ -21,8 +21,8 @@ if($_SESSION['activa']){
 <head>
 <!--meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Author" content="Raul Eduargo Gonzalez Argote" />
-<meta name="Date" content="Feb 15, 2011" />
+<meta name="author" content="raúl gonzález" />
+<meta name="date" content="2011-08-02T09:34:03-0500" />
 <meta name="robots" content="all">
 <meta name="keywords" content="servicio,social,universitario,universidad,uv,veracruzana,xalapa,sistema,informacion" />
 <meta name="description" content="Sistema de Informacion del Departamento de Servicio Social de la Facultad de Contaduría y Administracion Campus Xalapa, Universidad Veracruzana. Administrando y Gestionando la información que se genera y recibe en este departamento." />
@@ -113,7 +113,7 @@ if($_SESSION['activa']){
 @import url(/css/global/power.14617.css);
 </style>
 
-
+<p><a href="estudiantes/index.php" >Registro para alumnos</a></p>
 <b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:14px;color:#777;padding:0 0 0 3px;">Creado el 15 febrero del 2011, Por Raúl Eduardo González Argote by Rafex</b>
 
 </body>
