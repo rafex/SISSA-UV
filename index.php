@@ -113,7 +113,7 @@ if($_SESSION['activa']){
 @import url(/css/global/power.14617.css);
 </style>
 
-<p><a href="estudiantes/index.php" >Registro para alumnos</a></p>
+<p><a href="estudiantes/" > [ Registro para alumnos ] </a></p>
 <b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:14px;color:#777;padding:0 0 0 3px;">Creado el 15 febrero del 2011, Por Raúl Eduardo González Argote by Rafex</b>
 
 </body>

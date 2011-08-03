@@ -26,7 +26,7 @@ Registro al Servicio Social
 <div id="container">
 
 <h1 id="logo">
-<a href="http://wufoo.com" title="Powered by Wufoo">Wufoo</a>
+<a href="#" >Wufoo</a>
 </h1>
 
 <form id="form55" name="form55" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data" method="post" novalidate
@@ -44,7 +44,7 @@ action="procesar.php">
 		Matricula:
 	</label>
 	<div>
-		<input id="ma" name="ma" type="text"	class="field text small" 	value="" 		maxlength="15" 		tabindex="1" 	placeholder="s07016390"				autofocus/> 
+		<input id="matricula" name="matricula" type="text"	class="field text small" 	value="" 		maxlength="15" 		tabindex="1" 	placeholder="s07016390"				autofocus/> 
 	</div>
 </li>
 	
@@ -53,7 +53,7 @@ action="procesar.php">
 		Nombre(s)
 	</label>	
 	<span>
-		<input id="Field2" name="Field1" type="text" class="field text medium" value="" size="15" tabindex="2" maxlength="50"/>
+		<input id="nombre" name="nombre" type="text" class="field text medium" value="" size="15" tabindex="2" maxlength="50"/>
 	<label for="Field1">Nombre(s)</label>
 	</span>
 </li>
@@ -64,12 +64,12 @@ action="procesar.php">
 	</label>
 
 	<span>
-		<input id="Field3" name="Field3" type="text" class="field text fn" value="" size="15" tabindex="3" maxlength="50"/>
+		<input id="paterno" name="paterno" type="text" class="field text fn" value="" size="15" tabindex="3" maxlength="50"/>
 		<label for="Field3">Paterno</label>
 	</span>
 	
 	<span>
-		<input id="Field4" name="Field4" type="text" class="field text ln" value="" size="15" tabindex="4" maxlength="50"/>
+		<input id="materno" name="materno" type="text" class="field text ln" value="" size="15" tabindex="4" maxlength="50"/>
 		<label for="Field4">Materno</label>
 	</span>
 </li>
@@ -110,7 +110,7 @@ action="procesar.php">
 		Genero:
 			</label>
 	<span>
-		<select id="periodo" name="periodo" tabindex="7">
+		<select id="genero" name="genero" tabindex="7">
 			<option value="i" >Seleccione</option>
 			<option value="m" >Masculino</option>
 			<option value="f" >Femenino</option>		
@@ -126,7 +126,7 @@ action="procesar.php">
 		Estado Civil:
 			</label>
 	<span>
-		<select id="periodo" name="periodo" tabindex="8">
+		<select id="civil" name="civil" tabindex="8">
 			<option value="s" >Soltero(a)</option>
 			<option value="c" >Casado(a)</option>
 		</select>  
@@ -139,7 +139,7 @@ action="procesar.php">
 		Edad
 	</label>	
 	<span>
-		<input id="Field2" name="Field1" type="text" class="field text medium" value="" size="5" tabindex="9" maxlength="4"/>
+		<input id="edad" name="edad" type="text" class="field text medium" value="" size="5" tabindex="9" maxlength="4"/>
 	<label for="Field1">años</label>
 	</span>
 </li>
@@ -150,7 +150,7 @@ action="procesar.php">
 	</label>
 
 	<span>
-		<input id="Field3" name="Field3" type="text" class="field text fn" value="" size="18" tabindex="10" maxlength="50"/>
+		<input id="nacionalidad" name="nacionalidad" type="text" class="field text fn" value="" size="18" tabindex="10" maxlength="50"/>
 		<label for="Field3">.</label>
 	</span>
 	
@@ -161,15 +161,15 @@ action="procesar.php">
 Fecha de Nacimiento
 </label>
 <span>
-<input id="Field1" name="Field1" type="text" class="field text fn" value="" size="3" tabindex="11" />
+<input id="dia_nacimiento" name="nacimiento" type="text" class="field text fn" value="" size="3" tabindex="11" />
 <label for="Field1">Día</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="3" tabindex="12" />
+<input id="mes_nacimiento" name="mes_nacimiento" type="text" class="field text ln" value="" size="3" tabindex="12" />
 <label for="Field2">Mes</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="5" tabindex="13" />
+<input id="anio_nacimiento" name="anio_nacimiento" type="text" class="field text ln" value="" size="5" tabindex="13" />
 <label for="Field2">Año</label>
 </span>
 </li>
@@ -180,7 +180,7 @@ Fecha de Nacimiento
 	</label>
 
 	<span>
-		<input id="Field3" name="Field3" type="text" class="field text fn" value="" size="18" tabindex="14" maxlength="50"/>
+		<input id="lugar_nacimiento" name="lugar_nacimiento" type="text" class="field text fn" value="" size="18" tabindex="14" maxlength="50"/>
 		<label for="Field3">.</label>
 	</span>
 	
@@ -191,19 +191,19 @@ Fecha de Nacimiento
 Direccion
 </label>
 <span>
-<input id="Field1" name="Field1" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="15" />
+<input id="calle_direccion" name="calle_direccion" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="15" />
 <label for="Field1">calle</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="3" tabindex="16" />
+<input id="num_direccion" name="num_direccion" type="text" class="field text ln" value="" size="3" tabindex="16" />
 <label for="Field2">Num</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+<input id="colonia_direccion" name="colonia_direccion" type="text" class="field text ln" value="" size="10" tabindex="17" />
 <label for="Field2">colonia</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="6" tabindex="17" />
+<input id="cp_direccion" name="cp_direccion" type="text" class="field text ln" value="" size="6" tabindex="18" />
 <label for="Field2">c.p.</label>
 </span>
 </li>
@@ -214,15 +214,15 @@ Direccion
 	</label>
 
 	<span>
-		<input id="Field3" name="Field3" type="text" class="field text fn" value="" size="10" tabindex="18" maxlength="50"/>
+		<input id="edo_estado" name="edo_estado" type="text" class="field text fn" value="" size="10" tabindex="19" maxlength="50"/>
 		<label for="Field3">edo.</label>
 	</span>
 	<span>
-		<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+		<input id="mun_estado" name="mun_estado" type="text" class="field text ln" value="" size="10" tabindex="20" />
 		<label for="Field2">municipio</label>
 	</span>
 	<span>
-		<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+		<input id="loc_estado" name="loc_estado" type="text" class="field text ln" value="" size="10" tabindex="21" />
 		<label for="Field2">localidad</label>
 	</span>
 	
@@ -233,7 +233,7 @@ Direccion
 Correo electronico:
 </label>
 <div>
-<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onkeyup="" />
+<input id="correo" name="correo" type="text" class="field text medium" value="" maxlength="255" tabindex="22" onKeyUp="" />
 </div>
 </li>
 <li id="foli6" class="rightHalf     ">
@@ -241,7 +241,7 @@ Correo electronico:
 Telefono:
 </label>
 <div>
-<input id="Field6" name="Field6" type="text" class="field text medium" value="" maxlength="255" tabindex="6" onkeyup="" />
+<input id="tel" name="tel" type="text" class="field text medium" value="" maxlength="255" tabindex="23" onKeyUp="" />
 </div>
 </li>
 
@@ -255,7 +255,7 @@ Telefono:
 Nombre del Tutor:
 </label>
 <div>
-<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onkeyup="" />
+<input id="nombre_tutor" name="nombre_tutor" type="text" class="field text medium" value="" maxlength="255" tabindex="24" onKeyUp="" />
 </div>
 </li>
 <li id="foli6" class="rightHalf     ">
@@ -263,7 +263,7 @@ Nombre del Tutor:
 Direccion del Tutor:
 </label>
 <div>
-<input id="Field6" name="Field6" type="text" class="field text medium" value="" maxlength="255" tabindex="6" onkeyup="" />
+<input id="direccion_tutor" name="direccion_tutor" type="text" class="field text medium" value="" maxlength="255" tabindex="25" onKeyUp="" />
 </div>
 </li>
 
@@ -278,7 +278,7 @@ Direccion del Tutor:
 Nombre de la empresa
 </label>
 <div>
-<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onkeyup="" />
+<input id="nombre_empresa" name="nombre_empresa" type="text" class="field text medium" value="" maxlength="255" tabindex="26" onKeyUp="" />
 </div>
 </li>
 
@@ -287,7 +287,7 @@ Nombre de la empresa
 		¿Tiene acuerdo la empresa con la facultad?
 			</label>
 	<span>
-		<select id="periodo" name="periodo" tabindex="8">
+		<select id="acuerdo_empresa" name="acuerdo_empresa" tabindex="27">
 			<option value="si_mantener" >Se tiene y se desea mantener</option>
 			<option value="no_mantener" >Se tiene y NO se desea mantener</option>
 			<option value="si_firmar" >No se tiene y se desea firmar</option>
@@ -302,7 +302,7 @@ Nombre de la empresa
 Actividad o giro
 </label>
 <span>
-	<select id="periodo" name="periodo" tabindex="8">
+	<select id="giro_empresa" name="giro_empresa" tabindex="28">
 			<option value="si_mantener" >Educativos</option>
 			
 	</select>  
@@ -310,7 +310,7 @@ Actividad o giro
 </span>
 
 <span>
-	<input id="Field1" name="Field1" type="text" class="field text ln" value="" size="15" tabindex="1" />
+	<input id="otrogiro_empresa" name="otrogiro_empresa" type="text" class="field text ln" value="" size="15" tabindex="29" />
 	<label for="Field1">otro</label>
 </span>
 </li>
@@ -320,15 +320,15 @@ Actividad o giro
 Clasificación
 </label>
 <span>
-	<select id="periodo" name="periodo" tabindex="8">
-			<option value="si_mantener" >Educación</option>
+	<select id="clasificacion_empresa" name="clasificacion_empresa" tabindex="30">
+			<option value="educacion" >Educación</option>
 			
 	</select>  
 	<label for="Field2">clasificación</label>
 </span>
 
 <span>
-	<input id="Field1" name="Field1" type="text" class="field text ln" value="" size="15" tabindex="1" />
+	<input id="Field1" name="Field1" type="text" class="field text ln" value="" size="15" tabindex="31" />
 	<label for="Field1">otro</label>
 </span>
 </li>
@@ -338,7 +338,7 @@ Clasificación
 		Sector:
 			</label>
 	<span>
-		<select id="periodo" name="periodo" tabindex="7">
+		<select id="sector_empresa" name="sector_empresa" tabindex="32">
 			<option value="primario" >Primario</option>
 			<option value="secundario" >Secundario</option>
 			<option value="terciario" >Terciario</option>		
@@ -354,7 +354,7 @@ Clasificación
 Telefono de la empresa o institución
 </label>
 <div>
-<input id="Field6" name="Field6" type="text" class="field text medium" value="" size="15" maxlength="255" tabindex="6" onkeyup="" />
+<input id="tel_empresa" name="tel_empresa" type="text" class="field text medium" value="" size="15" maxlength="255" tabindex="33" onKeyUp="" />
 </div>
 </li>
 
@@ -363,19 +363,19 @@ Telefono de la empresa o institución
 Direccion
 </label>
 <span>
-<input id="Field1" name="Field1" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="15" />
+<input id="calle_direccion_empresa" name="calle_direccion_empresa" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="34" />
 <label for="Field1">calle</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="3" tabindex="16" />
+<input id="num_direccion_empresa" name="num_direccion_empresa" type="text" class="field text ln" value="" size="3" tabindex="35" />
 <label for="Field2">Num</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+<input id="colonia_direccion_empresa" name="colonia_direccion_empresa" type="text" class="field text ln" value="" size="10" tabindex="36" />
 <label for="Field2">colonia</label>
 </span>
 <span>
-<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="6" tabindex="17" />
+<input id="cp_direccion_empresa" name="cp_direccion_empresa" type="text" class="field text ln" value="" size="6" tabindex="37" />
 <label for="Field2">c.p.</label>
 </span>
 </li>
@@ -386,15 +386,15 @@ Direccion
 	</label>
 
 	<span>
-		<input id="Field3" name="Field3" type="text" class="field text fn" value="" size="10" tabindex="18" maxlength="50"/>
+		<input id="edo_estado_empresa" name="edo_estado_empresa" type="text" class="field text fn" value="" size="10" tabindex="38" maxlength="50"/>
 		<label for="Field3">edo.</label>
 	</span>
 	<span>
-		<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+		<input id="mun_estado_empresa" name="mun_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="39" />
 		<label for="Field2">municipio</label>
 	</span>
 	<span>
-		<input id="Field2" name="Field2" type="text" class="field text ln" value="" size="10" tabindex="17" />
+		<input id="loc_estado_empresa" name="loc_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="40" />
 		<label for="Field2">localidad</label>
 	</span>
 	
@@ -405,7 +405,7 @@ Direccion
 Area de trabajo:
 </label>
 <div>
-<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onkeyup="" />
+<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onKeyUp="" />
 </div>
 </li>
 <li id="foli6" class="rightHalf     ">
@@ -413,7 +413,7 @@ Area de trabajo:
 Nombre del jefe directo:
 </label>
 <div>
-<input id="Field6" name="Field6" type="text" class="field text medium" value="" maxlength="255" tabindex="6" onkeyup="" />
+<input id="Field6" name="Field6" type="text" class="field text medium" value="" maxlength="255" tabindex="6" onKeyUp="" />
 </div>
 </li>
 
@@ -431,10 +431,10 @@ Nombre del jefe directo:
 </div><!--container-->
 <img id="bottom" src="images/bottom.png" alt="" />
 
-<a class="powertiny" href="http://wufoo.com/tour/" title="Powered by Wufoo"
+<a class="powertiny" href="http://rafex.com.mx" title="Powered by rafex"
 style="display:block !important;visibility:visible !important;text-indent:0 !important;position:relative !important;height:auto !important;width:95px !important;overflow:visible !important;text-decoration:none;cursor:pointer !important;margin:0 auto !important">
-<span style="background:url(./images/powerlogo.png) no-repeat center 7px; margin:0 auto;display:inline-block !important;visibility:visible !important;text-indent:-9000px !important;position:static !important;overflow: auto !important;width:62px !important;height:30px !important">Wufoo</span>
-<b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">Designed</b>
+
+<b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">by Raúl Eduardo González Argote</b>
 </a>
 </body>
 </html>

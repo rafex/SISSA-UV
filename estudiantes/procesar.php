@@ -49,7 +49,7 @@ Apoyo a la selección del Servicio Social
 <center>
 
 <h1>Registro realizado con exito</h1>
-<p><a href="index.html" > [ Volver ] </a></p>
+<p><a href="../index.php" > [ Volver ] </a></p>
 	 
 </center>
 </div><!--container-->
@@ -61,8 +61,8 @@ Apoyo a la selección del Servicio Social
 
 <a class="powertiny" href="http://rafex.com.mx" title=""
 style="display:block !important;visibility:visible !important;text-indent:0 !important;position:relative !important;height:auto !important;width:95px !important;overflow:visible !important;text-decoration:none;cursor:pointer !important;margin:0 auto !important">
-<span style="background:url(./images/powerlogo.png) no-repeat center 7px; margin:0 auto;display:inline-block !important;visibility:visible !important;text-indent:-9000px !important;position:static !important;overflow: auto !important;width:62px !important;height:30px !important">Wufoo</span>
-<b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">by Rafex</b>
+
+<b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">by Raúl Eduardo González Argote</b>
 </a>
 </body>
 </html>
