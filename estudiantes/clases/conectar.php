@@ -1,9 +1,9 @@
 <?php
 //Configuracion de la conexion a base de datos
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'rulo10');
-define('DB_DATABASE', 'servicio_alumnos');
+define('DB_USERNAME', 'sissaprincipal');
+define('DB_PASSWORD', '1r4L9j0');
+define('DB_DATABASE', 'serviciosocial_fca_uv');
 class Conexion {
 
         private $connection;    

@@ -53,7 +53,7 @@ action="procesar.php">
 		Nombre(s)
 	</label>	
 	<span>
-		<input id="nombre" name="nombre" type="text" class="field text medium" value="" size="15" tabindex="2" maxlength="50"/>
+		<input id="nombre" name="nombre" type="text" class="field text fn" value="" size="18" tabindex="2" maxlength="50"/>
 	<label for="Field1">Nombre(s)</label>
 	</span>
 </li>
@@ -127,8 +127,8 @@ action="procesar.php">
 			</label>
 	<span>
 		<select id="civil" name="civil" tabindex="8">
-			<option value="s" >Soltero(a)</option>
-			<option value="c" >Casado(a)</option>
+			<option value="solter@" >Soltero(a)</option>
+			<option value="casad@" >Casado(a)</option>
 		</select>  
 	</span>
 		
@@ -161,16 +161,16 @@ action="procesar.php">
 Fecha de Nacimiento
 </label>
 <span>
-<input id="dia_nacimiento" name="nacimiento" type="text" class="field text fn" value="" size="3" tabindex="11" />
-<label for="Field1">Día</label>
+<input id="dia_nacimiento" name="dia_nacimiento" type="text" class="field text fn" value="" size="3" tabindex="11" placeholder="03" />
+<label for="Field1">Día(DD)</label>
 </span>
 <span>
-<input id="mes_nacimiento" name="mes_nacimiento" type="text" class="field text ln" value="" size="3" tabindex="12" />
-<label for="Field2">Mes</label>
+<input id="mes_nacimiento" name="mes_nacimiento" type="text" class="field text ln" value="" size="3" tabindex="12" placeholder="11" />
+<label for="Field2">Mes(MM)</label>
 </span>
 <span>
-<input id="anio_nacimiento" name="anio_nacimiento" type="text" class="field text ln" value="" size="5" tabindex="13" />
-<label for="Field2">Año</label>
+<input id="anio_nacimiento" name="anio_nacimiento" type="text" class="field text ln" value="" size="5" tabindex="13" placeholder="1988" />
+<label for="Field2">Año(YYYY)</label>
 </span>
 </li>
 
@@ -241,7 +241,7 @@ Correo electronico:
 Telefono:
 </label>
 <div>
-<input id="tel" name="tel" type="text" class="field text medium" value="" maxlength="255" tabindex="23" onKeyUp="" />
+<input id="tel" name="tel" type="text" class="field text medium" value="" maxlength="20" tabindex="23" onKeyUp="" />
 </div>
 </li>
 
@@ -252,7 +252,7 @@ Telefono:
 	
 <li id="foli5" class="leftHalf     ">
 <label class="desc" id="title5" for="Field5">
-Nombre del Tutor:
+Nombre del Padre o Tutor:
 </label>
 <div>
 <input id="nombre_tutor" name="nombre_tutor" type="text" class="field text medium" value="" maxlength="255" tabindex="24" onKeyUp="" />
@@ -260,7 +260,7 @@ Nombre del Tutor:
 </li>
 <li id="foli6" class="rightHalf     ">
 <label class="desc" id="title6" for="Field6">
-Direccion del Tutor:
+Direccion del Padre o Tutor:
 </label>
 <div>
 <input id="direccion_tutor" name="direccion_tutor" type="text" class="field text medium" value="" maxlength="255" tabindex="25" onKeyUp="" />
@@ -269,13 +269,13 @@ Direccion del Tutor:
 
 
 <header id="header" class="info">
-<h2>Datos de la Empresa</h2>
+<h2>Datos de la Empresa o Institución</h2>
 <div></div>
 </header>
 
 <li id="foli5" class="leftHalf     ">
 <label class="desc" id="title5" for="Field5">
-Nombre de la empresa
+Nombre de la empresa o institución
 </label>
 <div>
 <input id="nombre_empresa" name="nombre_empresa" type="text" class="field text medium" value="" maxlength="255" tabindex="26" onKeyUp="" />
@@ -288,10 +288,10 @@ Nombre de la empresa
 			</label>
 	<span>
 		<select id="acuerdo_empresa" name="acuerdo_empresa" tabindex="27">
-			<option value="si_mantener" >Se tiene y se desea mantener</option>
-			<option value="no_mantener" >Se tiene y NO se desea mantener</option>
-			<option value="si_firmar" >No se tiene y se desea firmar</option>
-			<option value="no_firmar" >No se tiene y NO se desea firmar</option>
+			<option value="se tiene y se desea mantener" >Se tiene y se desea mantener</option>
+			<option value="se tiene y NO se desea mantener" >Se tiene y NO se desea mantener</option>
+			<option value="no se tiene y se desea firmar" >No se tiene y se desea firmar</option>
+			<option value="no se tiene y NO se desea firmar" >No se tiene y NO se desea firmar</option>
 		</select>  
 	</span>
 		
@@ -303,10 +303,12 @@ Actividad o giro
 </label>
 <span>
 	<select id="giro_empresa" name="giro_empresa" tabindex="28">
-			<option value="si_mantener" >Educativos</option>
-			
+			<option value="educativo" >Educativo</option>
+			<option value="comercial" >Comercial</option>
+			<option value="servicios" >Servicios</option>
+			<option value="otra" >otra</option>			
 	</select>  
-	<label for="Field2">Servicios</label>
+	<label for="Field2">Servicios</label>	
 </span>
 
 <span>
@@ -319,17 +321,10 @@ Actividad o giro
 <label class="desc" id="title3" for="Field3">
 Clasificación
 </label>
-<span>
-	<select id="clasificacion_empresa" name="clasificacion_empresa" tabindex="30">
-			<option value="educacion" >Educación</option>
-			
-	</select>  
-	<label for="Field2">clasificación</label>
-</span>
 
 <span>
-	<input id="Field1" name="Field1" type="text" class="field text ln" value="" size="15" tabindex="31" />
-	<label for="Field1">otro</label>
+	<input id="clasificacion_empresa" name="clasificacion_empresa" type="text" class="field text ln" value="" size="18" tabindex="31" />
+	<label for="Field1">clasificación</label>
 </span>
 </li>
 
@@ -344,7 +339,8 @@ Clasificación
 			<option value="terciario" >Terciario</option>		
 			
 		
-		</select>  
+		</select>
+		<label for="Field3">seleccione</label>  
 	</span>
 		
 	</li>	
@@ -353,31 +349,37 @@ Clasificación
 <label class="desc" id="title6" for="Field6">
 Telefono de la empresa o institución
 </label>
-<div>
-<input id="tel_empresa" name="tel_empresa" type="text" class="field text medium" value="" size="15" maxlength="255" tabindex="33" onKeyUp="" />
-</div>
+	<span>
+		<input id="tel_empresa1" name="tel_empresa1" type="text" class="field text fn" value="" size="15" tabindex="33" maxlength="50"/>
+		<label for="Field3">principal</label>
+	</span>
+	
+	<span>
+		<input id="tel_empresa2" name="tel_empresa2" type="text" class="field text ln" value="" size="15" tabindex="34" maxlength="50"/>
+		<label for="Field4">secundario</label>
+	</span>
 </li>
 
 <li id="foli1" class="leftHalf     ">
 <label class="desc" id="title1" for="Field1">
 Direccion
 </label>
-<span>
-<input id="calle_direccion_empresa" name="calle_direccion_empresa" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="34" />
-<label for="Field1">calle</label>
-</span>
-<span>
-<input id="num_direccion_empresa" name="num_direccion_empresa" type="text" class="field text ln" value="" size="3" tabindex="35" />
-<label for="Field2">Num</label>
-</span>
-<span>
-<input id="colonia_direccion_empresa" name="colonia_direccion_empresa" type="text" class="field text ln" value="" size="10" tabindex="36" />
-<label for="Field2">colonia</label>
-</span>
-<span>
-<input id="cp_direccion_empresa" name="cp_direccion_empresa" type="text" class="field text ln" value="" size="6" tabindex="37" />
-<label for="Field2">c.p.</label>
-</span>
+	<span>
+		<input id="calle_direccion_empresa" name="calle_direccion_empresa" type="text" class="field text fn" value="" size="10" maxlength="50" tabindex="35" />
+		<label for="Field1">calle</label>
+	</span>
+	<span>
+		<input id="num_direccion_empresa" name="num_direccion_empresa" type="text" class="field text ln" value="" size="3" tabindex="36" />
+		<label for="Field2">Num</label>
+	</span>
+	<span>
+		<input id="colonia_direccion_empresa" name="colonia_direccion_empresa" type="text" class="field text ln" value="" size="10" tabindex="37" />
+		<label for="Field2">colonia</label>
+	</span>
+	<span>
+		<input id="cp_direccion_empresa" name="cp_direccion_empresa" type="text" class="field text ln" value="" size="6" tabindex="38" />
+		<label for="Field2">c.p.</label>
+	</span>
 </li>
 
 <li id="foli3" class="rightHalf     ">
@@ -386,15 +388,15 @@ Direccion
 	</label>
 
 	<span>
-		<input id="edo_estado_empresa" name="edo_estado_empresa" type="text" class="field text fn" value="" size="10" tabindex="38" maxlength="50"/>
+		<input id="edo_estado_empresa" name="edo_estado_empresa" type="text" class="field text fn" value="" size="10" tabindex="39" maxlength="50"/>
 		<label for="Field3">edo.</label>
 	</span>
 	<span>
-		<input id="mun_estado_empresa" name="mun_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="39" />
+		<input id="mun_estado_empresa" name="mun_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="40" />
 		<label for="Field2">municipio</label>
 	</span>
 	<span>
-		<input id="loc_estado_empresa" name="loc_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="40" />
+		<input id="loc_estado_empresa" name="loc_estado_empresa" type="text" class="field text ln" value="" size="10" tabindex="41" />
 		<label for="Field2">localidad</label>
 	</span>
 	
@@ -402,20 +404,87 @@ Direccion
 
 <li id="foli5" class="leftHalf     ">
 <label class="desc" id="title5" for="Field5">
+Correo electronico de la empresa:
+</label>
+<div>
+<input id="correo_empresa" name="correo_empresa" type="text" class="field text medium" value="" maxlength="255" tabindex="42" onKeyUp="" />
+</div>
+</li>
+
+<header id="header" class="info">
+<h2>Datos del area de trabajo y jefe directo</h2>
+<div></div>
+</header>
+
+<li id="foli5" class="leftHalf     ">
+<label class="desc" id="title5" for="Field5">
 Area de trabajo:
 </label>
 <div>
-<input id="Field5" name="Field5" type="text" class="field text medium" value="" maxlength="255" tabindex="5" onKeyUp="" />
+<input id="area" name="area" type="text" class="field text medium" value="" maxlength="255" tabindex="43" onKeyUp="" />
 </div>
 </li>
+
 <li id="foli6" class="rightHalf     ">
 <label class="desc" id="title6" for="Field6">
 Nombre del jefe directo:
 </label>
 <div>
-<input id="Field6" name="Field6" type="text" class="field text medium" value="" maxlength="255" tabindex="6" onKeyUp="" />
+<input id="jefe" name="jefe" type="text" class="field text medium" value="" maxlength="255" tabindex="44" onKeyUp="" />
 </div>
 </li>
+
+
+<li id="foli5" class="leftHalf     ">
+<label class="desc" id="title5" for="Field5">
+Correo electronico del encargado:
+</label>
+<div>
+<input id="correo_encargado" name="correo_encargado" type="text" class="field text medium" value="" maxlength="255" tabindex="45" onKeyUp="" />
+</div>
+</li>
+
+
+<li id="foli6" class="rightHalf     ">
+<label class="desc" id="title6" for="Field6">
+Puesto del jefe directo:
+</label>
+<div>
+<input id="puesto" name="puesto" type="text" class="field text medium" value="" maxlength="255" tabindex="46" onKeyUp="" />
+</div>
+</li>
+
+<header id="header" class="info">
+<h2>Datos del programa de servicio social</h2>
+<div></div>
+</header>
+
+<li id="foli6" 		class="leftHalf     ">
+	<label class="desc" id="title2" for="Field2">
+		Tipo:
+			</label>
+	<span>
+		<select id="tipo" name="tipo" tabindex="47">
+			<option value="becado" >becado</option>
+			<option value="uv" >uv</option>
+			<option value="brigada" >brigada</option>		
+			
+		
+		</select>
+		<label for="Field3">seleccione</label>  
+	</span>
+		
+	</li>	
+
+<li id="foli6" class="rightHalf     ">
+<label class="desc" id="title6" for="Field6">
+Función:
+</label>
+<div>
+<input id="funcion" name="funcion" type="text" class="field text medium" value="" maxlength="255" tabindex="48" onKeyUp="" />
+</div>
+</li>
+
 
 
  <li class="buttons ">
@@ -424,6 +493,8 @@ Nombre del jefe directo:
 <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Guardar"
  /></div>
 </li>
+
+
 
 </ul>
 </form> 

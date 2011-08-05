@@ -5,7 +5,7 @@ class Sesion extends Conexion {
     private $valores;
 
     function __construct(){
-   		session_start();   
+   
     }
 
     public function getValores($str){
@@ -15,12 +15,12 @@ class Sesion extends Conexion {
     
     public function iniciar($usr,$pw){
         $this->getConexion();
-        session_start();
-        $result=mysql_query("SELECT * FROM `alumno_ss_fca` WHERE PassAlu='$pw'and MatriculaAlu='$usr' LIMIT 1;") or die(mysql_error());
+        //session_start();
+        $result=mysql_query("SELECT * FROM `usuarios_ss_fca` WHERE contrasenia=password('$pw') and usuario='$usr';") or die(mysql_error());
         if($rows=mysql_fetch_array($result)){
-            //$this->valores=array("activa"=>true , "nombre"=>$rows['nombre'] , "nivel"=>$rows['nivel'] );
-            $_SESSION['nombre']=$rows['NombreAlu'];
-            /*$_SESSION['nivel']=$rows['nivel'];*/
+            $this->valores=array("activa"=>true , "nombre"=>$rows['nombre'] , "nivel"=>$rows['nivel'] );
+            $_SESSION['nombre']=$rows['nombre'];
+            $_SESSION['nivel']=$rows['nivel'];
             $_SESSION['activa']=true;
             return true;
         }else{
