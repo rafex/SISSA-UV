@@ -497,6 +497,17 @@ tbody tr:hover { background:#99BCBF;
 }
 
 
+/*	datos	*/
+#datos strong {
+	color:#045FB4;
+	font-size: 14.5px;
+}
+
+#datos p {
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 13px;
+	color: #0080FF;
+}
 
 
 

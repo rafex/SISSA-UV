@@ -7,7 +7,7 @@ $fechacreacion.=date('d')."_".date('m')."_".date('o');
 conectar();
 $nomcriterio=elimina_acentos($nomcriterio);
 $nomcriterio=espacios_blancos($nomcriterio);
-
+$nomcriterio=strtolower($nomcriterio);
 
 mysql_query("CREATE TABLE `evaluacion_$nomcriterio` (  `MatriculaAlu` VARCHAR(9) NOT NULL,  PRIMARY KEY (`MatriculaAlu`), FOREIGN KEY (`MatriculaAlu`) REFERENCES alumno_ss_fca (`MatriculaAlu`) ) COLLATE='latin1_spanish_ci' ENGINE=InnoDB ROW_FORMAT=DEFAULT;");
 

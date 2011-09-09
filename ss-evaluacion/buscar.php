@@ -16,7 +16,7 @@ if($buscar[0]=="S"){
     $result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%' ;") or die(mysql_error());
 }
 
-$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='MEIFv1' ; ") or die(mysql_error());
+$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='meifv1' ; ") or die(mysql_error());
 
 if($carrera=='lsca'){
     echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';

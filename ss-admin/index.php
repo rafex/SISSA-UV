@@ -1,9 +1,7 @@
 <?
 // index del admin (ss-admin)
-session_start();
-
-?>
-<? include_once('../header.php'); ?>
+	session_start();
+	include_once('../header.php'); ?>
 
     <? include_once '../menus/menu_admin.html'; ?>
 	<? include_once('../derecho.php');   ?>

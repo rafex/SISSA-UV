@@ -20,6 +20,7 @@ if($carrera=='lsca'){
 }
 
 ?>
+
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera',document.buscar.patron.value+',<?echo $carrera;?>','../ss-evaluacion/buscar.php');">
 <?}elseif($_SESSION['nivel']=='evaluador'){?>
@@ -28,6 +29,7 @@ if($carrera=='lsca'){
     <input type="text" name="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <input type="submit" value="Buscar"  />
 </form>
+
 <table id="listaalu" width="100%" border="0" cellspacing="0">
   <tr>
     <th  width="15" height="35" scope="col">#</th>

@@ -1,0 +1,77 @@
+#content {
+	padding:20px;
+}
+#dialog {
+	position:absolute; 
+	width:425px; 
+	padding:10px; 
+	z-index:200; 
+	background:#F6F6EE;/*color gris claro del borde*/
+	text-align:center;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-moz-box-shadow:0px 0px 10px #D5D3C4;
+	-webkit-box-shadow:0px 0px 10px #D5D3C4;
+	box-shadow:0px 0px 10px #666666;
+}
+#dialog form{
+	padding-top:10px;
+}
+#dialog-header {
+	display:block; 
+	position:relative; 
+	width:413px; /*para que la barra del t�tulo se acomode*/
+	padding:3px 6px 7px; 
+	height:14px; 
+	font-size:16px; 
+	font-weight:bold;
+	color: #961B25;/*Color de letra del t�tulo del dialog*/
+}
+#dialog-title {
+	float:left;
+}
+#dialog-close {
+	float:right; 
+	cursor:pointer; 
+	margin:3px 3px 0 0; 
+	height:16px; 
+	width:16px; 
+	background:url(../images/cross.png) no-repeat;
+}
+#dialog-content {
+	display:block; 
+	height:160px; 
+	padding-top:10px; 
+	color:#000;/*Color de la letra del mensaje de alerta*/ 
+	font-weight: bold;
+	font-size:16px;
+}
+#dialog-mask {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	min-height:100%; 
+	width:100%; 
+	background:#FFF;/*Color del fondo del canal alfa*/
+	opacity:.75; 
+	filter:alpha(opacity=75); 
+	z-index:100;
+}
+/*.error {background:#fff url(images/error_bg.jpg) bottom right no-repeat; border:1px solid #924949; border-top:none}
+.errorheader {background:url(images/error_header.gif) repeat-x; color:#6f2c2c; border:1px solid #924949; border-bottom:none}
+.warning {background:#fff url(images/warning_bg.jpg) bottom right no-repeat; border:1px solid #c5a524; border-top:none}
+.warningheader {background:url(images/warning_header.gif) repeat-x; color:#957c17; border:1px solid #c5a524; border-bottom:none}
+.success {background:#fff url(images/success_bg.jpg) bottom right no-repeat; border:1px solid #60a174; border-top:none}
+.successheader {background:url(images/success_header.gif) repeat-x; color:#3c7f51; border:1px solid #60a174; border-bottom:none}*/
+.dialogalert {
+	background:#F6F6EE;/*El fondo de la parte donde se muestra el mensaje*/ 
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 8px;	
+}
+.headerdialog {
+	background-color:#F6F6EE;/*Color gris de la cabecera*/ 
+	border-radius:8px 8px 0 0;
+	color:#fff; 
+}

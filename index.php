@@ -11,6 +11,10 @@ if($_SESSION['activa']){
 		{ 
 			header ("Location: ss-evaluacion/index.php");
 		}
+		elseif($_SESSION['nivel']=='alumno')
+		{ 
+			header ("Location: ss-estudiantes/index.php");
+		}
 
 }
 ?>
@@ -54,7 +58,7 @@ if($_SESSION['activa']){
 		<a href="index.php" title="">*</a>
 	</h1>
 
-<form id="sesion" name="sesion" class="wufoo  page" autocomplete="off" enctype="multipart/form-data" method="post" action="javascript:validarIni();" novalidate>
+<form id="sesion" name="sesion" class="wufoo  page"  method="post" action="javascript:validarIni();" >
 
 <header id="header" class="info">
 	<h2>Iniciar Sesión</h2>
@@ -113,7 +117,7 @@ if($_SESSION['activa']){
 @import url(/css/global/power.14617.css);
 </style>
 
-<p><a href="estudiantes/" > [ Registro para alumnos ] </a></p>
+<p><a href="ss-estudiantes/registro/" > [ Registro para alumnos ] </a></p>
 <b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:14px;color:#777;padding:0 0 0 3px;">Creado el 15 febrero del 2011, Por Raúl Eduardo González Argote by Rafex</b>
 
 </body>

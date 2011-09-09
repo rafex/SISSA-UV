@@ -2,6 +2,9 @@
     include_once 'script/php/functions.php'; 
     include_once 'clases/sesion.php';
     $sesion=new Sesion();    
+	if(!$_SESSION['activa']){
+		header ("Location: ../index.php");
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21,10 +24,11 @@
 <title>SISSA - UV </title>
 <link href="/SISSA-UV/images/logouv.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="/SISSA-UV/css/style.css" type="text/css" />
-
+<link rel="stylesheet" type="text/css" href="/SISSA-UV/css/dialog_box.css" />
 <script type="text/javascript" src="/SISSA-UV/script/js/script.js"></script>
 <script type="text/javascript" src="/SISSA-UV/script/js/togglemenu.js"></script>
-
+<script type="text/javascript" src="/SISSA-UV/script/js/jquery-1.6.1.min.js" ></script>
+<script type="text/javascript" src="/SISSA-UV/script/js/dialog_box.js"></script>
 
 
 </head>

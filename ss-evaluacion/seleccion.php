@@ -3,14 +3,15 @@ session_start();
 $carrera=$_POST['carrera'];
 conectar();
 $sql="SELECT `periodo` FROM `configuraciones_ss_fca`";
-$result=mysql_query($sql) or die();
-$sql2="select distinct nombrecriterio as criterio from criterios_ss_fca";
-$result2=mysql_query($sql2) or die();
+$result=mysql_query($sql) or die(mysql_error());
+//$sql2="SELECT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
+$sql2="SELECT DISTINCT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
+$result2=mysql_query($sql2) or die(mysql_error());
 
 if($carrera=='lsca'){
     echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';
 }elseif($carrera=='lc'){
-    echo '<p><strong>Cantaduría</strong></p>';
+    echo '<p><strong>Contaduría</strong></p>';
 }elseif($carrera=='la'){
     echo '<p><strong>Administración</strong></p>';
 }elseif($carrera=='lg'){
@@ -34,14 +35,21 @@ if($carrera=='lsca'){
 </select>
 <br>
 <select name="criterioS">
-    <? $anterior; while($fila2=mysql_fetch_array ($result2)){?>
+    <? /*$anterior; while($fila2=mysql_fetch_array ($result2)){
 
-
+        if($fila2['criterio']!=$anterior){?>
             <option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
 
-<?    } // fin while 
-?>
-
+        <?  
+			$anterior=$fila2['criterio'];
+        }// fin 
+		$num++;
+    } */// fin while?>
+	<? while($fila2=mysql_fetch_array ($result2)){ ?>
+	
+	<option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
+	
+	<?	}	?>
 </select>
 <br>
 <input type="submit" value="Seleccionar">
