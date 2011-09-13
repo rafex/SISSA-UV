@@ -178,10 +178,17 @@ class Evaluar extends Conexion {
                     $result2=mysql_query($sql) or die(mysql_error());
                     $fila=mysql_fetch_array($result2);
                     $numero=$fila['actual'];
-                    if($numero!=$tmp){
+					session_start();
+					$admin=$_SESSION['nivel'];
+                    if($numero!=$tmp && !($admin=='admin')){
                      
                         echo "Ya tiene esta calificación en: <strong>".$this->listaCampos(($i-1))."</strong><br>";
-                    }                    
+                    }else{
+                    	$sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' ;";
+                    	mysql_query($sql) or die(mysql_error());
+						$mensaje=true;
+                    	
+                    }                  
                 }else{
 
                     $sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' ;";
@@ -192,7 +199,7 @@ class Evaluar extends Conexion {
             } // recupera las columnas para poder insertar
             
             if($mensaje){
-                echo "<p style='color:#1cc91c; font-size:15px;'><strong>La calificación se han guardado correctamente.</strong></p>";
+                echo "<p style='color:#1cc91c; font-size:15px;'><strong>La calificación se ha guardado correctamente.</strong></p>";
             }
         }// end if
     }

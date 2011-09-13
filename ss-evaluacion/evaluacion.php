@@ -36,7 +36,7 @@ $total=0;// el total de la calificacion
 
 
 <label class="etiqueta"><? echo $evaluar->listaCampos($i)." (max: ".$evaluar->listaValoresCampos($i)."pts.)"; ?>
-<input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" min="0" max="<? echo $evaluar->listaValoresCampos($i); ?>" size="5" type="number" <? if($evaluar->mostrarCalif(($i+1))!=-1){ $total+=$evaluar->mostrarCalif(($i+1)); echo 'value="'.$evaluar->mostrarCalif(($i+1)).'"'; if($_SESSION['nivel']=='evaluador'){ echo "readonly"; } } ?> />
+<input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" min="0" max="<? echo $evaluar->listaValoresCampos($i); ?>" size="5" type="number" <? if($evaluar->mostrarCalif(($i+1))!=-1){ $total+=$evaluar->mostrarCalif(($i+1)); echo 'value="'.$evaluar->mostrarCalif(($i+1)).'"'; if($_SESSION['nivel']!='admin'){ echo "readonly"; } } ?> />
 <? if($_SESSION['nivel']=='admin'){ ?>
 <a href="#" onclick="window.open('../ss-evaluacion/comentario.php?criterio=<? echo $criterio; ?>&campoEvaluar=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="/SISSA-UV/images/32px/nota3.png" /></a>
 

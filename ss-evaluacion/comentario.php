@@ -7,6 +7,7 @@ $nota=$_GET['comentario'];
 $criterio=$_GET['criterio'];
 $evaluar=new Evaluar($matricula,$criterio);
 $evaluar->comentario($campoEvaluar,$nota);
+session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -38,15 +39,18 @@ $evaluar->comentario($campoEvaluar,$nota);
  <div id="comentario">
     <p>Comentando la evaluación:  <?echo $campoEvaluar;?><p>
     <p>Alumno:  <? echo $evaluar->alumno();?><p>
-    
+    	<?php if(!($_SESSION['nivel']=='alumno')) {?>
         <form name="comentarios" method="get" action="comentario.php">
+        <?php } ?>
             <input type="hidden" name="alumno" value="<? echo $alumno;?>">
             <input type="hidden" name="matricula" value="<? echo $matricula;?>">
             <input type="hidden" name="criterio" value="<? echo $criterio;?>">
-            <input type="hidden" name="campoEvaluar" value="<? echo $campoEvaluar;?>">			
-            <textarea name="comentario" cols="40" rows="5" autofocus><?echo $evaluar->hayComentario($campoEvaluar);?></textarea>
+            <input type="hidden" name="campoEvaluar" value="<? echo $campoEvaluar;?>">
+            <textarea name="comentario" cols="40" rows="5" autofocus <?php if($_SESSION['nivel']=='alumno') { echo 'readonly'; } ?> ><?echo $evaluar->hayComentario($campoEvaluar);?></textarea>
             <br>
+            <?php if(!($_SESSION['nivel']=='alumno')) {?>
             <input type="submit" value="Guardar" />
+            <?php } ?>
         </form>
 
  </div>
