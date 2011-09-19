@@ -30,6 +30,13 @@
 			<option value="no se tiene y se desea firmar" >No se tiene y se desea firmar</option>
 			<option value="no se tiene y NO se desea firmar" >No se tiene y NO se desea firmar</option>
 	</select>
+<strong>Tipo empresa:</strong>	
+	<select id="TipoEmp" name="TipoEmp" tabindex="27">
+			<option value="publica" >Pública</option>
+			<option value="privada" >Privada</option>
+			<option value="uv" >UV</option>
+			
+	</select>  
 </p> 
 
 <h3>Dirección</h3>
@@ -42,5 +49,5 @@
 <strong> Localidad:</strong> <input type="text" id="LocalidadEmp" size="10"  />
 </p>
 <input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('empresa.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('nuevaEmpresa.php','NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp','Datos cargados de la empresa exitosamente.','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('nuevaEmpresa.php','NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','Datos cargados de la empresa exitosamente.','index.php')" />
 </div>

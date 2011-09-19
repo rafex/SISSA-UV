@@ -51,6 +51,14 @@ while($rows=mysql_fetch_array($result)){
 			<option value="no se tiene y se desea firmar" <?if($rows['AcuerdoEmp']=="no se tiene y se desea firmar"){ echo "selected=\"selected\"";} ?> >No se tiene y se desea firmar</option>
 			<option value="no se tiene y NO se desea firmar" <?if($rows['AcuerdoEmp']=="no se tiene y NO se desea firmar"){ echo "selected=\"selected\"";} ?> >No se tiene y NO se desea firmar</option>
 	</select>
+<br /><br />
+<strong>Tipo empresa:</strong>
+	<select id="TipoEmp" name="TipoEmp" >
+			<option value="publica" <?if($rows['TipoEmp']=="publica"){ echo "selected=\"selected\"";} ?> >Pública</option>
+			<option value="privada" <?if($rows['TipoEmp']=="privada"){ echo "selected=\"selected\"";} ?> >Privada</option>
+			<option value="uv" <?if($rows['TipoEmp']=="uv"){ echo "selected=\"selected\"";} ?> >UV</option>
+			
+	</select>	
 </p> 
 
 <h3>Dirección</h3>
@@ -63,6 +71,6 @@ while($rows=mysql_fetch_array($result)){
 <strong> Localidad:</strong> <input type="text" id="LocalidadEmp" size="10" value="<?echo strtoupper($rows['LocalidadEmp']); ?>" />
 </p>
 <input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('empresa.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp','Datos empresa modificados exitosamente.','index.php');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','Datos empresa modificados exitosamente.','index.php');" />
 </div>
 <?	}	?>

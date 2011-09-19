@@ -15,8 +15,8 @@ foreach($_POST as $nombre_campo => $valor){
    
 }
 
-	$query="INSERT INTO  `empresa_ss_fca` (NombreEmp,DireccionEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,AcuerdoEmp,GiroEmp,EstadoEmp,MunicipioEmp,LocalidadEmp) 
-	VALUES('$NombreEmp','$DireccionEmp','$EmailEmp','$TelefonoEmp','$Telefono2Emp','$ClasificacionEmp','$SectorEmp','$AcuerdoEmp','$GiroEmp','$EstadoEmp','$MunicipioEmp','$LocalidadEmp');";
+	$query="INSERT INTO  `empresa_ss_fca` (NombreEmp,DireccionEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,AcuerdoEmp,GiroEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp) 
+	VALUES('$NombreEmp','$DireccionEmp','$EmailEmp','$TelefonoEmp','$Telefono2Emp','$ClasificacionEmp','$SectorEmp','$AcuerdoEmp','$GiroEmp','$EstadoEmp','$MunicipioEmp','$LocalidadEmp','$TipoEmp');";
 	$result=mysql_query($query) or die(mysql_error()); 
 	$IdEmp=mysql_insert_id();
 	

@@ -40,6 +40,9 @@ while($rows2=mysql_fetch_array($result2)){ $j++  ?>
     <th  class="ancho1"><? echo utf8_encode($rows2['evaluar']); ?></th>
 <? } ?>
 	<th  class="ancho1">Total</th>
+	<? if($_SESSION['nivel']=='admin'){ ?>
+	<th  class="ancho1"></th>
+	<? } ?>
   </tr>
 <? $n=1; while($rows = mysql_fetch_array($result)){  
 
@@ -49,14 +52,17 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),$criterioS);
 
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" title="<? echo utf8_encode($rows['MatriculaAlu']); ?>" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" title="<? echo utf8_encode($rows['MatriculaAlu']); ?>" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 <? $total=0; for($i=0;$i<$j;$i++){ ?>
     <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
 <? }?>
     <td><strong><? echo $total;?></strong></td>
+    <? if($_SESSION['nivel']=='admin'){ ?>
+    <td><a href="#" onclick="javascript:eliminarAlumno('eliminarAlumno.php','matricula','<? echo utf8_encode($rows['MatriculaAlu']); ?>','Alumno con la matricula:<? echo utf8_encode($rows['MatriculaAlu']); ?> fue eliminado.','../ss-evaluacion/seleccion.php','<?echo $carrera;?>','<?echo $periodo;?>','<?echo $criterioS;?>');"><img src="../images/cross.png" /></a></td>
+    <? } ?>
   </tr>
 <? }?>
 </table>

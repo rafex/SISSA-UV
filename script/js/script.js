@@ -65,7 +65,38 @@ function realizarOperacionConMensajeAccion2(pagina,variables,mensaje,destino){
 	  ajax.send('&'+enviar);
 }
 
-function metodoAgil(pagina,variables,mensaje,modificar,pagina2){ 
+function metodoAgil2(pagina,nombres,valores,mensaje,pagina2){ 
+      
+      var noms=nombres.split(",");
+      var vals=valores.split(",");
+      
+      ajax= objetoAjax();
+	  ajax.open('POST', pagina,true);
+	  ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+				
+				result = ajax.responseText;
+				//document.getElementById(variable).value="";
+				//alert(mensaje);
+				//location.href = destino;
+				if(!(mensaje=="") || !(mensaje==" ") || !(mensaje.length==0) ){
+					alert(mensaje);
+				}
+				cargarContenido(pagina2);										
+				//document.getElementById(modificar).innerHTML=result;
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  var enviar="";
+      for(var i=0;i<noms.length;i++){
+        enviar+=noms[i]+"=";
+        enviar+=vals[i]+"&";  
+      }
+	  ajax.send('&'+enviar);
+}
+
+
+function metodoAgil(pagina,variables,mensaje,pagina2){ 
       
       var noms=variables.split(",");
       var vals=new Array();
@@ -549,5 +580,32 @@ function crearUsuario(){
 	  ajax.send('&nivel='+nivel+'&pass='+pass+'&nom='+nom+'&usr='+usr+'&crear=1');
 }
 
-
+function eliminarAlumno(pagina,nombres,valores,mensaje,pagina2,uno,dos,tres){
+	  var noms=nombres.split(",");
+      var vals=valores.split(",");
+      
+      ajax= objetoAjax();
+	  ajax.open('POST', pagina,true);
+	  ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+				
+				result = ajax.responseText;
+				//document.getElementById(variable).value="";
+				//alert(mensaje);
+				//location.href = destino;
+				if(!(mensaje=="") || !(mensaje==" ") || !(mensaje.length==0) ){
+					alert(mensaje);
+				}
+				crearContenidosArreglo('carrera,periodo,criterioS',uno+','+dos+','+tres,'../ss-evaluacion/listaalumnos.php');										
+				//document.getElementById(modificar).innerHTML=result;
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  var enviar="";
+      for(var i=0;i<noms.length;i++){
+        enviar+=noms[i]+"=";
+        enviar+=vals[i]+"&";  
+      }
+	  ajax.send('&'+enviar);
+}
 

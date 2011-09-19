@@ -31,40 +31,40 @@ if($genero=='m'){
 <div id="datos">
 <h3>Datos del alumno</h3>
 <p>
-<strong>Nombre:</strong><em> <?echo $rows['nombrealu'];?></em>
-<strong> Matricula:</strong><em> <?echo strtoupper($matricula);?></em>
+<strong>Nombre:</strong> <?echo $rows['nombrealu'];?>
+<strong> Matricula:</strong> <?echo strtoupper($matricula);?>
 <br /><br />
-<strong>Carrera:</strong><em> <?echo $carrera;?></em> 
-<strong> Sección:</strong><em> <?echo $rows['seccionalu']; ?></em> 
-<strong> Periodo:</strong><em> <?echo $rows['periodoalu']; ?></em> 
+<strong>Carrera:</strong> <?echo $carrera;?> 
+<strong> Sección:</strong> <?echo $rows['seccionalu']; ?> 
+<strong> Periodo:</strong> <?echo $rows['periodoalu']; ?> 
 <br /><br />
-<strong>Corre electronico:</strong><em> <?echo $rows['emailalu']; ?></em> 
-<strong> Teléfono:</strong><em> <?echo $rows['telefonoalu']; ?></em>
+<strong>Corre electronico:</strong> <?echo $rows['emailalu']; ?> 
+<strong> Teléfono:</strong> <?echo $rows['telefonoalu']; ?>
 <br /><br />
-<strong>Genero:</strong><em> <? if($genero=="f"){ echo "FEMENINO"; }else{ echo "MASCULINO"; } ?></em> 
-<strong> Estado Civil:</strong><em> <?echo $rows['edocivilalu']; ?></em>
+<strong>Genero:</strong> <? if($genero=="f"){ echo "FEMENINO"; }else{ echo "MASCULINO"; } ?> 
+<strong> Estado Civil:</strong> <?echo $rows['edocivilalu']; ?>
 <br /><br />
-<strong>Nacionalidad:</strong><em> <?echo $rows['nacionalidadalu']; ?></em>  
-<strong> Fecha de nacimiento:</strong><em> <?echo $rows['nacimientoalu']; ?></em>
-<strong> Edad:</strong><em> <?echo $rows['edadalu']; ?></em>
-<strong> Lugar de nacimiento:</strong><em> <?echo $rows['lugarnacimientoalu']; ?></em>
+<strong>Nacionalidad:</strong> <?echo $rows['nacionalidadalu']; ?>  
+<strong> Fecha de nacimiento:</strong> <?echo $rows['nacimientoalu']; ?>
+<strong> Edad:</strong> <?echo $rows['edadalu']; ?>
+<strong> Lugar de nacimiento:</strong> <?echo $rows['lugarnacimientoalu']; ?>
 </p>
 <h3>Dirección</h3>
 <p>
-<strong>Calle:</strong><em> <?echo $rows['calledireccion'];?></em>
-<strong> Numero:</strong><em> <?echo $rows['numdireccion'];?></em> 
-<strong> Colonia:</strong><em> <?echo $rows['coloniadireccion']; ?></em> 
-<strong> C.P.:</strong><em> <?echo $rows['cpdireccion']; ?></em> 
+<strong>Calle:</strong> <?echo $rows['calledireccion'];?>
+<strong> Numero:</strong> <?echo $rows['numdireccion'];?> 
+<strong> Colonia:</strong> <?echo $rows['coloniadireccion']; ?> 
+<strong> C.P.:</strong> <?echo $rows['cpdireccion']; ?> 
 <br /><br />
-<strong>Estado:</strong><em> <?echo $rows['estadoalu']; ?></em> 
-<strong> Municipio:</strong><em> <?echo $rows['municipioalu']; ?></em>
-<strong> Localidad:</strong><em> <?echo $rows['localidadalu']; ?></em>
+<strong>Estado:</strong> <?echo $rows['estadoalu']; ?> 
+<strong> Municipio:</strong> <?echo $rows['municipioalu']; ?>
+<strong> Localidad:</strong> <?echo $rows['localidadalu']; ?>
 </p>
 <h3>Tutor</h3>
 <p>
-<strong>Nombre:</strong><em> <?echo $rows['tutoralu']; ?></em>
+<strong>Nombre:</strong> <?echo $rows['tutoralu']; ?>
 <br /><br />
-<strong> Direccion:</strong><em> <?echo $rows['direcciontutor']; ?></em>
+<strong> Direccion:</strong> <?echo $rows['direcciontutor']; ?>
 </p>
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificarPersonal.php');" />
 </div>

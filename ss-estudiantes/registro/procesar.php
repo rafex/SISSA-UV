@@ -56,6 +56,7 @@ $funcion=utf8_encode(strtoupper(elimina_acentos(trim($_POST['funcion']))));
 $tipo=$_POST['tipo'];
 $nombrepro=utf8_encode(strtoupper(elimina_acentos(trim($_POST['nombre_programa']))));
 $objetivo=utf8_encode(strtoupper(elimina_acentos(trim($_POST['objetivop']))));
+$tipo_empresa=$_POST['tipo_empresa'];
 
 if($_POST['giro_empresa']=='otra'){
 	$giro=utf8_encode(strtoupper(elimina_acentos(trim($_POST['otrogiro_empresa']))));	
@@ -73,8 +74,8 @@ $datosextraalumno=mysql_query($sql) or die(mysql_error());
 if(mysql_affected_rows()>0){
 	$validar+=1;
 }
-$sql="INSERT INTO empresa_ss_fca (NombreEmp,DireccionEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,AcuerdoEmp,GiroEmp,EstadoEmp,MunicipioEmp,LocalidadEmp)
- values('$nombreempresa','$direccionempresa','$correoempresa','$telemp1','$telemp2','$clasificacion','$sector','$acuerdo','$giro','$estadoempresa','$municipioempresa','$localidadempresa')";
+$sql="INSERT INTO empresa_ss_fca (NombreEmp,DireccionEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,AcuerdoEmp,GiroEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp)
+ values('$nombreempresa','$direccionempresa','$correoempresa','$telemp1','$telemp2','$clasificacion','$sector','$acuerdo','$giro','$estadoempresa','$municipioempresa','$localidadempresa','$tipo_empresa')";
 $empresao=mysql_query($sql) or die(mysql_error());
 $IdEmp=mysql_insert_id();
 if(mysql_affected_rows()>0){

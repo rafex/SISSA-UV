@@ -422,6 +422,22 @@ Correo electronico de la empresa:
 </div>
 </li>
 
+	<li id="foli6" 		class="  rightHalf   ">
+	<label class="desc" id="title2" for="Field2">
+		Tipo de empresa:
+			</label>
+	<span>
+		<select id="tipo_empresa" name="tipo_empresa" tabindex="27">
+			<option value="publica" >Pública</option>
+			<option value="privada" >Privada</option>
+			<option value="uv" >UV</option>
+			
+		</select>  
+	</span>
+		
+	</li>	
+
+
 <header id="header" class="info">
 <h2>Datos del área de trabajo y jefe directo</h2>
 <div></div>

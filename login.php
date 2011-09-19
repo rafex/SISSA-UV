@@ -19,7 +19,7 @@ if($usr[0]=='z')
 		
 		if(empty($pass) )
 		{
-			$_SESSION['mat']=$matricula;
+			$_SESSION['matricula']=$matricula;
 			?>
 	        <script>
 				location.href = "ss-estudiantes/nuevoPass.php";

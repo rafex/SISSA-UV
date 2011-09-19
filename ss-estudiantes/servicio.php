@@ -28,19 +28,19 @@ $jefe=$rows3['NombreEnc'];*/
 <h3>Datos del servicio social</h3>
 
 <p>
-<strong> Nombre del programa:</strong><em> <?echo strtoupper($rows['NombrePrograma']);?></em>	
+<strong> Nombre del programa:</strong> <?echo strtoupper($rows['NombrePrograma']);?>	
 <!--br /><br />
-<strong>Empresa:</strong><em> <?echo strtoupper($empresa);?></em-->
+<strong>Empresa:</strong> <?echo strtoupper($empresa);?></em-->
 <br /><br />
-<strong>Objetivo programa:</strong><em> <?echo strtoupper($rows['ObjetivoPrograma']); ?></em> 
+<strong>Objetivo programa:</strong> <?echo strtoupper($rows['ObjetivoPrograma']); ?> 
 <br /><br />
-<strong>Naturaleza del programa:</strong><em> <?echo strtoupper($rows['FuncionHist']); ?></em>
+<strong>Naturaleza del programa:</strong> <?echo strtoupper($rows['FuncionHist']); ?>
 <br /><br />
-<strong>Tipo de servicio:</strong><em> <?echo strtoupper($rows['TipoHist']); ?></em>
+<strong>Tipo de servicio:</strong> <?echo strtoupper($rows['TipoHist']); ?>
 <!--br /><br />
-<strong>Jefe directo:</strong><em> <?echo utf8_decode(strtoupper($jefe)); ?></em--> 
+<strong>Jefe directo:</strong> <?echo utf8_decode(strtoupper($jefe)); ?></em--> 
 <br /><br />
-<strong>Area de trabajo:</strong><em> <?echo strtoupper($rows['AreaHist']); ?></em>
+<strong>Area de trabajo:</strong> <?echo strtoupper($rows['AreaHist']); ?>
 </p>
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificarServicio.php');" />
 </div>

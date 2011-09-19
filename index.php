@@ -79,19 +79,19 @@ if($_SESSION['activa']){
 		<input name="usuario" id="usuario" type="text" class="field text large" value="" maxlength="15" tabindex="1" placeholder="Usuario" autofocus/> 
 	</div>
 
-		
+		<p class="instruct" id="instruct2"><small>Si eres alumno recuerda anteponer una "Z" a tu matrícula; ejemplo: ZS06016390.</small></p>
 	</li>
 
 
 
 <li id="foli2" 		class="     ">
 	<label class="desc" id="title2" for="Field2">
-		Password:
+		Contraseña:
 			</label>
 	<div>
-		<input name="contrasenia" id="contrasenia" type="password" class="field text large" value="" maxlength="15" tabindex="2" placeholder="Password"/> 
+		<input name="contrasenia" id="contrasenia" type="password" class="field text large" value="" maxlength="15" tabindex="2" placeholder="Contraseña"/> 
 	</div>
-		<p class="instruct" id="instruct2"><small>No revele a nadie su password.</small></p>
+		<p class="instruct" id="instruct2"><small>No revele a nadie su contraseña.</small></p>
 	</li>
 
 

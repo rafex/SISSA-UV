@@ -22,11 +22,11 @@ if($rows=mysql_fetch_array($result)){
 <h3>Datos del jefe directo</h3>
 
 <p>
-<strong>Nombre:</strong><em> <?echo strtoupper($rows['NombreEnc']);?></em>	
+<strong>Nombre:</strong> <?echo strtoupper($rows['NombreEnc']);?>p	
 <br /><br />
-<strong>Puesto:</strong><em> <?echo strtoupper($rows['PuestoEnc']);?></em>
+<strong>Puesto:</strong> <?echo strtoupper($rows['PuestoEnc']);?>p
 <br /><br />
-<strong>Correo electrónico:</strong><em> <?echo $rows['EmailEnc']; ?></em> 
+<strong>Correo electrónico:</strong> <?echo $rows['EmailEnc']; ?> 
 
 </p>
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificarJefe.php');" />

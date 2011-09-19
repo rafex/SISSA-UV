@@ -23,29 +23,31 @@ if($rows=mysql_fetch_array($result)){
 <h3>Datos de la empresa</h3>
 
 <p>
-<strong>Nombre:</strong><em> <?echo strtoupper($rows['NombreEmp']);?></em>
+<strong>Nombre:</strong> <?echo strtoupper($rows['NombreEmp']);?>
 <br /><br /> 
-<strong>Correo electronico:</strong><em> <?echo $rows['EmailEmp']; ?></em> 
+<strong>Correo electronico:</strong> <?echo $rows['EmailEmp']; ?> 
 <br /><br />
-<strong>Teléfono 1:</strong><em> <?echo $rows['TelefonoEmp']; ?></em>
+<strong>Teléfono 1:</strong> <?echo $rows['TelefonoEmp']; ?>
 <br /><br />
-<strong>Teléfono 2:</strong><em> <?echo $rows['Telefono2Emp']; ?></em>
+<strong>Teléfono 2:</strong> <?echo $rows['Telefono2Emp']; ?>
 <br /><br />
-<strong>Clasificación:</strong><em> <?echo utf8_decode(strtoupper($rows['ClasificacionEmp'])); ?></em> 
-<strong> Sector:</strong><em> <?echo strtoupper($rows['SectorEmp']); ?></em>
-<strong> Giro:</strong><em> <?echo strtoupper($rows['GiroEmp']); ?></em>
+<strong>Clasificación:</strong> <?echo utf8_decode(strtoupper($rows['ClasificacionEmp'])); ?> 
+<strong> Sector:</strong> <?echo strtoupper($rows['SectorEmp']); ?>
+<strong> Giro:</strong> <?echo strtoupper($rows['GiroEmp']); ?>
 <br /><br />
-<strong>Acuerdo:</strong><em> <?echo strtoupper($rows['AcuerdoEmp']); ?></em>  
+<strong>Acuerdo:</strong> <?echo strtoupper($rows['AcuerdoEmp']); ?>  
+<br /><br />
+<strong>Tipo Empresa:</strong> <?echo strtoupper($rows['TipoEmp']); ?>
 </p>
 
 <h3>Dirección</h3>
 
 <p>
-<strong>Dirección:</strong><em> <? echo $rows['DireccionEmp']; ?></em>
+<strong>Dirección:</strong> <? echo $rows['DireccionEmp']; ?>
 <br /><br />
-<strong>Estado:</strong><em> <?echo strtoupper($rows['EstadoEmp']); ?></em> 
-<strong> Municipio:</strong><em> <?echo strtoupper($rows['MunicipioEmp']); ?></em>
-<strong> Localidad:</strong><em> <?echo strtoupper($rows['LocalidadEmp']); ?></em>
+<strong>Estado:</strong> <?echo strtoupper($rows['EstadoEmp']); ?> 
+<strong> Municipio:</strong> <?echo strtoupper($rows['MunicipioEmp']); ?>
+<strong> Localidad:</strong> <?echo strtoupper($rows['LocalidadEmp']); ?>
 </p>
 
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificandoEmpresa.php');" />
