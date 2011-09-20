@@ -427,7 +427,7 @@ Correo electronico de la empresa:
 		Tipo de empresa:
 			</label>
 	<span>
-		<select id="tipo_empresa" name="tipo_empresa" tabindex="27">
+		<select id="tipo_empresa" name="tipo_empresa" tabindex="43">
 			<option value="publica" >Pública</option>
 			<option value="privada" >Privada</option>
 			<option value="uv" >UV</option>
@@ -448,7 +448,7 @@ Correo electronico de la empresa:
 Área de trabajo:
 </label>
 <div>
-<input id="area" name="area" type="text" class="field text medium" value="" maxlength="255" tabindex="43"  />
+<input id="area" name="area" type="text" class="field text medium" value="" maxlength="255" tabindex="44"  />
 </div>
 </li>
 
@@ -457,7 +457,7 @@ Correo electronico de la empresa:
 Nombre del jefe directo:
 </label>
 <div>
-<input id="jefe" name="jefe" type="text" class="field text medium" value="" maxlength="255" tabindex="44"  />
+<input id="jefe" name="jefe" type="text" class="field text medium" value="" maxlength="255" tabindex="45"  />
 </div>
 </li>
 
@@ -467,7 +467,7 @@ Nombre del jefe directo:
 Correo electronico del jefe directo:
 </label>
 <div>
-<input id="correo_encargado" name="correo_encargado" type="text" class="field text medium" value="" maxlength="255" tabindex="45"  />
+<input id="correo_encargado" name="correo_encargado" type="text" class="field text medium" value="" maxlength="255" tabindex="46"  />
 </div>
 </li>
 
@@ -477,7 +477,7 @@ Correo electronico del jefe directo:
 Puesto del jefe directo:
 </label>
 <div>
-<input id="puesto" name="puesto" type="text" class="field text medium" value="" maxlength="255" tabindex="46"  />
+<input id="puesto" name="puesto" type="text" class="field text medium" value="" maxlength="255" tabindex="47"  />
 </div>
 </li>
 
@@ -491,7 +491,7 @@ Puesto del jefe directo:
 		Nombre del programa:
 			</label>
 	<div>
-		<input id="nombre_programa" name="nombre_programa" type="text" class="field text medium" value="" maxlength="255" tabindex="47" />
+		<input id="nombre_programa" name="nombre_programa" type="text" class="field text medium" value="" maxlength="255" tabindex="48" />
 
 	</div>
 		
@@ -502,7 +502,7 @@ Puesto del jefe directo:
 Objetivo del programa:
 </label>
 <div>
-<input id="objetivop" name="objetivop" type="text" class="field text medium" value="" maxlength="255" tabindex="48"  />
+<input id="objetivop" name="objetivop" type="text" class="field text medium" value="" maxlength="255" tabindex="49"  />
 </div>
 </li>
 
@@ -512,7 +512,7 @@ Objetivo del programa:
 		Características del servicio social:
 			</label>
 	<span>
-		<select id="tipo" name="tipo" tabindex="49">
+		<select id="tipo" name="tipo" tabindex="50">
 			<option value="ninguno" >ninguno</option>
 			<option value="becado" >becado</option>
 			<option value="uv" >uv</option>
@@ -532,7 +532,7 @@ Objetivo del programa:
 Naturaleza del programa:
 </label>
 <div>
-<input id="funcion" name="funcion" type="text" class="field text medium" value="" maxlength="255" tabindex="50"  />
+<input id="funcion" name="funcion" type="text" class="field text medium" value="" maxlength="255" tabindex="51"  />
 </div>
 </li>
 
