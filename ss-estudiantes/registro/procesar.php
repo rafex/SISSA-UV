@@ -64,10 +64,19 @@ if($_POST['giro_empresa']=='otra'){
 	$giro=$_POST['giro_empresa'];
 }
 
+$validar=0;
 $sql="INSERT INTO alumno_ss_fca (CriterioAlu,MatriculaAlu,NombreAlu,CarreraAlu,PeriodoAlu,EmailAlu,TelefonoAlu) value('meifv1','$matricula','$nombrecompleto','$carrera','$periodo','$correo','$telefono')";
 $alumno=mysql_query($sql) or die(mysql_error());
+if(mysql_affected_rows()>0){
+	$validar+=1;
+}
+$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu) values('$matricula')";
+$historial=mysql_query($sql) or die(mysql_error());
+if(mysql_affected_rows()>0){
+	$validar+=1;
+}
 
-$validar=0;
+
 $sql="INSERT INTO datos_extra_alumno (MatriculaAlu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor) 
  value('$matricula','$genero','$civil','$edad','$nacionalidad',DATE_FORMAT('$fecha','%Y-%m-%d'),'$nacimiento','$calle','$num','$colonia','$codp','$estado','$municipio','$localidad','$tutor','$direcciontutor' )";
 $datosextraalumno=mysql_query($sql) or die(mysql_error());
@@ -89,8 +98,8 @@ if(mysql_affected_rows()>0){
 	$validar+=1;
 	
 }
-
-$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,JefeDirectoHist,AreaHist,Empresa) values('$matricula','$nombrepro','$objetivo','$funcion','$tipo','$IdEnc','$area','$IdEmp')";
+$sql="UPDATE historial_alumno_ss_fca SET NombrePrograma='$nombrepro' , ObjetivoPrograma='$objetivo', FuncionHist='$funcion' , TipoHist='$tipo' , JefeDirectoHist='$IdEnc' , AreaHist='$area' , Empresa='$IdEmp'  WHERE MatriculaAlu='$matricula'";
+//$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,JefeDirectoHist,AreaHist,Empresa) values('$matricula','$nombrepro','$objetivo','$funcion','$tipo','$IdEnc','$area','$IdEmp')";
 $historial=mysql_query($sql) or die(mysql_error());
 if(mysql_affected_rows()>0){
 	$validar+=1;
@@ -131,7 +140,7 @@ Apoyo a la selección del Servicio Social
 	<a href="../../index.php" title="" >*</a>
 	</h1>
 <center>
-<?	if($validar==4) { ?>
+<?	if($validar==6) { ?>
 	<h1>Registro realizado con exito</h1>
 <?	}else{	?>
 	<h1>Se sucito un error inesperado, favor de contactar al administrador del sistema.</h1>

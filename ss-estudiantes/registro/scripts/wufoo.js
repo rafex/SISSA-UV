@@ -222,6 +222,59 @@ function addEvent( obj, type, fn ) {
 }
 
 function enviar(){
-	document.forms.registroAlu.action="procesar.php";
-	document.registroAlu.submit();
+	var matricula=document.getElementById('matricula').value;
+	var nombre=document.getElementById('nombre').value;
+	var ap_paterno=document.getElementById('paterno').value;
+	var ap_materno=document.getElementById('materno').value;
+	var empresa=document.getElementById('nombre_empresa').value;
+	var jefe=document.getElementById('jefe').value;
+	var enviar=0;
+	
+	if(matricula.lenght==0 || matricula.length<8 || matricula==" " ){
+		alert("Inserte su matrícula");
+		document.getElementById('matricula').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(nombre.lenght==0 || nombre.length<2 || nombre==" " ){
+		alert("Inserte su nombre");
+		document.getElementById('nombre').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(ap_paterno.lenght==0 || ap_paterno.length<2 || ap_paterno==" " ){
+		alert("Inserte su apellido paterno");
+		document.getElementById('paterno').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(ap_materno.lenght==0 || ap_materno.length<2 || ap_materno==" " ){
+		alert("Inserte su apellido materno");
+		document.getElementById('materno').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(empresa.lenght==0 || empresa.length<2 || empresa==" " ){
+		alert("Inserte su empresa");
+		document.getElementById('nombre_empresa').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(jefe.lenght==0 || jefe.length<2 || jefe==" " ){
+		alert("Inserte su jefe directo");
+		document.getElementById('jefe').focus();
+	}else{
+		enviar+=1;
+	}
+	
+	if(enviar==6){
+		document.forms.registroAlu.action="procesar.php";
+		document.registroAlu.submit();	
+	}
+	
 }

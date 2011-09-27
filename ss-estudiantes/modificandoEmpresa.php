@@ -35,9 +35,9 @@ while($rows=mysql_fetch_array($result)){
 <strong>Clasificación:</strong> <input type="text" id="ClasificacionEmp" size="10" value="<?echo utf8_decode($rows['ClasificacionEmp']); ?>" /> 
 <strong> Sector:</strong>
 	<select id="SectorEmp" name="SectorEmp" >
-			<option value="primario" <? if($rows['SectorEmp']=='primario'){ echo "selected=\"selected\"";} ?> >Primario</option>
-			<option value="secundario" <? if($rows['SectorEmp']=='secundario'){ echo "selected=\"selected\"";} ?> >Secundario</option>
-			<option value="terciario" <? if($rows['SectorEmp']=='terciario'){ echo "selected=\"selected\"";} ?> >Terciario</option>		
+			<option value="primario" <? if($rows['SectorEmp']=='primario' || $rows['SectorEmp']=='PRIMARIO' ){ echo "selected=\"selected\"";} ?> >Primario</option>
+			<option value="secundario" <? if($rows['SectorEmp']=='secundario' || $rows['SectorEmp']=='SECUNDARIO'){ echo "selected=\"selected\"";} ?> >Secundario</option>
+			<option value="terciario" <? if($rows['SectorEmp']=='terciario' || $rows['SectorEmp']=='TERCIARIO'){ echo "selected=\"selected\"";} ?> >Terciario</option>		
 			
 		
 	</select> 

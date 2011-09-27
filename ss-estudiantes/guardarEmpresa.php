@@ -7,7 +7,7 @@ $matricula=$_SESSION['matricula'];
 foreach($_POST as $nombre_campo => $valor){
    $valor=trim($valor);
    $nombre_campo=trim($nombre_campo);
-   if($nombre_campo=="NombreEmp" || $nombre_campo=="EstadoEmp" || $nombre_campo=="MunicipioEmp" || $nombre_campo=="LocalidadEmp" || $nombre_campo=="ClasificacionEmp" || $nombre_campo=="SectorEmp"){
+   if($nombre_campo=="NombreEmp" || $nombre_campo=="EstadoEmp" || $nombre_campo=="MunicipioEmp" || $nombre_campo=="LocalidadEmp" || $nombre_campo=="ClasificacionEmp" ){
    		$valor=strtoupper($valor);
    }
    $asignacion = "\$".$nombre_campo."='".$valor."';"; 

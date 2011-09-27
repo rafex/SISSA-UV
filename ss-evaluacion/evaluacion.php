@@ -6,6 +6,7 @@ $nombre=$_POST['nombre'];
 $criterio=$_POST['criterio'];
 $valores=$_POST['formulario'];
 $carrera=$_POST['carrera'];
+$peridoX=$_POST['periodoA'];
 $evaluar=new Evaluar($matricula,$criterio);
 $evaluar->inicia();
 if($carrera=='lsca'){
@@ -25,7 +26,7 @@ $total=0;// el total de la calificacion
 <p>Matricula:<strong><? echo $matricula; ?></strong> Carrera: <?echo $carrera;?></p>
 
 <p>Alumno:<strong><?echo $nombre; ?></strong></p>
-<p>Tipo de evaluación: <?echo $criterio; ?></p>
+<p>Tipo de evaluación: <?echo $criterio; ?> Periodo: <?echo $peridoX;?></p>
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="evaluacion" name="evaluacion" method="post" action="javascript:evaluar('matricula,nombre,criterio,carrera','<? echo $matricula; ?>,<? echo $nombre; ?>,<? echo $criterio; ?>,<?echo $carrera;?>','../ss-evaluacion/evaluacion.php');">
 <? }elseif($_SESSION['nivel']=='evaluador'){?>

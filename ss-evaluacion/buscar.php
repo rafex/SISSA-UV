@@ -11,7 +11,8 @@ conectar();
 $result;
 
 
-	if($buscar[0]=="S"){
+	//if($buscar[0]=="S" ){
+	if($buscar[0]=="S" && (preg_match($patron, $buscar[1]) || preg_match($patron, $buscar[2]) )  ){
 	
 	    $result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' ;") or die(mysql_error());
 	}else{

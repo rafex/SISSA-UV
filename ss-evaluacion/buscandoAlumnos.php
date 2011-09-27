@@ -13,11 +13,12 @@ $buscar=strtoupper($buscar);
 session_start();
 conectar();
 $result;
+$patron = '/^[[:digit:]]+$/';
 
 
-
-	if($buscar[0]=="S"){
-	
+	if($buscar[0]=="S" && (preg_match($patron, $buscar[1]) || preg_match($patron, $buscar[2]) )  ){
+	//if($buscar[0]=="S" && (is_numeric( $buscar[1]) || is_numeri($buscar[2]) )  ){
+		
 		if($seccion!='sin' && $carrera=='sin' ){
 			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE MatriculaAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' ;") or die(mysql_error());
 		}elseif($carrera!='sin' && $seccion=='sin' ){
