@@ -1,6 +1,9 @@
 <?
 // index del admin (ss-admin)
-	session_start();
+	@ session_start();
+	if(!($_SESSION['nivel']=='admin')){
+		header ("Location: ../index.php");
+	}
 	include_once('../header.php'); ?>
 
     <? include_once '../menus/menu_admin.html'; ?>

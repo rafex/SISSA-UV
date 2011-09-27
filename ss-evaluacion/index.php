@@ -1,5 +1,9 @@
 <?
 // index del evaluador (ss-evaluacion)
+	@ session_start();
+	if(!($_SESSION['nivel']=='evaluador')){
+		header ("Location: ../index.php");
+	}
     include_once('../header.php'); ?>
 
     <? include_once '../menus/menu_evaluador.html'; ?>
