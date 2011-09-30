@@ -32,18 +32,18 @@ class Evaluar extends Conexion {
     }
 
     
-    public function inicia(){
+    public function inicia($periodo){
         $this->getConexion();
-        $sql="SELECT MatriculaAlu FROM evaluacion_".$this->criterio." WHERE MatriculaAlu='".$this->matricula."' ;";    
+        $sql="SELECT MatriculaAlu FROM evaluacion_".$this->criterio." WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";    
         $result=mysql_query($sql) or die(mysql_error());
         if(!mysql_fetch_array($result)){
-            mysql_query("INSERT INTO evaluacion_".$this->criterio." (MatriculaAlu) values('".$this->matricula."');") or die(mysql_error());
+            mysql_query("INSERT INTO evaluacion_".$this->criterio." (MatriculaAlu,PeriodoAlu) values('".$this->matricula."','$periodo');") or die(mysql_error());
         }
     }
 
-    public function hayComentario($campoEvaluar){
+    public function hayComentario($campoEvaluar,$periodo){
         $this->getConexion();
-        $sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu='$this->matricula' AND Evaluacion='$campoEvaluar';";
+        $sql="SELECT Nota FROM notas_ss_fca WHERE MatriculaAlu='$this->matricula' AND Evaluacion='$campoEvaluar' AND PeriodoAlu='$periodo';";
         $result=mysql_query($sql) or die(mysql_error());
         if($comentario=mysql_fetch_array($result)){
             return $comentario['Nota'];
@@ -52,13 +52,14 @@ class Evaluar extends Conexion {
         }
     }    
 
-    public function comentario($campoEvaluar,$nota){
+    public function comentario($campoEvaluar,$nota,$periodo){
         $this->getConexion();
         if(!is_null($nota) && $nota!="No hay comentarios."){
-            $sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`) VALUES ('$this->matricula', '$campoEvaluar', '".trim($nota)."', '".date('o-m-d')."');";
+            //$sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`,`PeriodoAlu`) VALUES ('$this->matricula', '$campoEvaluar', '".trim($nota)."', '".date('o-m-d')."', '$periodo' );";
+            $sql="INSERT INTO `notas_ss_fca` (`MatriculaAlu`, `Evaluacion`, `Nota`, `FechaEntrega`,`PeriodoAlu`) VALUES ('$this->matricula', '$campoEvaluar', '".trim($nota)."', now(), '$periodo' );";
             $result=mysql_query($sql);
             if($result==0){
-                $set="update `notas_ss_fca` SET `Nota`='$nota' WHERE `MatriculaAlu`='$this->matricula' AND `Evaluacion`='$campoEvaluar' LIMIT 1";
+                $set="update `notas_ss_fca` SET `Nota`='$nota' WHERE `MatriculaAlu`='$this->matricula' AND `Evaluacion`='$campoEvaluar' AND PeriodoAlu='$periodo' LIMIT 1";
                 $result=mysql_query($set);
             }
 
@@ -116,10 +117,10 @@ class Evaluar extends Conexion {
     }
     
     
-    public function hayCalf($campo){
+    public function hayCalf($campo,$periodo){
         $this->getConexion();
         $hayC;
-        $sql="SELECT `".$campo."` as actual FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' ;";
+        $sql="SELECT `".$campo."` as actual FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";
         $result=mysql_query($sql) or die(mysql_error());
         $fila=mysql_fetch_array($result);
         $numero=$fila['actual'];
@@ -133,9 +134,9 @@ class Evaluar extends Conexion {
 
     }
 
-    public function mostrarCalif($i){
+    public function mostrarCalif($i,$periodo){
         $this->getConexion();
-        $sql="SELECT * FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' ;";
+        $sql="SELECT * FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";
         $result=mysql_query($sql) or die(mysql_error());
         $fila=mysql_fetch_array($result);
         return $fila[$i];        
@@ -155,7 +156,7 @@ class Evaluar extends Conexion {
         return $evaluacion[$indice];
     }
 
-    public function guardarCalf($valores){
+    public function guardarCalf($valores,$periodo){
         $this->getConexion();
         $mensaje;
         if(!is_null($valores) || !(count($valores)==0)){
@@ -173,8 +174,8 @@ class Evaluar extends Conexion {
                     $tmp=$calificacion[($i-1)];        
                 }
                 
-                if($this->hayCalf($columnasTabla[($i-1)])){
-                    $sql="SELECT `".$columnasTabla[($i-1)]."` as actual FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' ;";
+                if($this->hayCalf($columnasTabla[($i-1)],$periodo)){
+                    $sql="SELECT `".$columnasTabla[($i-1)]."` as actual FROM `evaluacion_".$this->criterio."` WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";
                     $result2=mysql_query($sql) or die(mysql_error());
                     $fila=mysql_fetch_array($result2);
                     $numero=$fila['actual'];
@@ -184,14 +185,14 @@ class Evaluar extends Conexion {
                      
                         echo "Ya tiene esta calificación en: <strong>".$this->listaCampos(($i-1))."</strong><br>";
                     }else{
-                    	$sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' ;";
+                    	$sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";
                     	mysql_query($sql) or die(mysql_error());
 						$mensaje=true;
                     	
                     }                  
                 }else{
 
-                    $sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' ;";
+                    $sql="UPDATE `evaluacion_".$this->criterio."` SET `".$columnasTabla[($i-1)]."`=".$tmp." WHERE MatriculaAlu='".$this->matricula."' AND PeriodoAlu='$periodo' ;";
                     mysql_query($sql) or die(mysql_error());
                     $mensaje=true;
                 }

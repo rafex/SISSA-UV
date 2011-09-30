@@ -12,7 +12,7 @@
         <p class="parr">Con este sistema de información podrá revisar y modificar sus datos del servicio social como son : <strong>personales</strong> y <strong>empresa</strong> 
         así como ver el progreso de su evaluación en: <strong>Experiencia Educativa</strong> del <strong>Servicio Social</strong>.</p>		
 		<p>
-        <img src="/SISSA-UV/images/estudiantes.png" width="400" heigth="400"/>
+        <img src="../images/estudiantes.png" width="400" heigth="400"/>
 
         </p>
 	</div> <!-- Aqui termina Contenido -->

@@ -20,25 +20,25 @@ $patron = '/^[[:digit:]]+$/';
 	//if($buscar[0]=="S" && (is_numeric( $buscar[1]) || is_numeri($buscar[2]) )  ){
 		
 		if($seccion!='sin' && $carrera=='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE MatriculaAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE MatriculaAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' AND periodoalu='$periodo' ;") or die(mysql_error());
 		}elseif($carrera!='sin' && $seccion=='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%'  ;") or die(mysql_error());	
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' AND periodoalu='$periodo'  ;") or die(mysql_error());	
 		}elseif($carrera!='sin' && $seccion!='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' AND SeccionAlu='$seccion'  ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' AND periodoalu='$periodo'  ;") or die(mysql_error());
 		}elseif($carrera=='sin' && $seccion=='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE MatriculaAlu LIKE '%$buscar%' ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE MatriculaAlu LIKE '%$buscar%' AND periodoalu='$periodo' ;") or die(mysql_error());
 		}
 	
 	    
 	}else{
 		if($seccion!='sin' && $carrera=='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE NombreAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE NombreAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' AND periodoalu='$periodo'  ;") or die(mysql_error());
 		}elseif($carrera!='sin' && $seccion=='sin'){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%'  ;") or die(mysql_error());	
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%' AND periodoalu='$periodo'  ;") or die(mysql_error());	
 		}elseif($carrera!='sin' && $seccion!='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%' AND SeccionAlu='$seccion'  ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%' AND SeccionAlu='$seccion' AND periodoalu='$periodo'  ;") or die(mysql_error());
 		}elseif($carrera=='sin' && $seccion=='sin' ){
-			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE NombreAlu LIKE '%$buscar%' ;") or die(mysql_error());
+			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE NombreAlu LIKE '%$buscar%' AND periodoalu='$periodo' ;") or die(mysql_error());
 		}
 		
 	    
@@ -58,10 +58,12 @@ if($carrera=='lsca'){
 }
 
 ?>
+<p>Usted busco: <strong><?echo $buscar;?></strong></p>
+
 <? if($_SESSION['nivel']=='admin'){ ?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera,seccion,criterio',document.getElementById('patron').value+','+document.getElementById('carrera').value+','+document.getElementById('seccion').value+','+document.getElementById('criterio').value,'../ss-evaluacion/buscandoAlumnos.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera,seccion,criterio,periodo',document.getElementById('patron').value+','+document.getElementById('carrera').value+','+document.getElementById('seccion').value+','+document.getElementById('criterio').value+','+document.getElementById('periodo').value,'../ss-evaluacion/buscandoAlumnos.php');">
 <?}elseif($_SESSION['nivel']=='evaluador'){?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera,seccion,criterio',document.getElementById('patron').value+','+document.getElementById('carrera').value+','+document.getElementById('seccion').value+','+document.getElementById('criterio').value,'buscandoAlumnos.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera,seccion,criterio,periodo',document.getElementById('patron').value+','+document.getElementById('carrera').value+','+document.getElementById('seccion').value+','+document.getElementById('criterio').value+','+document.getElementById('periodo').value,'buscandoAlumnos.php');">
 <? } ?>
     <input type="text" name="patron" id="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <select id="carrera" name="carrera" tabindex="2">
@@ -141,16 +143,16 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
 
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $rows['CarreraAlu'];?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $rows['CarreraAlu'];?>,<?echo $periodo;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
-    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $rows['CarreraAlu'];?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $rows['CarreraAlu'];?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 <? $total=0; for($i=0;$i<$j;$i++){ ?>
-    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
+    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1,$periodo); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
 <? }?>
     <td><strong><? echo $total;?></strong></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td><a href="#" onclick="javascript:eliminarAlumno('eliminarAlumno.php','matricula','<? echo utf8_encode($rows['MatriculaAlu']); ?>','Alumno con la matricula:<? echo utf8_encode($rows['MatriculaAlu']); ?> fue eliminado.','../ss-evaluacion/seleccion.php','<?echo $carrera;?>','<?echo $periodo;?>','<?echo $criterioS;?>');"><img src="../images/cross.png" /></a></td>
+    <td><a href="#" onclick="javascript:eliminarAlumno('eliminarAlumno.php','matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','Alumno con la matricula:<? echo utf8_encode($rows['MatriculaAlu']); ?> fue eliminado.','../ss-evaluacion/seleccion.php','<?echo $carrera;?>','<?echo $periodo;?>','<?echo $criterioS;?>');"><img src="../images/cross.png" /></a></td>
     <? } ?>
   </tr>
 <? }?>

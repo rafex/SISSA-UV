@@ -70,7 +70,7 @@ $alumno=mysql_query($sql) or die(mysql_error());
 if(mysql_affected_rows()>0){
 	$validar+=1;
 }
-$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu) values('$matricula')";
+$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu,PeriodoAlu) values('$matricula','$periodo')";
 $historial=mysql_query($sql) or die(mysql_error());
 if(mysql_affected_rows()>0){
 	$validar+=1;
@@ -98,7 +98,7 @@ if(mysql_affected_rows()>0){
 	$validar+=1;
 	
 }
-$sql="UPDATE historial_alumno_ss_fca SET NombrePrograma='$nombrepro' , ObjetivoPrograma='$objetivo', FuncionHist='$funcion' , TipoHist='$tipo' , JefeDirectoHist='$IdEnc' , AreaHist='$area' , Empresa='$IdEmp'  WHERE MatriculaAlu='$matricula'";
+$sql="UPDATE historial_alumno_ss_fca SET NombrePrograma='$nombrepro' , ObjetivoPrograma='$objetivo', FuncionHist='$funcion' , TipoHist='$tipo' , JefeDirectoHist='$IdEnc' , AreaHist='$area' , Empresa='$IdEmp'  WHERE MatriculaAlu='$matricula' AND PeriodoAlu='$periodo' ";
 //$sql="INSERT INTO historial_alumno_ss_fca (MatriculaAlu,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,JefeDirectoHist,AreaHist,Empresa) values('$matricula','$nombrepro','$objetivo','$funcion','$tipo','$IdEnc','$area','$IdEmp')";
 $historial=mysql_query($sql) or die(mysql_error());
 if(mysql_affected_rows()>0){

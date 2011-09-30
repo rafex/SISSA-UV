@@ -4,22 +4,28 @@ include_once '../script/php/functions.php';
 conectar();
 
 $matricula=$_POST['matricula'];
+$periodo=$_POST['periodo'];
 
-$query="SELECT CriterioAlu FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$query="SELECT CriterioAlu FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
 $result=mysql_query($query) or die(mysql_error());
 $rows=mysql_fetch_array($result);
 $criterio=$rows['CriterioAlu'];
 
-$query="DELETE FROM `evaluacion_$criterio` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$query="DELETE FROM `evaluacion_$criterio` WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
 $result=mysql_query($query) or die(mysql_error());
 
-$query="DELETE FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$query="DELETE FROM `notas_ss_fca` WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
 $result=mysql_query($query) or die(mysql_error());
+
+$query="DELETE FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
+$result=mysql_query($query) or die(mysql_error());
+
 $query="DELETE FROM `datos_extra_alumno` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
 $result=mysql_query($query) or die(mysql_error());
 
-$query="SELECT Empresa,JefeDirectoHist FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$query="SELECT Empresa,JefeDirectoHist FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
 $result=mysql_query($query) or die(mysql_error());
+
 $rows=mysql_fetch_array($result);
 $empresa=$rows['Empresa'];
 $jefe=$rows['JefeDirectoHist'];

@@ -22,13 +22,13 @@
 
 
 <title>SISSA - UV </title>
-<link href="/SISSA-UV/images/logouv.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="/SISSA-UV/css/style.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/SISSA-UV/css/dialog_box.css" />
-<script type="text/javascript" src="/SISSA-UV/script/js/script.js"></script>
-<script type="text/javascript" src="/SISSA-UV/script/js/togglemenu.js"></script>
-<script type="text/javascript" src="/SISSA-UV/script/js/jquery-1.6.1.min.js" ></script>
-<script type="text/javascript" src="/SISSA-UV/script/js/dialog_box.js"></script>
+<link href="../images/logouv.ico" rel="shortcut icon" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/dialog_box.css" />
+<script type="text/javascript" src="../script/js/script.js"></script>
+<script type="text/javascript" src="../script/js/togglemenu.js"></script>
+<script type="text/javascript" src="../script/js/jquery-1.6.1.min.js" ></script>
+<script type="text/javascript" src="../script/js/dialog_box.js"></script>
 
 
 </head>
@@ -36,5 +36,5 @@
 <body>
 
  <div id="container">
-    <a href="/SISSA-UV/index.php"><div id="header"></div></a>
+    <a href="../index.php"><div id="header"></div></a>
 

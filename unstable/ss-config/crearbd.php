@@ -34,8 +34,13 @@ for($i=0;$i<$cuantos;$i++){
         }else{
             $sql="ALTER TABLE `evaluacion_$nomcriterio`  ADD COLUMN `".$criterios[$i]."` FLOAT NULL DEFAULT '-1' COMMENT 'criterio evaluado' AFTER `".$criterios[$i-1]."` ;";
         }
-
-        mysql_query($sql) or die(mysql_error());
+		
+		mysql_query($sql) or die(mysql_error());
+		
+		if($i==($cuantos-1)){
+			$sql="ALTER TABLE `evaluacion_$nomcriterio`  ADD COLUMN `PeriodoAlu` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Periodo en el que fue evaluado' AFTER `".$criterios[$i]."` ;";
+			mysql_query($sql) or die(mysql_error());
+		}
         
         
 }
