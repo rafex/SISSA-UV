@@ -1,6 +1,9 @@
 <?
 // index del alumno (ss-alumno)
 	session_start();
+	if(!($_SESSION['nivel']=='alumno')){
+		header ("Location: ../index.php");
+	}
 	include_once('../header.php'); ?>
 
     <? include_once '../menus/menu_alu.html'; ?>

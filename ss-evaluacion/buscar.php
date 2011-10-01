@@ -7,54 +7,61 @@ $buscar=$_POST['buscar'];
 $buscar=espacios_blancos($buscar);
 $buscar=strtoupper($buscar);
 $periodo=$_POST['periodoA'];
+$criterioS=$_POST['criterioS'];
 
 session_start();
 conectar();
 $result;
 
 $patron = '/^[[:digit:]]+$/';
-
+$total;
 
 	//if($buscar[0]=="S" ){
 	if($buscar[0]=="S" && (preg_match($patron, $buscar[1]) || preg_match($patron, $buscar[2]) )  ){
 			
 		if (empty($periodo)) {
 			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' ;") or die(mysql_error());	
+			$total=mysql_num_rows($result);
 		} else {
 			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND MatriculaAlu LIKE '%$buscar%' AND PeriodoAlu='$periodo' ;") or die(mysql_error());	
+			$total=mysql_num_rows($result);
 		}	
 	    
 	}else{
 		
 		if (empty($periodo)) {
 			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%'  ;") or die(mysql_error());	
+			$total=mysql_num_rows($result);
 		} else {
 			$result=mysql_query("SELECT MatriculaAlu,NombreAlu,CarreraAlu,CriterioAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND NombreAlu LIKE '%$buscar%' AND PeriodoAlu='$periodo' ;") or die(mysql_error());	
+			$total=mysql_num_rows($result);
 		}
 	    
 	}
 
+$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='$criterioS' ; ") or die(mysql_error());
 
-$result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio='meifv1' ; ") or die(mysql_error());
-
+$texto;
 if($carrera=='lsca'){
-    echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';
+    $texto= "<p class='verde'><strong>Sistemas Computacionales Administrativos</strong> - $periodo ($total)</p>";
 }elseif($carrera=='lc'){
-    echo '<p><strong>Cantaduría</strong></p>';
+    $texto= "<p class='verde'><strong>Contaduría</strong> - $periodo ($total)</p>";
 }elseif($carrera=='la'){
-    echo '<p><strong>Administración</strong></p>';
+    $texto= "<p class='verde'><strong>Administración</strong> - $periodo ($total)</p>";
 }elseif($carrera=='lg'){
-    echo '<p><strong>Gestion de Negocios</strong></p>';
+    $texto= "<p class='verde'><strong>Gestion de Negocios</strong> - $periodo ($total)</p>";
 }
+
+echo "$texto";
 
 ?>
 
 <p>Usted busco: <strong><?echo $buscar;?></strong></p>
 
 <? if($_SESSION['nivel']=='admin'){ ?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>','../ss-evaluacion/buscar.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','../ss-evaluacion/buscar.php');">
 <?}elseif($_SESSION['nivel']=='evaluador'){?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>','buscar.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','buscar.php');">
 <? } ?>
     <input type="text" name="patron" id="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <input type="submit" value="Buscar"  />
@@ -87,7 +94,7 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
     <td><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo utf8_encode($rows['CriterioAlu']); ?>,<? echo $carrera;?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 <? $total=0; for($i=0;$i<$j;$i++){ ?>
-    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
+    <td title="<? //echo $evaluar->hayComentario(); ?>" ><? $calfif=$evaluar->mostrarCalif($i+1,$periodo); if($calfif==-1) { echo "-"; }else{ $total+=$calfif; echo $calfif; }?></td>
 <? }?>
     <td><strong><? echo $total;?></strong></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
@@ -96,4 +103,4 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),utf8_encode($rows['Crite
   </tr>
 <? }?>
 </table>
-
+<? desconectar(); ?>

@@ -22,6 +22,16 @@ class Conexion {
         public function consultaSql($sql){
                 return $result = mysql_query($sql,$this->connection) or die(mysql_error());
         }
+		
+		public function desconectar($cs){
+				
+				if(empty($this->connection)){
+					mysql_close($cs);
+				}else{
+					mysql_close($this->connection);	
+				}
+        		
+        }
 
 }
 ?>

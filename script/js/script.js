@@ -252,10 +252,14 @@ function crearContenidosArreglo(nombres,valores,pagina){
         ajax=objetoAjax();
         ajax.open('POST',pagina,true);
         ajax.onreadystatechange=function() {
+		if (ajax.readyState==1) {
+			result = "Cargando...";
+			document.getElementById('contenido').innerHTML=result;
+		}
+
 		if (ajax.readyState==4) {
-				
-				result = ajax.responseText;
-				document.getElementById('contenido').innerHTML=result;
+			result = ajax.responseText;
+			document.getElementById('contenido').innerHTML=result;
 		}
 	  }
 	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -334,6 +338,11 @@ function crearContenidos(nombre,valor,pagina){
         ajax=objetoAjax();
         ajax.open('POST',pagina,true);
         ajax.onreadystatechange=function() {
+        if (ajax.readyState==1) {
+			result = "Cargando...";
+			document.getElementById('contenido').innerHTML=result;
+		}
+
 		if (ajax.readyState==4) {
 				
 				result = ajax.responseText;

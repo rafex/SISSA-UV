@@ -1,7 +1,7 @@
  /*Aquí vamos a definir las propiedades de la página en general, más adelante definiremos las de las cajas principales*/
        /*formatos de párrafo, linea de separacion, encabezados 1 al 6, tablas, vínculos (en sus 4 estados) y body respectivamente*/
 body {
-	font:11px Verdana, Arial, Helvetica, sans-serif;
+	font:11.5px Verdana, Arial, Helvetica, sans-serif;
 	background-color:#FFF;
 /*	text-align : justify;*/
 	line-height: 10px;
@@ -372,6 +372,7 @@ td {
 
 .ancho1 {
  width:170px;
+ text-align:center;
 
 }
 
@@ -509,7 +510,17 @@ tbody tr:hover { background:#99BCBF;
 	color: #00ab4f;
 }
 
+.verde{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 16px;
+	color: #00ab4f;
+}
 
+.azul{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	color:#005baa;
+	font-size: 16px;
+}
 
 
 

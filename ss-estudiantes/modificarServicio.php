@@ -8,18 +8,6 @@ $query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LI
 $result=mysql_query($query) or die(mysql_error());
 
 while($rows=mysql_fetch_array($result)){
-	
-/*$empresa=$rows['Empresa'];
-$query2="SELECT NombreEmp FROM empresa_ss_fca WHERE IdEmp = '$empresa' LIMIT 1";
-$result2=mysql_query($query2) or die(mysql_error());
-$rows2=mysql_fetch_array($result2);
-$empresa=$rows2['NombreEmp'];
-
-$jefe=$rows['JefeDirectoHist'];
-$query3="SELECT NombreEnc FROM encargado_ss_fca WHERE IdEnc LIKE '%$jefe%' LIMIT 1";
-$result3=mysql_query($query3) or die(mysql_error());
-$rows3=mysql_fetch_array($result3);
-$jefe=$rows3['NombreEnc']; */
 
 ?>
 <div id="datos">
@@ -29,8 +17,6 @@ $jefe=$rows3['NombreEnc']; */
 <input type="hidden" id="IdEnc" value="<?echo $rows['JefeDirectoHist'];?>" />
 <p>
 <strong>Nombre del programa:</strong><input type="text" id="NombrePrograma" size="35" value="<?echo strtoupper($rows['NombrePrograma']);?>" />	
-<!--br /><br />
-<strong>Empresa:</strong><input type="text" id="Empresa" size="35"  value="<?echo strtoupper($empresa);?>" -->
 <br /><br />
 <strong>Objetivo programa:</strong><input type="text" id="ObjetivoPrograma" size="35"  value="<?echo strtoupper($rows['ObjetivoPrograma']); ?>" /> 
 <br /><br />
@@ -47,9 +33,6 @@ $jefe=$rows3['NombreEnc']; */
 			
 		
 	</select>
-
-<!--br /><br />
-<strong>Jefe directo:</strong><input type="text" id="JefeDirectoHist" size="35"  value="<?echo utf8_decode(strtoupper($jefe)); ?>" --> 
 <br /><br />
 <strong>Area de trabajo:</strong><input type="text" id="AreaHist" size="35"  value="<?echo strtoupper($rows['AreaHist']); ?>" />
 </p>

@@ -9,13 +9,13 @@ $sql2="SELECT DISTINCT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDE
 $result2=mysql_query($sql2) or die(mysql_error());
 
 if($carrera=='lsca'){
-    echo '<p><strong>Sistemas Computacionales Administrativos</strong></p>';
+    echo '<p class="verde"><strong>Sistemas Computacionales Administrativos</strong></p>';
 }elseif($carrera=='lc'){
-    echo '<p><strong>Contaduría</strong></p>';
+    echo '<p class="verde"><strong>Contaduría</strong></p>';
 }elseif($carrera=='la'){
-    echo '<p><strong>Administración</strong></p>';
+    echo '<p class="verde"><strong>Administración</strong></p>';
 }elseif($carrera=='lg'){
-    echo '<p><strong>Gestion de Negocios</strong></p>';
+    echo '<p class="verde"><strong>Gestion de Negocios</strong></p>';
 }
 
 ?>
@@ -49,7 +49,9 @@ if($carrera=='lsca'){
 	
 	<option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
 	
-	<?	}	?>
+	<?	}	
+		
+	?>
 </select>
 <br>
 <input type="submit" value="Seleccionar">

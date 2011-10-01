@@ -7,6 +7,7 @@ $matricula=trim($_POST['matricula']);
 $todo=$_POST['todo'];
 
 if($todo){
+	/*
 	$query="SELECT CriterioAlu FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
 	$result=mysql_query($query) or die(mysql_error());
 	$rows=mysql_fetch_array($result);
@@ -15,7 +16,7 @@ if($todo){
 	if(!(empty($criterio))){
 		$query="DELETE FROM `evaluacion_$criterio` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
 		$result=mysql_query($query) or die(mysql_error());	
-	}
+	}*/
 }
 
 
@@ -44,8 +45,8 @@ if(!(empty($empresa)) && !(empty($jefe)) ){
 	$result=mysql_query($query) or die(mysql_error());
 }
 
-$query="DELETE FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
-$result=mysql_query($query) or die(mysql_error());
+/*$query="DELETE FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$result=mysql_query($query) or die(mysql_error());*/
 
 
 

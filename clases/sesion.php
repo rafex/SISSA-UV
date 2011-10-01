@@ -52,6 +52,7 @@ class Sesion extends Conexion {
 		$_SESSION['activa']=false;
         session_unset();
         session_destroy();
+		$this->desconectar();
     }
 
 

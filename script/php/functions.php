@@ -1,5 +1,6 @@
 <?
     @ include_once '../clases/conectar.php';
+	
 
         function sin_acentos_espacios($text){
             $text=elimina_acentos($text);
@@ -96,12 +97,19 @@
         }
         
         function conectar(){
-            $db= new Conexion();
-            $db->getConexion();
+            global $db;
+			global $link;
+			$db = new Conexion();
+			$link=$db->getConexion();
+        }
+		
+		function desconectar(){
+            //$db= new Conexion();
+            $db->desconectar($link);
         }
         
         function sql($sql){
-            $db=new Conexion();
+         	//$db= new Conexion();
             return $db->consultaSql($sql);
         }
        

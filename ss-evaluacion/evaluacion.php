@@ -7,7 +7,7 @@ $criterio=$_POST['criterio'];
 $valores=$_POST['formulario'];
 $carrera=$_POST['carrera'];
 $periodoX=$_POST['periodoA'];
-
+$c=$carrera;
 $evaluar=new Evaluar($matricula,$criterio);
 
 $evaluar->inicia($periodoX);
@@ -25,6 +25,12 @@ if($carrera=='lsca'){
 $evaluar->guardarCalf($valores,$periodoX);
 $total=0;// el total de la calificacion
 ?>
+
+<? if($_SESSION['nivel']=='admin'){ ?>
+<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $c;?>,<?echo $periodoX;?>,<?echo $criterio;?>','../ss-evaluacion/listaalumnos.php');" ><p class="verde">[ Lista ]</p></a>
+<?}elseif($_SESSION['nivel']=='evaluador'){?>
+<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $c;?>,<?echo $periodoX;?>,<?echo $criterio;?>','listaalumnos.php');" ><p class="verde">[ Lista ]</p></a>
+<? } ?>
 
 <p>Matricula:<strong><? echo $matricula; ?></strong> Carrera: <?echo $carrera;?></p>
 
@@ -57,3 +63,4 @@ $total=0;// el total de la calificacion
 <input value="Guardar calificación" tabindex="<? echo ($i+2); ?>" type="submit" />
 
 </form>
+<?desconectar();?>
