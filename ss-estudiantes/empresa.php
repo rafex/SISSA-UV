@@ -14,7 +14,7 @@ $query="SELECT * FROM empresa_ss_fca WHERE IdEmp = '$empresa' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
 	if($hayAlgo<=0){?>
-		<p class="verde">Primero cargue sus datos de servicio social <a href="#" class="azul" onclick="javascript:cargarContenido('servicio.php');">aquí.</a></p>
+		<p class="verde">Primero cargue sus datos de servicio social <a href="#" class="azul" onclick="javascript:cargarContenido('cargarServicio.php');">aquí.</a></p>
 <?
 	}else{
 
@@ -54,7 +54,7 @@ $result=mysql_query($query) or die(mysql_error());
 		<input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificandoEmpresa.php');" />
 		</div>
 		<?	}else{	?>
-			<input type="button" value="Cargar datos" onclick="javascript:cargarContenido('cargarEmpresa.php');" />
+			<input type="button" value="Cargar datos de la empresa" onclick="javascript:cargarContenido('cargarEmpresa.php');" />
 <?			} // if para guardar datos
 	
 	}

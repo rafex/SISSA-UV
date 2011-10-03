@@ -1,6 +1,6 @@
 <?
 include_once '../script/php/functions.php';
-session_start();
+
 conectar();
 
 

@@ -1,0 +1,29 @@
+#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#EAEAEA; text-align:center; }
+
+#demoDer { float:right; position:relative; }
+
+#lista
+{
+	font-size: 13px;
+	
+	position:absolute;
+	width:300px;
+	background-color:#7899f4; color:#000000;
+	border:1px dotted; border-color:#000000;
+	z-index:1;
+	top:25px;
+	left:76px;
+	display:none;
+	
+}
+
+.resaltado
+{
+	background-color:#FFFFFF; color:#000000;
+	cursor:pointer;
+}
+
+.normal
+{
+	background-color:#EAEAEA; color:#000000;
+}

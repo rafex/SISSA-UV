@@ -3,7 +3,7 @@ include_once '../script/php/functions.php';
 session_start();
 
 conectar();
-$matricula=$_SESSION['matricula'];
+$matricula=$_POST['matricula'];
 $query="SELECT empresa FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 $rows=mysql_fetch_array($result);
@@ -21,7 +21,6 @@ while($rows=mysql_fetch_array($result)){
 <div id="datos">
 
 <h3>Datos de la empresa</h3>
-
 <input type="hidden" id="IdEmp" value="<?echo $empresa; ?>" />
 <p>
 <strong>Nombre:</strong> <input type="text" id="NombreEmp" size="40" value="<? echo strtoupper($rows['NombreEmp']); ?>" />
@@ -70,7 +69,8 @@ while($rows=mysql_fetch_array($result)){
 <strong> Municipio:</strong> <input type="text" id="MunicipioEmp" size="10" value="<?echo strtoupper($rows['MunicipioEmp']); ?>" />
 <strong> Localidad:</strong> <input type="text" id="LocalidadEmp" size="10" value="<?echo strtoupper($rows['LocalidadEmp']); ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('empresa.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','Datos empresa modificados exitosamente.','index.php');" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos de la empresa modificados del alumno: <?php echo $matricula; ?>')" />
+
 </div>
 <?	}	?>

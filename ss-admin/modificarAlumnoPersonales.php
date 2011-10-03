@@ -3,7 +3,8 @@ include_once '../script/php/functions.php';
 session_start();
 
 conectar();
-$matricula=$_SESSION['matricula'];
+$matricula=$_POST['matricula'];
+$carrera=$_POST['carrera'];
 $query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
@@ -15,7 +16,7 @@ while($rows=mysql_fetch_array($result)){
 ?>
 <div id="datos">
 <h3>Datos del alumno</h3>
-
+<input type="hidden" id="matricula" value="<?php echo $matricula;?>" /> 
 <p> 
 <strong>Nombre:</strong><input type="text" id="NombreAlu" size="30"  value="<?echo strtoupper($rows['nombrealu']);?>" />
 
@@ -87,7 +88,8 @@ $result22=mysql_query($sql22) or die(mysql_error());
 <br /><br />
 <strong> Direccion:</strong><input type="text" id="direcciontutor" size="40" value="<?echo $rows['direcciontutor']; ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('personales.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarPersonal.php','NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','Datos modificados correctamente','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoPersonales.php','matricula,NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos del alumno (<?php echo $matricula; ?>)  modificados con exito.')" />
+
 </div>
 <?	}	?>

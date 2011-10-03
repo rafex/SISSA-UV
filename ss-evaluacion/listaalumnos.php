@@ -12,10 +12,11 @@ include_once '../clases/evaluar.php';
 session_start();
 conectar();
 
+$nletra;
 $total=$_POST['totalF'];
 if(!empty($letra)){
 	$result=mysql_query("SELECT MatriculaAlu,NombreAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' AND NombreAlu LIKE '$letra%' ORDER BY NombreAlu   ") or die(mysql_error());
-	
+	$nletra=mysql_num_rows($result);
 }elseif(!empty($numero)){
 	$sql="SELECT MatriculaAlu,NombreAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' ORDER BY NombreAlu LIMIT $numero,10";
 	$result=mysql_query($sql) or die(mysql_error());
@@ -34,15 +35,21 @@ $result2=mysql_query("SELECT evaluar FROM criterios_ss_fca WHERE nombreCriterio=
 
 
 
-$texto;
+$texto; $cantidad;
+if(empty($nletra)){
+	$cantidad=$total;
+}else{
+	$cantidad=$nletra;
+}
 if($carrera=='lsca'){
-    $texto= "<p class='verde'><strong>Sistemas Computacionales Administrativos</strong> - $periodo ($total)</p>";
+	
+    $texto= "<p class='verde'><strong>Sistemas Computacionales Administrativos</strong> - $periodo ($cantidad)</p>";
 }elseif($carrera=='lc'){
-    $texto= "<p class='verde'><strong>Contaduría</strong> - $periodo ($total)</p>";
+    $texto= "<p class='verde'><strong>Contaduría</strong> - $periodo ($cantidad)</p>";
 }elseif($carrera=='la'){
-    $texto= "<p class='verde'><strong>Administración</strong> - $periodo ($total)</p>";
+    $texto= "<p class='verde'><strong>Administración</strong> - $periodo ($cantidad)</p>";
 }elseif($carrera=='lg'){
-    $texto= "<p class='verde'><strong>Gestion de Negocios</strong> - $periodo ($total)</p>";
+    $texto= "<p class='verde'><strong>Gestion de Negocios</strong> - $periodo ($cantidad)</p>";
 }
 
 echo "$texto";
@@ -73,18 +80,24 @@ echo "$texto";
 	}
 	$rangos=0;
 	echo "<p style='text-align:center;' >";
-	$selecFormat="";
+	
+	
 	for($in=1;$in<=$tope;$in++){
-			
+		$selecFormat="";
+		$guion="";		
 		if($opcionElegidaN==$in){
 			$selecFormat="style=\" color: #00ab4f; \"";
 			
-		}else{ $selecFormat=" "; }
+		}
+		
+		if($in!=$tope){
+			$guion="-";
+		}
 		
 		if($_SESSION['nivel']=='admin'){ 
-			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','../ss-evaluacion/listaalumnos.php');\" >".$in."</a> ";
+			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','../ss-evaluacion/listaalumnos.php');\" >".$in."</a> $guion ";
 		}elseif($_SESSION['nivel']=='evaluador'){
-			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','listaalumnos.php');\" >".$in."</a> ";
+			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','listaalumnos.php');\" >".$in."</a> $guion ";
  		}
  	
 		 

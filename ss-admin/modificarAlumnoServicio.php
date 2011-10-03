@@ -1,9 +1,9 @@
 <? 
 include_once '../script/php/functions.php';
-session_start();
+
 
 conectar();
-$matricula=$_SESSION['matricula'];
+$matricula=$_POST['matricula'];
 $query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
@@ -11,7 +11,7 @@ while($rows=mysql_fetch_array($result)){
 
 ?>
 <div id="datos">
-
+<input type="hidden" id="matricula" value="<?php echo $matricula;?>" />
 <h3>Datos del servicio social</h3>
 <input type="hidden" id="IdEmp" value="<?echo $rows['Empresa'];?>" />
 <input type="hidden" id="IdEnc" value="<?echo $rows['JefeDirectoHist'];?>" />
@@ -36,7 +36,8 @@ while($rows=mysql_fetch_array($result)){
 <br /><br />
 <strong>Area de trabajo:</strong><input type="text" id="AreaHist" size="35"  value="<?echo strtoupper($rows['AreaHist']); ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('servicio.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarServicio.php','NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','Datos del servicio modificados exitosamente.','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoServicio.php','matricula,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos del Servicio modificados del alumno: <?php echo $matricula; ?>')" />
+
 </div>
 <?	}	?>

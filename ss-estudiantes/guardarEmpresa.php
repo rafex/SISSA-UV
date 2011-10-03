@@ -2,7 +2,7 @@
 include_once '../script/php/functions.php';
 session_start();
 conectar();
-$matricula=$_SESSION['matricula'];
+
 
 foreach($_POST as $nombre_campo => $valor){
    $valor=trim($valor);

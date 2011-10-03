@@ -25,6 +25,8 @@
 <link href="../images/logouv.ico" rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/dialog_box.css" />
+<link rel="stylesheet" type="text/css" href="../index.css">
+<script type="text/javascript" src="../script/js/index.js"></script>
 <script type="text/javascript" src="../script/js/script.js"></script>
 <script type="text/javascript" src="../script/js/togglemenu.js"></script>
 <script type="text/javascript" src="../script/js/jquery-1.6.1.min.js" ></script>

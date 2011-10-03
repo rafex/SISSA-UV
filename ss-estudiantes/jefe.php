@@ -14,7 +14,7 @@ $query="SELECT * FROM encargado_ss_fca WHERE IdEnc = '$jefe' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
 	if($hayAlgo<=0){?>
-		<p class="verde">Primero cargue sus datos de servicio social <a href="#" class="azul" onclick="javascript:cargarContenido('servicio.php');">aquí.</a></p>
+		<p class="verde">Primero cargue sus datos de servicio social <a href="#" class="azul" onclick="javascript:cargarContenido('cargarServicio.php');">aquí.</a></p>
 <?
 	}else{
 
@@ -28,9 +28,9 @@ $result=mysql_query($query) or die(mysql_error());
 		<h3>Datos del jefe directo</h3>
 		
 		<p>
-		<strong>Nombre:</strong> <?echo strtoupper($rows['NombreEnc']);?>p	
+		<strong>Nombre:</strong> <?echo strtoupper($rows['NombreEnc']);?>
 		<br /><br />
-		<strong>Puesto:</strong> <?echo strtoupper($rows['PuestoEnc']);?>p
+		<strong>Puesto:</strong> <?echo strtoupper($rows['PuestoEnc']);?>
 		<br /><br />
 		<strong>Correo electrónico:</strong> <?echo $rows['EmailEnc']; ?> 
 		
@@ -38,7 +38,7 @@ $result=mysql_query($query) or die(mysql_error());
 		<input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificarJefe.php');" />
 		</div>
 		<?	}else{	?>
-			<input type="button" value="Cargar datos" onclick="javascript:cargarContenido('cargarJefe.php');" />
+			<input type="button" value="Cargar datos del jefe directo" onclick="javascript:cargarContenido('cargarJefe.php');" />
 <?			} // if para guardar datos
 	
 	}

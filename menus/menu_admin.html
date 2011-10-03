@@ -7,7 +7,7 @@
                         <li><a href="#" onclick="javascript:crearContenidos('carrera','lc','../ss-evaluacion/seleccion.php');">Contaduría</a></li>
                         <li><a href="#" onclick="javascript:crearContenidos('carrera','lg','../ss-evaluacion/seleccion.php');">Gestión</a></li>
                         <li><a href="#" onclick="javascript:crearContenidos('carrera','lsca','../ss-evaluacion/seleccion.php');">Sistemas</a></li>                        
-                        <li><a href="#" onclick="javascript:cargarContenido('../ss-evaluacion/buscandoAlumnos.php');">Buscar</a></li>
+                        <li><a href="#" onclick="javascript:cargarContenido('../ss-evaluacion/buscandoAlumnos.php');">Filtro</a></li>
                     </ul>
                 </li>
                 
@@ -20,9 +20,17 @@
                 
                 <li><a href="#">Alumnos</a>
                     <ul>
-                    	<li><a href="#" onclick="cargarContenido('listaAlu.php');">Lista</a></li>
+                    	<li><a href="#">Lista</a>
+                    		<ul>
+                    			<li><a href="#" onclick="javascript:crearContenidos('carrera','la','seleccion.php');">L.A.</a></li>
+                        		<li><a href="#" onclick="javascript:crearContenidos('carrera','lc','seleccion.php');">L.C.</a></li>
+		                        <li><a href="#" onclick="javascript:crearContenidos('carrera','lg','seleccion.php');">L.G</a></li>
+		                        <li><a href="#" onclick="javascript:crearContenidos('carrera','lsca','seleccion.php');">L.S.C.A.</a></li>
+                    		</ul>
+                    		
+                    	</li>
                         <li><a href="#" onclick="cargarContenido('passAlu.php');">Contraseña</a></li>
-                        <li><a href="#" onclick="cargarContenido('limpiarAlu.php');">Lista</a></li>                        
+                        <li><a href="#" onclick="cargarContenido('limpiarAlu.php');">Limpiar</a></li>                        
                     </ul>
                 </li>
                 

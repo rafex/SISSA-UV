@@ -1,9 +1,7 @@
 <? 
 include_once '../script/php/functions.php';
-session_start();
-
 conectar();
-$matricula=$_SESSION['matricula'];
+$matricula=$_POST['matricula'];
 $query="SELECT jefedirectohist FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 $rows=mysql_fetch_array($result);
@@ -29,7 +27,8 @@ while($rows=mysql_fetch_array($result)){
 <strong>Correo electrónico:</strong> <input type="text" id="EmailEnc" size="40" value="<?echo $rows['EmailEnc']; ?>" /> 
 
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('jefe.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarJefe.php','IdEnc,NombreEnc,PuestoEnc,EmailEnc','Datos del jefe modificados exitosamente.','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoJefe.php','IdEnc,NombreEnc,PuestoEnc,EmailEnc','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos del jefe directo modificados del alumno: <?php echo $matricula; ?>')" />
+
 </div>
 <?	}	?>

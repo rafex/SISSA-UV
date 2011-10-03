@@ -24,7 +24,9 @@ function realizarOperacionConMensajeAccion(pagina,variable,mensaje,destino){
 				
 				result = ajax.responseText;
 				document.getElementById(variable).value="";
-				alert(mensaje);
+				if(!(mensaje=="") || !(mensaje==" ") || !(mensaje.length==0) ){
+					alert(mensaje);
+				}
 				location.href = destino;
 														
 				//document.getElementById('contenido').innerHTML=result;
@@ -50,7 +52,9 @@ function realizarOperacionConMensajeAccion2(pagina,variables,mensaje,destino){
 				
 				result = ajax.responseText;
 				//document.getElementById(variable).value="";
-				alert(mensaje);
+				if(!(mensaje=="") || !(mensaje==" ") || !(mensaje.length==0) ){
+					alert(mensaje);
+				}
 				location.href = destino;
 														
 				//document.getElementById('contenido').innerHTML=result;
@@ -64,6 +68,126 @@ function realizarOperacionConMensajeAccion2(pagina,variables,mensaje,destino){
       }
 	  ajax.send('&'+enviar);
 }
+
+function crearContenidosConMensaje(pagina,variables,mensaje,destino){ 
+    
+    var noms=variables.split(",");
+    var vals=new Array();
+    for(var i=0;i<noms.length;i++){
+    	vals[i]=document.getElementById(noms[i]).value;
+    }
+    
+    
+    ajax= objetoAjax();
+	  ajax.open('POST', pagina,true);
+	  ajax.onreadystatechange=function() {
+		if (ajax.readyState==1) {
+			result = "Cargando...";
+			document.getElementById(destino).innerHTML=result;
+		}
+
+		if (ajax.readyState==4) {
+			result = ajax.responseText;
+			if(!(mensaje=="") || !(mensaje==" ") || !(mensaje.length==0) ){
+				alert(mensaje);
+			}
+			document.getElementById(destino).innerHTML=result;
+		}		
+		
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  var enviar="";
+    for(var i=0;i<noms.length;i++){
+      enviar+=noms[i]+"=";
+      enviar+=vals[i]+"&";  
+    }
+	  ajax.send('&'+enviar);
+}
+
+function crearContenidosArregloConMensaje(pagina,nombres,valores,mensaje,destino){
+	var noms=new Array();
+    var vals=new Array();
+    
+	if(!(valores=="") && !(valores==" ") && !(valores.length==0) && !(valores==null) && !(valores=='vacio') ){
+    	var noms=nombres.split(",");
+        var vals=valores.split(",");
+    }else{
+    	var noms=nombres.split(",");
+        
+        for(var i=0;i<noms.length;i++){
+        	vals[i]=document.getElementById(noms[i]).value;
+        }
+    }
+    
+    ajax=objetoAjax();
+    ajax.open('POST',pagina,true);
+    ajax.onreadystatechange=function() {
+	if (ajax.readyState==1) {
+		result = "Cargando...";
+		document.getElementById(destino).innerHTML=result;
+	}
+
+	if (ajax.readyState==4) {
+		result = ajax.responseText;
+		if(!(mensaje=="") && !(mensaje==" ") && !(mensaje.length==0) && !(mensaje==null) && !(mensaje=='vacio') ){
+			alert(mensaje);
+		}
+		document.getElementById(destino).innerHTML=result;
+	}
+  }
+  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+  var enviar="";
+  for(var i=0;i<noms.length;i++){
+    enviar+=noms[i]+"=";
+    enviar+=vals[i]+"&";  
+  }
+  ajax.send('&'+enviar);
+    
+    
+}
+
+function crearContenidosArregloConMensaje2(paginaEnviaDatos,nombres,valores,destino,pagina2,nombres2,valores2,mensajeInicial,mensajeFinal) {
+    var noms=new Array();
+    var vals=new Array();
+    
+	if(!(valores=="") && !(valores==" ") && !(valores.length==0) && !(valores==null) && !(valores=='vacio') ){
+    	var noms=nombres.split(",");
+        var vals=valores.split(",");
+    }else{
+    	var noms=nombres.split(",");
+        
+        for(var i=0;i<noms.length;i++){
+        	vals[i]=document.getElementById(noms[i]).value;
+        }
+    }
+	
+	
+    ajax=objetoAjax();
+    ajax.open('POST',paginaEnviaDatos,true);
+    ajax.onreadystatechange=function() {
+	if (ajax.readyState==1) {
+		result = mensajeInicial;
+		document.getElementById(destino).innerHTML=result;
+	}
+
+	if (ajax.readyState==4) {
+		crearContenidosArregloConMensaje(pagina2,nombres2,valores2,mensajeFinal,destino)
+		
+	}
+  }
+  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+  var enviar="";
+  for(var i=0;i<noms.length;i++){
+    enviar+=noms[i]+"=";
+    enviar+=vals[i]+"&";  
+  }
+  ajax.send('&'+enviar);
+  
+  
+    
+}
+
+
 
 function metodoAgil2(pagina,nombres,valores,mensaje,pagina2){ 
       

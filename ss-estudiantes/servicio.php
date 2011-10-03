@@ -31,5 +31,5 @@ $result=mysql_query($query) or die(mysql_error());
 	</div>
 	<?	}else{	?>
 		
-		<input type="button" value="Cargar datos" onclick="javascript:cargarContenido('cargarServicio.php');" />
+		<input type="button" value="Cargar datos del servicio social" onclick="javascript:cargarContenido('cargarServicio.php');" />
 	<? } ?>
