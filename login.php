@@ -6,15 +6,20 @@ $usr=strtolower($_POST['usuario']);
 $pw=$_POST['contrasenia'];
 $c=$_GET['cerrar'];
 $sesion= new Sesion();
+
 if($usr[0]=='z')
 {
 	conectar();
 	$matricula=substr($usr,1);
 	$periodo;
+	$hayDatos=false;
         $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula';";
         $result=mysql_query($query) or die(mysql_error());
         $hayDatos=mysql_num_rows($result);
         if($hayDatos<=0){
+        	$hayDatos=true;
+        }
+        if($hayDatos){
         	$query="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula';";
         	$result=mysql_query($query) or die(mysql_error());
         	$rows=mysql_fetch_array($result);
