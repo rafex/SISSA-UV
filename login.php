@@ -13,13 +13,21 @@ if($usr[0]=='z')
 	$periodo;
         $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula';";
         $result=mysql_query($query) or die(mysql_error());
-        
-        while ($rows=mysql_fetch_array($result))
-        {
-        	$calif=$rows['EvaluacionHist'];
-        	if(empty($calif)){
-        		$periodo=$rows['periodoalu'];
-        	}
+        $hayDatos=mysql_num_rows($result);
+        if($hayDatos<=0){
+        	$query="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula';";
+        	$result=mysql_query($query) or die(mysql_error());
+        	$rows=mysql_fetch_array($result);
+        	$periodo=$rows['periodoalu'];
+        	
+        }else{
+        	while ($rows=mysql_fetch_array($result))
+        	{
+	        	$calif=$rows['EvaluacionHist'];
+	        	if(empty($calif)){
+	        		$periodo=$rows['periodoalu'];
+	        	}
+	        }
         }
       
 	$sql="select nombrealu,passalu from alumno_ss_fca where matriculaalu='$matricula' and periodoalu='$periodo' limit 1; ";

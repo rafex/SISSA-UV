@@ -4,8 +4,15 @@ session_start();
 
 conectar();
 $matricula=$_SESSION['matricula'];
-$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
+$periodo=$_SESSION['periodo'];
+$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
+
+$hayDatos=mysql_num_rows($result);
+if($hayDatos<=0){
+	$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu FROM alumno_ss_fca WHERE alumno_ss_fca.matriculaalu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
+	$result=mysql_query($query) or die(mysql_error());
+}
 
 
 while($rows=mysql_fetch_array($result)){

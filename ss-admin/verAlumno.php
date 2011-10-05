@@ -6,6 +6,13 @@ $matricula=$_POST['matricula'];
 $periodo=$_POST['periodo'];
 $query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
+$hayDatos=mysql_num_rows($result);
+if($hayDatos<=0){
+	$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu FROM alumno_ss_fca WHERE alumno_ss_fca.matriculaalu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
+	$result=mysql_query($query) or die(mysql_error());
+}
+
+
 ?>
 <div id="datos">
 <?	
@@ -71,7 +78,33 @@ if($genero=='m'){
 </p>
 <input name="modificar" id="modificar" type="button" value="Modificar datos personales" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoPersonales.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 
-<?	} // primer if alumno	
+<?	}/*else{
+	
+		$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu FROM alumno_ss_fca WHERE alumno_ss_fca.matriculaalu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
+		$result=mysql_query($query) or die(mysql_error());
+
+		if($rows=mysql_fetch_array($result)){
+?>
+		
+		<h3>Datos del alumno</h3>
+		<p>
+		<strong>Nombre:</strong> <?echo $rows['nombrealu'];?>
+		<strong> Matricula:</strong> <?echo strtoupper($matricula);?>
+		<br /><br />
+		<strong>Carrera:</strong> <?echo $carrera2;?> 
+		<strong> Sección:</strong> <?echo $rows['seccionalu']; ?> 
+		<strong> Periodo:</strong> <?echo $rows['periodoalu']; ?> 
+		<br /><br />
+		<strong>Corre electronico:</strong> <?echo $rows['emailalu']; ?> 
+		<strong> Teléfono:</strong> <?echo $rows['telefonoalu']; ?>
+		<br /><br />
+	
+<?	
+		}	
+	}*/
+
+
+	
 
 $query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());

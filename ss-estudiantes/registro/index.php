@@ -100,7 +100,7 @@ action="">
 		<?
 include_once 'scripts/functions.php';
 conectar();
-$sql="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
+$sql="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca` where activo='1'";
 $result=mysql_query($sql) or die(mysql_error());
 ?>
 		
