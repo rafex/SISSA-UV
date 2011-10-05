@@ -1,10 +1,10 @@
 <? 
 include_once '../script/php/functions.php';
 session_start();
-$carrera=$_POST['carrera'];
 conectar();
 $matricula=$_POST['matricula'];
-$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
+$periodo=$_POST['periodo'];
+$query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' AND alumno_ss_fca.periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 ?>
 <div id="datos">
@@ -30,6 +30,7 @@ if($genero=='m'){
 	$genero="Femenino";
 }
 ?>
+
 
 <h3>Datos del alumno</h3>
 <p>
@@ -68,16 +69,18 @@ if($genero=='m'){
 <br /><br />
 <strong> Direccion:</strong> <?echo $rows['direcciontutor']; ?>
 </p>
-<input name="modificar" id="modificar" type="button" value="Modificar datos personales" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoPersonales.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera; ?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Modificar datos personales" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoPersonales.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 
 <?	} // primer if alumno	
 
-$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
 
+
 	if($rows=mysql_fetch_array($result)){
-		
+		$empresa=$rows['Empresa'];
+		$jefe=$rows['JefeDirectoHist'];
 	
 	?>
 	
@@ -95,19 +98,25 @@ $result=mysql_query($query) or die(mysql_error());
 	<br /><br />
 	<strong>Area de trabajo:</strong> <?echo strtoupper($rows['AreaHist']); ?>
 	</p>
-	<input name="modificar" id="modificar" type="button" value="Modificar datos servicio social" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoServicio.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera; ?>','','contenido');" />
+	<input name="modificar" id="modificar" type="button" value="Modificar datos servicio social" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoServicio.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 	
-	<? } 
+	<? }else{	?>
+		<br /><br />
+		<input type="button" value="Cargar datos del servicio social" onclick="javascript:crearContenidosArregloConMensaje('nuevoAlumnoServicio.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
+	<?	} 
 	
-	$query="SELECT empresa FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+	/*$query="SELECT empresa FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND periodoalu='$periodo' LIMIT 1";
 	$result=mysql_query($query) or die(mysql_error());
 	$hayAlgo=mysql_num_rows($result);
 	$rows=mysql_fetch_array($result);
-	$empresa=$rows['empresa'];
-
-	$query="SELECT * FROM empresa_ss_fca WHERE IdEmp = '$empresa' LIMIT 1";
-	$result=mysql_query($query) or die(mysql_error());
-
+	$empresa=$rows['empresa'];*/
+	$hayAlgo=0;
+	if(!empty($empresa) || $empresa==0){
+		$hayAlgo=1;
+		$query="SELECT * FROM empresa_ss_fca WHERE IdEmp = '$empresa' LIMIT 1";
+		$result=mysql_query($query) or die(mysql_error());
+	}
+		
 	if($hayAlgo<=0){?>
 		<p class="verde">Para mostrar los datos de la empresa necesita cargar primero cargar con los datos de servicio social.</p>
 <?
@@ -146,24 +155,27 @@ $result=mysql_query($query) or die(mysql_error());
 		<strong> Localidad:</strong> <?echo strtoupper($rows['LocalidadEmp']); ?>
 		</p>
 		
-		<input name="modificar" id="modificar" type="button" value="Modificar datos de la empresa" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoEmpresa.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera; ?>','','contenido');" />
+		<input name="modificar" id="modificar" type="button" value="Modificar datos de la empresa" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoEmpresa.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 		</div>
 		<?	}else{	?>
 			<br /><br />
-			<input type="button" value="Cargar datos de la empresa" onclick="javascript:cargarContenido('cargarEmpresa.php');" />
+			<input type="button" value="Cargar datos de la empresa" onclick="javascript:crearContenidosArregloConMensaje('nuevoAlumnoEmpresa.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 <?			} // if para guardar datos
 	
 	}
 	
-	$query="SELECT jefedirectohist FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+	/*$query="SELECT jefedirectohist FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND periodoalu='$periodo' LIMIT 1";
 	$result=mysql_query($query) or die(mysql_error());
 	$hayAlgo=mysql_num_rows($result);
 	$rows=mysql_fetch_array($result);
-	$jefe=$rows['jefedirectohist'];
-	
-	$query="SELECT * FROM encargado_ss_fca WHERE IdEnc = '$jefe' LIMIT 1";
-	$result=mysql_query($query) or die(mysql_error());
-
+	$jefe=$rows['jefedirectohist'];*/
+	$hayAlgo=0;
+	if(!empty($jefe) || $jefe==0){
+		$hayAlgo=1;
+		$query="SELECT * FROM encargado_ss_fca WHERE IdEnc = '$jefe' LIMIT 1";
+		$result=mysql_query($query) or die(mysql_error());
+	}
+			
 	if($hayAlgo<=0){?>
 		<p class="verde">Para mostrar los datos del jefe directo necesita cargar primero cargar con los datos de servicio social.</p>
 <?
@@ -186,11 +198,11 @@ $result=mysql_query($query) or die(mysql_error());
 		<strong>Correo electrónico:</strong> <?echo $rows['EmailEnc']; ?> 
 		
 		</p>
-		<input name="modificar" id="modificar" type="button" value="Modificar datos del jefe" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoJefe.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera; ?>','','contenido');" />
+		<input name="modificar" id="modificar" type="button" value="Modificar datos del jefe" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoJefe.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 		</div>
 		<?	}else{	?>
 			<br /><br />
-			<input type="button" value="Cargar datos datos del jefe" onclick="javascript:cargarContenido('cargarJefe.php');" />
+			<input type="button" value="Cargar datos datos del jefe" onclick="javascript:crearContenidosArregloConMensaje('nuevoAlumnoJefe.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 <?			} // if para guardar datos
 	
 	}

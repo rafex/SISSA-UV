@@ -4,7 +4,8 @@ session_start();
 
 conectar();
 $matricula=$_POST['matricula'];
-$query="SELECT empresa FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+$periodo=$_POST['periodo'];
+$query="SELECT empresa FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND PeriodoAlu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 $rows=mysql_fetch_array($result);
 $empresa=$rows['empresa'];
@@ -69,8 +70,8 @@ while($rows=mysql_fetch_array($result)){
 <strong> Municipio:</strong> <input type="text" id="MunicipioEmp" size="10" value="<?echo strtoupper($rows['MunicipioEmp']); ?>" />
 <strong> Localidad:</strong> <input type="text" id="LocalidadEmp" size="10" value="<?echo strtoupper($rows['LocalidadEmp']); ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos de la empresa modificados del alumno: <?php echo $matricula; ?>')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp,TipoEmp','vacio','contenido','verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','Guardando...','Datos de la empresa modificados del alumno: <?php echo $matricula; ?>')" />
 
 </div>
 <?	}	?>

@@ -2,7 +2,7 @@
 session_start();
 $carrera=$_POST['carrera'];
 conectar();
-$sql="SELECT `periodo` FROM `configuraciones_ss_fca`";
+$sql="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
 $result=mysql_query($sql) or die(mysql_error());
 //$sql2="SELECT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
 $sql2="SELECT DISTINCT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";

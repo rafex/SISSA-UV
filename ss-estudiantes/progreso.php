@@ -6,6 +6,10 @@ conectar();
 
 $matricula=$_SESSION['matricula'];
 $carrera=$_POST['carrera'];
+$query="SELECT periodoalu FROM alumno_ss_fca WHERE MatriculaAlu='$matricula' LIMIT 1";
+$result=mysql_query($query) or die(mysql_error());
+$row2=mysql_fetch_array($result);
+$periodo=$row2['periodoalu'];
 
 $query="SELECT criterioalu,nombrealu FROM alumno_ss_fca WHERE MatriculaAlu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
@@ -21,9 +25,9 @@ $evaluar=new Evaluar($matricula,$criterio);
 <? $i=0; for(;$i<$evaluar->numCampos();$i++) { ?>
 
 <label class="etiqueta"><? echo $evaluar->listaCampos($i)." (max: ".$evaluar->listaValoresCampos($i)."pts.)"; ?>
-<input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" min="0" max="<? echo $evaluar->listaValoresCampos($i); ?>" size="5" type="number" <? if($evaluar->mostrarCalif(($i+1))!=-1){ $total+=$evaluar->mostrarCalif(($i+1)); echo 'value="'.$evaluar->mostrarCalif(($i+1)).'"';  } ?> readonly />
+<input class="camp" name="campo<? echo ($i+1); ?>" tabindex="<? echo ($i+1); ?>" min="0" max="<? echo $evaluar->listaValoresCampos($i); ?>" size="5" type="number" <? if($evaluar->mostrarCalif(($i+1),$periodo)!=-1){ $total+=$evaluar->mostrarCalif(($i+1),$periodo); echo 'value="'.$evaluar->mostrarCalif(($i+1),$periodo).'"';  } ?> readonly />
 
-<a href="#" onclick="window.open('../ss-evaluacion/comentario.php?criterio=<? echo $criterio; ?>&campoEvaluar=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="../images/32px/nota3.png" title="Aquí podrás leer el motivo de tu calificación de: <? echo $evaluar->evaluacion($i); ?>" /></a>
+<a href="#" onclick="window.open('../ss-evaluacion/comentario.php?criterio=<? echo $criterio; ?>&campoEvaluar=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>&periodo=<?echo $periodo?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="../images/32px/nota3.png" title="Aquí podrás leer el motivo de tu calificación de: <? echo $evaluar->evaluacion($i); ?>" /></a>
 </label>
 
 <? } ?>

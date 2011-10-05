@@ -4,7 +4,8 @@ include_once '../script/php/functions.php';
 
 conectar();
 $matricula=$_POST['matricula'];
-$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+$periodo=$_POST['periodo'];
+$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' AND periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
 while($rows=mysql_fetch_array($result)){
@@ -12,9 +13,8 @@ while($rows=mysql_fetch_array($result)){
 ?>
 <div id="datos">
 <input type="hidden" id="matricula" value="<?php echo $matricula;?>" />
+<input type="hidden" id="periodo" value="<?php echo $periodo;?>" />
 <h3>Datos del servicio social</h3>
-<input type="hidden" id="IdEmp" value="<?echo $rows['Empresa'];?>" />
-<input type="hidden" id="IdEnc" value="<?echo $rows['JefeDirectoHist'];?>" />
 <p>
 <strong>Nombre del programa:</strong><input type="text" id="NombrePrograma" size="35" value="<?echo strtoupper($rows['NombrePrograma']);?>" />	
 <br /><br />
@@ -36,8 +36,8 @@ while($rows=mysql_fetch_array($result)){
 <br /><br />
 <strong>Area de trabajo:</strong><input type="text" id="AreaHist" size="35"  value="<?echo strtoupper($rows['AreaHist']); ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoServicio.php','matricula,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos del Servicio modificados del alumno: <?php echo $matricula; ?>')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoServicio.php','periodo,matricula,NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','vacio','contenido','verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','Guardando...','Datos del Servicio modificados del alumno: <?php echo $matricula; ?>')" />
 
 </div>
 <?	}	?>

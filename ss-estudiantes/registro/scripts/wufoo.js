@@ -228,6 +228,7 @@ function enviar(){
 	var ap_materno=document.getElementById('materno').value;
 	var empresa=document.getElementById('nombre_empresa').value;
 	var jefe=document.getElementById('jefe').value;
+	var carrera=document.getElementById('carrera').value;
 	var enviar=0;
 	
 	if(matricula.lenght==0 || matricula.length<8 || matricula==" " ){
@@ -258,6 +259,13 @@ function enviar(){
 		enviar+=1;
 	}
 	
+	if(carrera=='sin'){
+		alert("Inserte su carrera");
+		document.getElementById('carrera').focus();
+	}else{
+		enviar+=1;
+	}
+	
 	if(empresa.lenght==0 || empresa.length<2 || empresa==" " ){
 		alert("Inserte su empresa");
 		document.getElementById('nombre_empresa').focus();
@@ -272,7 +280,9 @@ function enviar(){
 		enviar+=1;
 	}
 	
-	if(enviar==6){
+	
+	
+	if(enviar==7){
 		document.forms.registroAlu.action="procesar.php";
 		document.registroAlu.submit();	
 	}

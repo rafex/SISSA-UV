@@ -4,6 +4,7 @@ session_start();
 
 conectar();
 $matricula=$_SESSION['matricula'];
+
 $query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
@@ -15,7 +16,7 @@ while($rows=mysql_fetch_array($result)){
 ?>
 <div id="datos">
 <h3>Datos del alumno</h3>
-
+<input type='hidden' id='periodo' value='<?php echo $rows['periodoalu']; ?>' />
 <p> 
 <strong>Nombre:</strong><input type="text" id="NombreAlu" size="30"  value="<?echo strtoupper($rows['nombrealu']);?>" />
 
@@ -35,12 +36,12 @@ while($rows=mysql_fetch_array($result)){
 <strong> Periodo:</strong>
 <?
 
-$sql22="SELECT `periodo` FROM `configuraciones_ss_fca`";
+$sql22="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
 $result22=mysql_query($sql22) or die(mysql_error());
 ?>
 		
 		
-		<select id="PeriodoAlu" name="PeriodoAlu" >
+		<select id="PeriodoAlu" name="PeriodoAlu" disabled>
 			  <?  while($fila=mysql_fetch_array($result22)){ ?>
 			  	
         		<option value="<? echo $fila['periodo'];?>" <? if($fila['periodo']==$rows['periodoalu']){ echo "selected=\"selected\"";} ?> ><? echo $fila['periodo'];?></option>
@@ -66,7 +67,7 @@ $result22=mysql_query($sql22) or die(mysql_error());
 		
 <br /><br />
 <strong>Nacionalidad:</strong><input type="text" id="nacionalidadalu" size="20" value="<?echo strtoupper($rows['nacionalidadalu']); ?>" />  
-<strong> Fecha de nacimiento:</strong><input type="text" id="nacimientoalu" size="10" value="<?echo $rows['nacimientoalu']; ?>" />
+<strong> Fecha de nacimiento:</strong><input type="text" id="nacimientoalu" size="10" value="<? if($rows['nacimientoalu']=='0000-00-00'){ echo 'AAAA-MM-DD'; }else{ echo $rows['nacimientoalu']; }?>" />
 <strong> Edad:</strong><input type="text" id="edadalu" size="3" value="<?echo $rows['edadalu']; ?>" />
 <strong> Lugar de nacimiento:</strong><input type="text" id="lugarnacimientoalu" size="15" value="<?echo strtoupper($rows['lugarnacimientoalu']); ?>" />
 </p>
@@ -88,6 +89,7 @@ $result22=mysql_query($sql22) or die(mysql_error());
 <strong> Direccion:</strong><input type="text" id="direcciontutor" size="40" value="<?echo $rows['direcciontutor']; ?>" />
 </p>
 <input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('personales.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarPersonal.php','NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','Datos modificados correctamente','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarPersonal.php','periodo,NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','vacio','contenido','personales.php','nada','nada','Guardando...','Datos personales modificados con exito.')" />
+<!-- input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarPersonal.php','NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','Datos modificados correctamente','index.php')" -->
 </div>
 <?	}	?>

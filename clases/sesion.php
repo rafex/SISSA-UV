@@ -31,15 +31,30 @@ class Sesion extends Conexion {
     
 	public function iniciarAlu($usr,$pw){
         $this->getConexion();
-        //session_start();
-        $query="SELECT nombrealu FROM alumno_ss_fca WHERE passalu=password('$pw') and matriculaalu='$usr';";
+		//session_start();
+		$periodo;
+        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$usr';";
+        $result=mysql_query($query) or die(mysql_error());
+        
+        while ($rows=mysql_fetch_array($result))
+        {
+        	$calif=$rows['EvaluacionHist'];
+        	if(empty($calif)){
+        		$periodo=$rows['periodoalu'];
+        	}
+        }
+      
+        
+        $query="SELECT nombrealu,periodoalu FROM alumno_ss_fca WHERE passalu=password('$pw') and matriculaalu='$usr';";
         $result=mysql_query($query) or die(mysql_error());
         if($rows=mysql_fetch_array($result)){
-            $this->valores=array("activa"=>true , "nombre"=>$rows['nombrealu'] ,"matricula"=>"$usr" ,"nivel"=>"alumno" );
+            $this->valores=array("activa"=>true , "nombre"=>$rows['nombrealu'] ,"matricula"=>"$usr" ,"nivel"=>"alumno","periodo"=>$periodo );
             $_SESSION['nombre']=$rows['nombrealu'];
             $_SESSION['nivel']="alumno";
             $_SESSION['matricula']=$usr;
             $_SESSION['activa']=true;
+            $_SESSION['periodo']=$periodo;
+            
             return true;
         }else{
 

@@ -10,7 +10,19 @@ if($usr[0]=='z')
 {
 	conectar();
 	$matricula=substr($usr,1);
-	$sql="select nombrealu,passalu from alumno_ss_fca where matriculaalu='$matricula' limit 1; ";
+	$periodo;
+        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula';";
+        $result=mysql_query($query) or die(mysql_error());
+        
+        while ($rows=mysql_fetch_array($result))
+        {
+        	$calif=$rows['EvaluacionHist'];
+        	if(empty($calif)){
+        		$periodo=$rows['periodoalu'];
+        	}
+        }
+      
+	$sql="select nombrealu,passalu from alumno_ss_fca where matriculaalu='$matricula' and periodoalu='$periodo' limit 1; ";
 	$result=mysql_query($sql) or die(mysql_error());
 	if(mysql_num_rows($result)==1){
 		$datos=mysql_fetch_array($result);

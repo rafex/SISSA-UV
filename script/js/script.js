@@ -742,3 +742,42 @@ function eliminarAlumno(pagina,nombres,valores,mensaje,pagina2,uno,dos,tres){
 	  ajax.send('&'+enviar);
 }
 
+function cerrarActa(carrera,periodo,criterio){
+	  ajax= objetoAjax();
+	  ajax.open('POST', 'cerrarActa.php',true);
+	  ajax.onreadystatechange=function() {
+		if(ajax.readyState==1){
+			result="Trabajando... <img src='../images/ajax-loader.gif' />";
+			document.getElementById('contenido').innerHTML=result;
+		}
+		if (ajax.readyState==4) {
+				
+				alert('Acta cerrada.');
+				
+				crearContenidosArreglo('carrera,periodo,criterioS',carrera+','+periodo+','+criterio,'../ss-evaluacion/listaalumnos.php');										
+			
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  ajax.send('&carrera='+carrera+'&periodo='+periodo+'&criterio='+criterio);
+}
+
+function abrirActa(carrera,periodo,criterio){
+	  ajax= objetoAjax();
+	  ajax.open('POST', 'abrirActa.php',true);
+	  ajax.onreadystatechange=function() {
+		if(ajax.readyState==1){
+			result="Trabajando... <img src='../images/ajax-loader.gif' />";
+			document.getElementById('contenido').innerHTML=result;
+		}
+		if (ajax.readyState==4) {
+				
+				alert('Acta abierta.');
+				
+				crearContenidosArreglo('carrera,periodo,criterioS',carrera+','+periodo+','+criterio,'../ss-evaluacion/listaalumnos.php');										
+			
+		}
+	  }
+	  ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	  ajax.send('&carrera='+carrera+'&periodo='+periodo);
+}

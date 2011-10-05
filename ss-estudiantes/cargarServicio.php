@@ -1,8 +1,7 @@
 <div id="datos">
 
 <h3>Datos del servicio social</h3>
-<input type="hidden" id="IdEmp" />
-<input type="hidden" id="IdEnc" />
+
 <p>
 <strong>Nombre del programa:</strong><input type="text" id="NombrePrograma" size="35" />	
 <br /><br />

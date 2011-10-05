@@ -4,7 +4,7 @@ session_start();
 
 conectar();
 $matricula=$_POST['matricula'];
-$carrera=$_POST['carrera'];
+$periodo=$_POST['periodo'];
 $query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
@@ -16,7 +16,8 @@ while($rows=mysql_fetch_array($result)){
 ?>
 <div id="datos">
 <h3>Datos del alumno</h3>
-<input type="hidden" id="matricula" value="<?php echo $matricula;?>" /> 
+<input type="hidden" id="matricula" value="<?php echo $matricula;?>" />
+<input type="hidden" id="periodo" value="<?php echo $periodo;?>" />  
 <p> 
 <strong>Nombre:</strong><input type="text" id="NombreAlu" size="30"  value="<?echo strtoupper($rows['nombrealu']);?>" />
 
@@ -36,7 +37,7 @@ while($rows=mysql_fetch_array($result)){
 <strong> Periodo:</strong>
 <?
 
-$sql22="SELECT `periodo` FROM `configuraciones_ss_fca`";
+$sql22="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
 $result22=mysql_query($sql22) or die(mysql_error());
 ?>
 		
@@ -88,8 +89,8 @@ $result22=mysql_query($sql22) or die(mysql_error());
 <br /><br />
 <strong> Direccion:</strong><input type="text" id="direcciontutor" size="40" value="<?echo $rows['direcciontutor']; ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','','contenido');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoPersonales.php','matricula,NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','vacio','contenido','verAlumno.php','matricula,carrera','<?php echo $matricula; ?>,<?php echo $carrera;?>','Guardando...','Datos del alumno (<?php echo $matricula; ?>)  modificados con exito.')" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:crearContenidosArregloConMensaje('verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarAlumnoPersonales.php','periodo,matricula,NombreAlu,CarreraAlu,SeccionAlu,PeriodoAlu,EmailAlu,TelefonoAlu,generoalu,edocivilalu,nacionalidadalu,nacimientoalu,edadalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor','vacio','contenido','verAlumno.php','matricula,periodo','<?php echo $matricula; ?>,'+document.getElementById('PeriodoAlu').value,'Guardando...','Datos del alumno (<?php echo $matricula; ?>)  modificados con exito.')" />
 
 </div>
 <?	}	?>

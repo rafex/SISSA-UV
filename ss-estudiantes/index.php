@@ -1,12 +1,12 @@
 <?
 // index del alumno (ss-alumno)
-	session_start();
+	@ session_start();
 	if(!($_SESSION['nivel']=='alumno')){
 		header ("Location: ../index.php");
 	}
 	include_once('../header.php'); ?>
 
-    <? include_once '../menus/menu_alu.html'; ?>
+    <? include_once '../menus/menu_alu.php'; ?>
 	<? include_once('../derecho.php');   ?>
 
 	<div id="contenido">

@@ -20,7 +20,8 @@ class Conexion {
         }
         
         public function consultaSql($sql){
-                return $result = mysql_query($sql,$this->connection) or die(mysql_error());
+                $result = mysql_query($sql,$this->connection) or die(mysql_error());
+                return $result;
         }
 		
 		public function desconectar($cs){

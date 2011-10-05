@@ -2,7 +2,8 @@
 include_once '../script/php/functions.php';
 
 conectar();
-$matricula=$_GET['matricula'];
+//$matricula=$_POST['matricula'];
+//$periodo=$_POST['periodo'];
 
 foreach($_POST as $nombre_campo => $valor){
    $valor=trim($valor);
@@ -21,8 +22,8 @@ foreach($_POST as $nombre_campo => $valor){
 
 } 
 	
-	$_SESSION['nombre']=$NombreAlu;
-	$query="UPDATE `alumno_ss_fca` SET `NombreAlu`='$NombreAlu' , CarreraAlu='$CarreraAlu', SeccionAlu='$SeccionAlu' , PeriodoAlu='$PeriodoAlu' , EmailAlu='$EmailAlu' , TelefonoAlu='$TelefonoAlu' WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+	
+	$query="UPDATE `alumno_ss_fca` SET `NombreAlu`='$NombreAlu' , CarreraAlu='$CarreraAlu', SeccionAlu='$SeccionAlu' , PeriodoAlu='$PeriodoAlu' , EmailAlu='$EmailAlu' , TelefonoAlu='$TelefonoAlu' WHERE `MatriculaAlu`='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
    	$result=mysql_query($query) or die(mysql_error()); 
 
 	$query="UPDATE `datos_extra_alumno` SET nacimientoalu='$nacimientoalu', generoalu='$generoalu' , edocivilalu='$edocivilalu' , edadalu='$edadalu' , nacionalidadalu='$nacionalidadalu' , lugarnacimientoalu='$lugarnacimientoalu' , calledireccion='$calledireccion' , numdireccion='$numdireccion' , coloniadireccion='$coloniadireccion' , cpdireccion='$cpdireccion' , estadoalu='$estadoalu' , municipioalu='$municipioalu' , localidadalu='$localidadalu' , tutoralu='$tutoralu' , direcciontutor='$direcciontutor' WHERE `MatriculaAlu`='$matricula' LIMIT 1;";

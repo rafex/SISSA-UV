@@ -5,8 +5,8 @@ conectar();
 
 $matricula=trim($_POST['matricula']);
 $todo=$_POST['todo'];
-
-if($todo){
+$periodo=$_POST['periodo'];
+if(!empty($todo)){
 	/*
 	$query="SELECT CriterioAlu FROM `alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
 	$result=mysql_query($query) or die(mysql_error());
@@ -45,8 +45,8 @@ if(!(empty($empresa)) && !(empty($jefe)) ){
 	$result=mysql_query($query) or die(mysql_error());
 }
 
-/*$query="DELETE FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
-$result=mysql_query($query) or die(mysql_error());*/
+$query="DELETE FROM `historial_alumno_ss_fca` WHERE `MatriculaAlu`='$matricula' LIMIT 1;";
+$result=mysql_query($query) or die(mysql_error());
 
 
 

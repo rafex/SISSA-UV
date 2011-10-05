@@ -14,10 +14,10 @@ conectar();
 
 $total=$_POST['totalF'];
 if(!empty($letra)){
-	$result=mysql_query("SELECT MatriculaAlu,NombreAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' AND NombreAlu LIKE '$letra%' ORDER BY NombreAlu   ") or die(mysql_error());
-	
+	$result=mysql_query("SELECT MatriculaAlu,NombreAlu,SeccionAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' AND NombreAlu LIKE '$letra%' ORDER BY NombreAlu   ") or die(mysql_error());
+	$total=mysql_num_rows($result);
 }elseif(!empty($numero)){
-	$sql="SELECT MatriculaAlu,NombreAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' ORDER BY NombreAlu LIMIT $numero,10";
+	$sql="SELECT MatriculaAlu,NombreAlu,SeccionAlu FROM alumno_ss_fca WHERE CarreraAlu='$carrera' AND PeriodoAlu='$periodo' AND CriterioAlu='$criterioS' ORDER BY NombreAlu LIMIT $numero,10";
 	$result=mysql_query($sql) or die(mysql_error());
 	
 }elseif($_POST['allR']){
@@ -47,11 +47,10 @@ if($carrera=='lsca'){
 
 echo "$texto";
 ?>
-
 <? if($_SESSION['nivel']=='admin'){ ?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','../ss-evaluacion/buscar.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodo,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','buscarAlumnoLista.php');">
 <?}elseif($_SESSION['nivel']=='evaluador'){?>
-<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','buscar.php');">
+<form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodo,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','buscarAlumnoLista.php');">
 <? } ?>
     <input type="text" name="patron" id="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
     <input type="submit" value="Buscar"  />
@@ -60,7 +59,7 @@ echo "$texto";
 
 <? 	
 	if($_SESSION['nivel']=='admin'){ 
-		@ require_once '../ss-evaluacion/listaporLetra.php';
+		@ require_once 'listaAluLetra.php';
 	}elseif($_SESSION['nivel']=='evaluador'){
 		@ require_once 'listaporLetra.php';
  	}
@@ -85,15 +84,15 @@ echo "$texto";
 
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
+    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
-    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
+    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
     <? } ?>
     
     <? if($_SESSION['nivel']=='admin'){ ?>
-    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <?}elseif($_SESSION['nivel']=='evaluador'){?>
-    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
+    <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 
    

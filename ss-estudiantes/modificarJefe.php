@@ -30,6 +30,7 @@ while($rows=mysql_fetch_array($result)){
 
 </p>
 <input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('jefe.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarJefe.php','IdEnc,NombreEnc,PuestoEnc,EmailEnc','Datos del jefe modificados exitosamente.','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarJefe.php','IdEnc,NombreEnc,PuestoEnc,EmailEnc','vacio','contenido','jefe.php','nada','nada','Guardando...','Datos del jefe directo modificados con exito.')" />
+<!-- input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarJefe.php','IdEnc,NombreEnc,PuestoEnc,EmailEnc','Datos del jefe modificados exitosamente.','index.php')" -->
 </div>
 <?	}	?>

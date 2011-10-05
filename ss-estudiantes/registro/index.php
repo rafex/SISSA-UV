@@ -77,7 +77,7 @@ action="">
 
 <li id="foli5" 		class="leftHalf     ">
 	<label class="desc" id="title2" for="Field2">
-		Carrera:
+		*Carrera:
 			</label>
 	<span>
 		<select id="carrera" name="carrera" >
@@ -100,7 +100,7 @@ action="">
 		<?
 include_once 'scripts/functions.php';
 conectar();
-$sql="SELECT `periodo` FROM `configuraciones_ss_fca`";
+$sql="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
 $result=mysql_query($sql) or die(mysql_error());
 ?>
 		

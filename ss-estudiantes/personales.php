@@ -1,7 +1,7 @@
 <? 
 include_once '../script/php/functions.php';
 session_start();
-$carrera=$_POST['carrera'];
+
 conectar();
 $matricula=$_SESSION['matricula'];
 $query="SELECT nombrealu,carreraalu,seccionalu,periodoalu,emailalu,telefonoalu,generoalu,edocivilalu,edadalu,nacionalidadalu,nacimientoalu,lugarnacimientoalu,calledireccion,numdireccion,coloniadireccion,cpdireccion,estadoalu,municipioalu,localidadalu,tutoralu,direcciontutor FROM alumno_ss_fca,datos_extra_alumno WHERE alumno_ss_fca.matriculaalu='$matricula' AND datos_extra_alumno.MatriculaAlu='$matricula' LIMIT 1";
@@ -13,13 +13,13 @@ while($rows=mysql_fetch_array($result)){
 
 $carrera=$rows['carreraalu'];
 if($carrera=='lsca'){
-    $carrera='Sistemas Computacionales Administrativos';
+    $carrera2='Sistemas Computacionales Administrativos';
 }elseif($carrera=='lc'){
-    $carrera='Contaduría';
+    $carrera2='Contaduría';
 }elseif($carrera=='la'){
-    $carrera='Administración';
+    $carrera2='Administración';
 }elseif($carrera=='lg'){
-    $carrera='Gestion de Negocios';
+    $carrera2='Gestion de Negocios';
 }
 $genero=$rows['generoalu'];
 if($genero=='m'){
@@ -34,7 +34,7 @@ if($genero=='m'){
 <strong>Nombre:</strong> <?echo $rows['nombrealu'];?>
 <strong> Matricula:</strong> <?echo strtoupper($matricula);?>
 <br /><br />
-<strong>Carrera:</strong> <?echo $carrera;?> 
+<strong>Carrera:</strong> <?echo $carrera2;?> 
 <strong> Sección:</strong> <?echo $rows['seccionalu']; ?> 
 <strong> Periodo:</strong> <?echo $rows['periodoalu']; ?> 
 <br /><br />
@@ -45,7 +45,7 @@ if($genero=='m'){
 <strong> Estado Civil:</strong> <?echo $rows['edocivilalu']; ?>
 <br /><br />
 <strong>Nacionalidad:</strong> <?echo $rows['nacionalidadalu']; ?>  
-<strong> Fecha de nacimiento:</strong> <?echo $rows['nacimientoalu']; ?>
+<strong> Fecha de nacimiento:</strong> <?if($rows['nacimientoalu']=='0000-00-00'){ echo 'AAAA-MM-DD'; }else{ echo $rows['nacimientoalu']; } ?>
 <strong> Edad:</strong> <?echo $rows['edadalu']; ?>
 <strong> Lugar de nacimiento:</strong> <?echo $rows['lugarnacimientoalu']; ?>
 </p>
@@ -66,6 +66,7 @@ if($genero=='m'){
 <br /><br />
 <strong> Direccion:</strong> <?echo $rows['direcciontutor']; ?>
 </p>
+
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:cargarContenido('modificarPersonal.php');" />
 </div>
 <?	}	?>

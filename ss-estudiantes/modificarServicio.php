@@ -4,7 +4,8 @@ session_start();
 
 conectar();
 $matricula=$_SESSION['matricula'];
-$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' LIMIT 1";
+$periodo=$_SESSION['periodo'];
+$query="SELECT * FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' and periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 
 while($rows=mysql_fetch_array($result)){
@@ -37,6 +38,7 @@ while($rows=mysql_fetch_array($result)){
 <strong>Area de trabajo:</strong><input type="text" id="AreaHist" size="35"  value="<?echo strtoupper($rows['AreaHist']); ?>" />
 </p>
 <input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('servicio.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarServicio.php','NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','Datos del servicio modificados exitosamente.','index.php')" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:crearContenidosArregloConMensaje2('guardarServicio.php','NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','vacio','contenido','servicio.php','nada','nada','Guardando...','Datos del servicio social modificados con exito.')" />
+<!-- input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('guardarServicio.php','NombrePrograma,ObjetivoPrograma,FuncionHist,TipoHist,AreaHist','Datos del servicio modificados exitosamente.','index.php')" -->
 </div>
 <?	}	?>

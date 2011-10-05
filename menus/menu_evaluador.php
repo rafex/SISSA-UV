@@ -1,3 +1,9 @@
+<?php 
+	@ session_start();
+	if(!($_SESSION['nivel']=='evaluador')){
+		header ("Location: ../index.php");
+	}
+?>
         <div id="menu">
 	        <ul class="menu">
 	        

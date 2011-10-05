@@ -6,7 +6,7 @@
 	}
     include_once('../header.php'); ?>
 
-    <? include_once '../menus/menu_evaluador.html'; ?>
+    <? include_once '../menus/menu_evaluador.php'; ?>
 	<? include_once('../derecho.php');   ?>
 
 	<div id="contenido">

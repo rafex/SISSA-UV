@@ -2,7 +2,7 @@
 include_once '../script/php/functions.php';
 session_start();
 conectar();
-$matricula=$_POST['matricula'];
+//$matricula=$_POST['matricula'];
 
 foreach($_POST as $nombre_campo => $valor){
    $valor=trim($valor);
@@ -39,7 +39,7 @@ foreach($_POST as $nombre_campo => $valor){
 	
 }	
  
-	$query="UPDATE historial_alumno_ss_fca SET NombrePrograma='$NombrePrograma' , ObjetivoPrograma='$ObjetivoPrograma' , FuncionHist='$FuncionHist' , TipoHist='$TipoHist' ,AreaHist='$AreaHist' WHERE MatriculaAlu='$matricula' LIMIT 1;";
+	$query="UPDATE historial_alumno_ss_fca SET NombrePrograma='$NombrePrograma' , ObjetivoPrograma='$ObjetivoPrograma' , FuncionHist='$FuncionHist' , TipoHist='$TipoHist' ,AreaHist='$AreaHist' WHERE MatriculaAlu='$matricula' AND PeriodoAlu='$periodo' LIMIT 1;";
    	$result=mysql_query($query) or die(mysql_error()); 	
 
 

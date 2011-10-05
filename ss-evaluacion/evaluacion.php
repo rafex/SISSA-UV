@@ -4,22 +4,23 @@ session_start();
 $matricula=$_POST['matricula'];
 $nombre=$_POST['nombre'];
 $criterio=$_POST['criterio'];
-$valores=$_POST['formulario'];
 $carrera=$_POST['carrera'];
 $periodoX=$_POST['periodoA'];
-$c=$carrera;
+
+$valores=$_POST['formulario']; // no recuerdo q hace esto?
+
 $evaluar=new Evaluar($matricula,$criterio);
 
 $evaluar->inicia($periodoX);
 
 if($carrera=='lsca'){
-    $carrera='Sistemas Computacionales Administrativos</strong>';
+    $textoCarrera='Sistemas Computacionales Administrativos</strong>';
 }elseif($carrera=='lc'){
-    $carrera='Cantaduría';
+    $textoCarrera='Cantaduría';
 }elseif($carrera=='la'){
-    $carrera='Administración';
+    $textoCarrera='Administración';
 }elseif($carrera=='lg'){
-    $carrera='Gestión de Negocios';
+    $textoCarrera='Gestión de Negocios';
 }
 
 $evaluar->guardarCalf($valores,$periodoX);
@@ -27,12 +28,14 @@ $total=0;// el total de la calificacion
 ?>
 
 <? if($_SESSION['nivel']=='admin'){ ?>
-<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $c;?>,<?echo $periodoX;?>,<?echo $criterio;?>','../ss-evaluacion/listaalumnos.php');" ><p class="verde">[ Lista ]</p></a>
+	<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,<?echo $periodoX;?>,<?echo $criterio;?>','../ss-evaluacion/listaalumnos.php');" ><p class="verde">[ Regresar a la lista ]</p></a>
 <?}elseif($_SESSION['nivel']=='evaluador'){?>
-<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $c;?>,<?echo $periodoX;?>,<?echo $criterio;?>','listaalumnos.php');" ><p class="verde">[ Lista ]</p></a>
-<? } ?>
-
-<p>Matricula:<strong><? echo $matricula; ?></strong> Carrera: <?echo $carrera;?></p>
+	<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,<?echo $periodoX;?>,<?echo $criterio;?>','listaalumnos.php');" ><p class="verde">[ Regresar a la lista ]</p></a>
+<? } 
+	
+	 	
+?>
+<p>Matricula:<strong><? echo $matricula; ?></strong> Carrera: <?echo $textoCarrera;?></p>
 
 <p>Alumno:<strong><?echo $nombre; ?></strong></p>
 <p>Tipo de evaluación: <?echo $criterio; ?> Periodo: <?echo $periodoX;?></p>
@@ -63,4 +66,5 @@ $total=0;// el total de la calificacion
 <input value="Guardar calificación" tabindex="<? echo ($i+2); ?>" type="submit" />
 
 </form>
-<?desconectar();?>
+
+<? desconectar();?>
