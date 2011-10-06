@@ -58,8 +58,8 @@ while($rows=mysql_fetch_array($result)){
 <strong> Municipio:</strong> <input type="text" id="MunicipioEmp" size="10" value="<?echo strtoupper($rows['MunicipioEmp']); ?>" />
 <strong> Localidad:</strong> <input type="text" id="LocalidadEmp" size="10" value="<?echo strtoupper($rows['LocalidadEmp']); ?>" />
 </p>
-<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('listaempresa.php');" />
-<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:metodoAgil('../ss-estudiantes/guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp','Datos de la empresa modificados exitosamente.','../ss-empresa/listaempresas.php');" />
+<input name="modificar" id="modificar" type="button" value="Cancelar" onclick="javascript:cargarContenido('../ss-empresa/listaempresas.php');" />
+<input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:metodoAgil('../ss-empresa/guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp','Datos de la empresa modificados exitosamente.','../ss-empresa/listaempresas.php');" />
 <!--input name="modificar" id="modificar" type="button" value="Guardar" onclick="javascript:realizarOperacionConMensajeAccion2('../ss-estudiantes/guardarEmpresa.php','IdEmp,NombreEmp,EmailEmp,TelefonoEmp,Telefono2Emp,ClasificacionEmp,SectorEmp,GiroEmp,AcuerdoEmp,DireccionEmp,EstadoEmp,MunicipioEmp,LocalidadEmp','Datos de la empresa modificados exitosamente.','index.php');" -->
 </div>
 <?	}	?>

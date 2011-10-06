@@ -59,6 +59,7 @@ if($carrera=='lsca'){
 
 ?>
 <p>Usted busco: <strong><?echo $buscar;?></strong></p>
+<p>Con los criterios: <?if($carrera=='sin'){echo "todas las carreras,";}else{ echo " $carrera,";} if($seccion=='sin'){echo " todas las secciones,";}else{echo " $seccion,";}echo " $periodo,"; echo " $criterio."; ?> </p>
 
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera,seccion,criterio,periodo',document.getElementById('patron').value+','+document.getElementById('carrera').value+','+document.getElementById('seccion').value+','+document.getElementById('criterio').value+','+document.getElementById('periodo').value,'../ss-evaluacion/buscandoAlumnos.php');">
@@ -91,7 +92,7 @@ if($carrera=='lsca'){
 	</select> 
 	<?
 
-$sql4="SELECT `periodo` FROM `configuraciones_ss_fca`";
+$sql4="SELECT DISTINCT `periodo` FROM `configuraciones_ss_fca`";
 $result4=mysql_query($sql4) or die(mysql_error());
 ?>
 		

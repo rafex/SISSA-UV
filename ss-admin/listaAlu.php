@@ -60,8 +60,8 @@ echo "$texto";
 <? 	
 	if($_SESSION['nivel']=='admin'){ 
 		@ require_once 'listaAluLetra.php';
-	}elseif($_SESSION['nivel']=='evaluador'){
-		@ require_once 'listaporLetra.php';
+	}elseif($_SESSION['nivel']=='editor'){
+		@ require_once '../ss-admin/listaporLetra.php';
  	}
  	
  	
@@ -85,20 +85,20 @@ echo "$texto";
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
     <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
-    <?}elseif($_SESSION['nivel']=='evaluador'){?>
+    <?}elseif($_SESSION['nivel']=='editor'){?>
     <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['MatriculaAlu']); ?></a></td>
     <? } ?>
     
     <? if($_SESSION['nivel']=='admin'){ ?>
     <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','verAlumno.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
-    <?}elseif($_SESSION['nivel']=='evaluador'){?>
+    <?}elseif($_SESSION['nivel']=='editor'){?>
     <td class="ancho1"><a href="#" onClick="javascript:crearContenidosArreglo('matricula,periodo','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     <? } ?>
 
    
   </tr>
 <? }
-desconectar();
+
 ?>
 </table>
 

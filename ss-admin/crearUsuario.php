@@ -9,6 +9,7 @@
 <strong>Nivel:</strong>
 	<select id="nivel">
 		<option value="evaluador" >Evaluador</option>
+		<option value="editor" >Evaluador(editor)</option>
 		<option value="admin"  >Administrador</option>
 	</select>	
 <br /><br />

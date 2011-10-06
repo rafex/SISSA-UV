@@ -61,7 +61,7 @@ $sacarPeriodo=mysql_fetch_array($periodoActivo);
 
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','../ss-evaluacion/buscar.php');">
-<?}elseif($_SESSION['nivel']=='evaluador'){?>
+<?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,periodoA,carrera,criterioS',document.getElementById('patron').value+',<?echo $periodo;?>,<?echo $carrera;?>,<?echo $criterioS;?>','buscar.php');">
 <? } ?>
     <input type="text" name="patron" id="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
@@ -75,7 +75,7 @@ $sacarPeriodo=mysql_fetch_array($periodoActivo);
 <? 	
 	if($_SESSION['nivel']=='admin'){ 
 		@ require_once '../ss-evaluacion/listaporLetra.php';
-	}elseif($_SESSION['nivel']=='evaluador'){
+	}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){
 		@ require_once 'listaporLetra.php';
  	}
  	
@@ -103,7 +103,7 @@ $sacarPeriodo=mysql_fetch_array($periodoActivo);
 		
 		if($_SESSION['nivel']=='admin'){ 
 			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','../ss-evaluacion/listaalumnos.php');\" >".$in."</a> $guion ";
-		}elseif($_SESSION['nivel']=='evaluador'){
+		}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){
 			echo "<a href='#' class='azul' $selecFormat onclick=\"javascript:crearContenidosArreglo('carrera,periodo,criterioS,numero,totalF,opEN','$carrera,$periodo,$criterioS,$rangos,$total,$in','listaalumnos.php');\" >".$in."</a> $guion ";
  		}
  	
@@ -127,7 +127,15 @@ while($rows2=mysql_fetch_array($result2)){ $j++;  ?>
 	<th  class="ancho1"></th>
 	<? } ?>
   </tr>
-<? $n=1; while($rows = mysql_fetch_array($result)){  
+<? 
+	$n=1;
+	if($opcionElegidaN==1 || $_POST['allR'] ){
+		$n=1;
+	}elseif(!empty($opcionElegidaN)){
+		$n=(($opcionElegidaN-1)*10)+1;
+	}
+
+	while($rows = mysql_fetch_array($result)){  
 
 $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),$criterioS);
 ?>
@@ -136,7 +144,7 @@ $evaluar=new Evaluar(utf8_encode($rows['MatriculaAlu']),$criterioS);
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
     <td><a href="#" title="<? echo utf8_encode($rows['MatriculaAlu']); ?>" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','../ss-evaluacion/evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
-    <?}elseif($_SESSION['nivel']=='evaluador'){
+    <?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){
     	if($sacarPeriodo['activo']==1){?>
     		<td><a href="#" title="<? echo utf8_encode($rows['MatriculaAlu']); ?>" onClick="javascript:crearContenidosArreglo('matricula,nombre,criterio,carrera,periodoA','<? echo utf8_encode($rows['MatriculaAlu']); ?>,<? echo utf8_encode($rows['NombreAlu']); ?>,<? echo $criterioS; ?>,<? echo $carrera;?>,<?echo $periodo;?>','evaluacion.php');"><? echo utf8_encode($rows['NombreAlu']); ?></a></td>
     	<?}else{?>

@@ -16,7 +16,7 @@ $evaluar->inicia($periodoX);
 if($carrera=='lsca'){
     $textoCarrera='Sistemas Computacionales Administrativos</strong>';
 }elseif($carrera=='lc'){
-    $textoCarrera='Cantaduría';
+    $textoCarrera='Contaduría';
 }elseif($carrera=='la'){
     $textoCarrera='Administración';
 }elseif($carrera=='lg'){
@@ -29,7 +29,7 @@ $total=0;// el total de la calificacion
 
 <? if($_SESSION['nivel']=='admin'){ ?>
 	<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,<?echo $periodoX;?>,<?echo $criterio;?>','../ss-evaluacion/listaalumnos.php');" ><p class="verde">[ Regresar a la lista ]</p></a>
-<?}elseif($_SESSION['nivel']=='evaluador'){?>
+<?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 	<a href="#" onclick="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,<?echo $periodoX;?>,<?echo $criterio;?>','listaalumnos.php');" ><p class="verde">[ Regresar a la lista ]</p></a>
 <? } 
 	
@@ -42,7 +42,7 @@ $total=0;// el total de la calificacion
 
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="evaluacion" name="evaluacion" method="post" action="javascript:evaluar('matricula,nombre,criterio,carrera,periodoA','<? echo $matricula; ?>,<? echo $nombre; ?>,<? echo $criterio; ?>,<?echo $carrera;?>,<?echo $periodoX;?>','../ss-evaluacion/evaluacion.php');">
-<? }elseif($_SESSION['nivel']=='evaluador'){?>
+<? }elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 <form id="evaluacion" name="evaluacion" method="post" action="javascript:evaluar('matricula,nombre,criterio,carrera,periodoA','<? echo $matricula; ?>,<? echo $nombre; ?>,<? echo $criterio; ?>,<?echo $carrera;?>,<?echo $periodoX;?>','evaluacion.php');">
 <? } ?>
 <? $i=0; for(;$i<$evaluar->numCampos();$i++) { ?>
@@ -54,7 +54,7 @@ $total=0;// el total de la calificacion
 <? if($_SESSION['nivel']=='admin'){ ?>
 <a href="#" onclick="window.open('../ss-evaluacion/comentario.php?criterio=<? echo $criterio; ?>&campoEvaluar=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>&periodo=<?echo $periodoX?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="/SISSA-UV/images/32px/nota3.png" /></a>
 
-<? }elseif($_SESSION['nivel']=='evaluador'){?>
+<? }elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 <a href="#" onclick="window.open('comentario.php?criterio=<? echo $criterio; ?>&campoEvaluar=<? echo $evaluar->evaluacion($i); ?>&matricula=<? echo $matricula; ?>&alumno=<?echo $nombre;?>&periodo=<?echo $periodoX?>','','width=450,height=250,left=300,top=300,scrollbars=no, menubar=no, location=no, resizable=no' )" ><img class="nota" src="/SISSA-UV/images/32px/nota3.png" /></a>
 <? } ?>
 </label>
@@ -66,5 +66,3 @@ $total=0;// el total de la calificacion
 <input value="Guardar calificación" tabindex="<? echo ($i+2); ?>" type="submit" />
 
 </form>
-
-<? desconectar();?>

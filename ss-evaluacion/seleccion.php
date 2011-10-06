@@ -21,7 +21,7 @@ if($carrera=='lsca'){
 ?>
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form name="preevaluacion" method="post" action="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,'+document.preevaluacion.periodo.value+','+document.preevaluacion.criterioS.value,'../ss-evaluacion/listaalumnos.php')">
-<?}elseif($_SESSION['nivel']=='evaluador'){?>
+<?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 <form name="preevaluacion" method="post" action="javascript:crearContenidosArreglo('carrera,periodo,criterioS','<? echo $carrera;?>,'+document.preevaluacion.periodo.value+','+document.preevaluacion.criterioS.value,'listaalumnos.php')">
 <? } ?>
 

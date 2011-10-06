@@ -22,6 +22,8 @@ class Sesion extends Conexion {
             $_SESSION['nombre']=$rows['nombre'];
             $_SESSION['nivel']=$rows['nivel'];
             $_SESSION['activa']=true;
+         
+            
             return true;
         }else{
 
@@ -32,17 +34,20 @@ class Sesion extends Conexion {
 	public function iniciarAlu($usr,$pw){
         $this->getConexion();
 		//session_start();
-		$periodo;
-        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$usr';";
+		$periodo=0;
+		
+		$query2="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula'";
+        $result2=mysql_query($query2) or die(mysql_error());
+        $rows2=mysql_fetch_array($result2);
+        $periodo=$rows2['periodoalu'];
+		
+        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$usr' ";
         $result=mysql_query($query) or die(mysql_error());
-		$hayDatos=mysql_num_rows($result);
-        if($hayDatos<=0){
-        	$query="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula';";
-        	$result=mysql_query($query) or die(mysql_error());
-        	$rows=mysql_fetch_array($result);
-        	$periodo=$rows['periodoalu'];
+		        
         	
-        }else{
+	        	
+	        	
+        
         	while ($rows=mysql_fetch_array($result))
         	{
 	        	$calif=$rows['EvaluacionHist'];
@@ -50,9 +55,8 @@ class Sesion extends Conexion {
 	        		$periodo=$rows['periodoalu'];
 	        	}
 	        }
-        }
-        
-        $query="SELECT nombrealu,periodoalu FROM alumno_ss_fca WHERE passalu=password('$pw') and matriculaalu='$usr';";
+	                
+        $query="SELECT nombrealu,periodoalu FROM alumno_ss_fca WHERE passalu=password('$pw') and matriculaalu='$usr' and periodoalu='$periodo' ;";
         $result=mysql_query($query) or die(mysql_error());
         if($rows=mysql_fetch_array($result)){
             $this->valores=array("activa"=>true , "nombre"=>$rows['nombrealu'] ,"matricula"=>"$usr" ,"nivel"=>"alumno","periodo"=>$periodo );

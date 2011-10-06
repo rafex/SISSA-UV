@@ -8,7 +8,7 @@ $matricula=$_SESSION['matricula'];
 $carrera=$_POST['carrera'];
 $periodo=$_SESSION['periodo'];
 
-$query="SELECT criterioalu,nombrealu FROM alumno_ss_fca WHERE MatriculaAlu='$matricula' LIMIT 1";
+$query="SELECT criterioalu,nombrealu FROM alumno_ss_fca WHERE MatriculaAlu='$matricula' and periodoalu='$periodo' LIMIT 1";
 $result=mysql_query($query) or die(mysql_error());
 $row2=mysql_fetch_array($result);
 

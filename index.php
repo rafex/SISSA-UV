@@ -15,6 +15,10 @@ if($_SESSION['activa']){
 		{ 
 			header ("Location: ss-estudiantes/index.php");
 		}
+		elseif($_SESSION['nivel']=='editor')
+		{ 
+			header ("Location: ss-evaluacion/editor.php");
+		}
 
 }
 ?>

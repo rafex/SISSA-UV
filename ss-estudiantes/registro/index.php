@@ -40,14 +40,37 @@ action="">
 </header>
 
 <ul>
-<li id="Field1"	class="     ">
+<li id="Field1"	class="leftHalf">
 	<label class="desc" id="title2" for="Field2">
 		*Matricula:
 	</label>
 	<div>
-		<input id="matricula" name="matricula" type="text"	class="field text small" 	value="" 		maxlength="15" 		placeholder="s07016390"				autofocus/> 
+		<input id="matricula" name="matricula" type="text"	class="field text fn" 	value="" 		maxlength="15" 		placeholder="s07016390"				autofocus/> 
 	</div>
 </li>
+
+<li id="foli6" 		class="rightHalf     ">
+	<label class="desc" id="title2" for="Field2">
+		Criterio:
+			</label>
+	<span>
+		<?
+include_once 'scripts/functions.php';
+conectar();
+$sql2="SELECT DISTINCT `nombreCriterio` as criterio FROM `criterios_ss_fca` ORDER BY `nombreCriterio`";
+$result2=mysql_query($sql2) or die(mysql_error());
+?>
+		
+		
+		<select name="criterioS" id="criterioS">
+   			<? while($fila2=mysql_fetch_array ($result2)){ ?>
+				<option value="<?echo $fila2['criterio'];?>"><?echo $fila2['criterio'];?></option>
+			<?	}	?>
+		</select>
+	</span>
+		
+	</li>
+
 	
 <li id="Field2" class="leftHalf     ">
 	<label class="desc" id="title1" for="Field1">

@@ -5,6 +5,7 @@ include_once'clases/functions.php';
 $conx=new Conexion();
 $conx->getConexion();
 $matricula=strtoupper(trim($_POST['matricula']));
+$criterioS=$_POST['criterioS'];
 $nombre=utf8_encode(strtoupper(elimina_acentos(trim($_POST['nombre']))));
 $paterno=utf8_encode(strtoupper(elimina_acentos(trim($_POST['paterno']))));
 $materno=utf8_encode(strtoupper(elimina_acentos(trim($_POST['materno']))));
@@ -72,7 +73,7 @@ if(mysql_num_rows($alumno)==1){
 	$mensajeERROR.="Tus datos como nombre,matrícula,carrera ya existen  y estan registrados en el periodo <em>$periodo</em>. <br>";
 }
 else{
-	$sql="INSERT INTO alumno_ss_fca (CriterioAlu,MatriculaAlu,NombreAlu,CarreraAlu,PeriodoAlu,EmailAlu,TelefonoAlu) value('meifv1','$matricula','$nombrecompleto','$carrera','$periodo','$correo','$telefono')";
+	$sql="INSERT INTO alumno_ss_fca (CriterioAlu,MatriculaAlu,NombreAlu,CarreraAlu,PeriodoAlu,EmailAlu,TelefonoAlu) value('$criterioS','$matricula','$nombrecompleto','$carrera','$periodo','$correo','$telefono')";
 	$alumno=mysql_query($sql) or die(mysql_error());
 	if(mysql_affected_rows()>0){
 		$validar+=1;

@@ -114,7 +114,7 @@ $result=mysql_query($query) or die(mysql_error());
 	if($rows=mysql_fetch_array($result)){
 		$empresa=$rows['Empresa'];
 		$jefe=$rows['JefeDirectoHist'];
-	
+		
 	?>
 	
 	
@@ -133,7 +133,10 @@ $result=mysql_query($query) or die(mysql_error());
 	</p>
 	<input name="modificar" id="modificar" type="button" value="Modificar datos servicio social" onclick="javascript:crearContenidosArregloConMensaje('modificarAlumnoServicio.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 	
-	<? }else{	?>
+	<? }else{	
+		$hayAlgoE=true;
+		$hayAlgoJ=true;
+		?>
 		<br /><br />
 		<input type="button" value="Cargar datos del servicio social" onclick="javascript:crearContenidosArregloConMensaje('nuevoAlumnoServicio.php','matricula,periodo','<?php echo $matricula; ?>,<?php echo $periodo; ?>','','contenido');" />
 	<?	} 
@@ -150,7 +153,7 @@ $result=mysql_query($query) or die(mysql_error());
 		$result=mysql_query($query) or die(mysql_error());
 	}
 		
-	if($hayAlgo<=0){?>
+	if($hayAlgoE){?>
 		<p class="verde">Para mostrar los datos de la empresa necesita cargar primero cargar con los datos de servicio social.</p>
 <?
 	}else{
@@ -209,7 +212,7 @@ $result=mysql_query($query) or die(mysql_error());
 		$result=mysql_query($query) or die(mysql_error());
 	}
 			
-	if($hayAlgo<=0){?>
+	if($hayAlgoJ){?>
 		<p class="verde">Para mostrar los datos del jefe directo necesita cargar primero cargar con los datos de servicio social.</p>
 <?
 	}else{

@@ -14,7 +14,7 @@ if(!($_SESSION['nivel']=='admin')){
                         <li><a href="#" onclick="javascript:crearContenidos('carrera','lg','../ss-evaluacion/seleccion.php');">Gestión</a></li>
                         <li><a href="#" onclick="javascript:crearContenidos('carrera','lsca','../ss-evaluacion/seleccion.php');">Sistemas</a></li>                        
                         <li><a href="#" onclick="javascript:cargarContenido('../ss-evaluacion/buscandoAlumnos.php');">Filtro</a></li>
-                        <li><a href="#" onclick="javascript:cargarContenido('../ss-evaluacion/buscandoAlumnos.php');">Cerrar Acta</a></li>
+                        
                     </ul>
                 </li>
                 

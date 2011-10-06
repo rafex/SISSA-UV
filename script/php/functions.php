@@ -97,19 +97,22 @@
         }
         
         function conectar(){
-            global $db;
-			global $link;
+            //global $db;
+			//global $link;
 			$db = new Conexion();
 			$link=$db->getConexion();
         }
 		
 		function desconectar(){
-            //$db= new Conexion();
+            
+			$db = new Conexion();
+			$link=$db->getConexion();
             $db->desconectar($link);
+			
         }
         
         function sql($sql){
-         	//$db= new Conexion();
+         	$db= new Conexion();
             return $db->consultaSql($sql);
         }
        

@@ -11,21 +11,17 @@ if($usr[0]=='z')
 {
 	conectar();
 	$matricula=substr($usr,1);
-	$periodo;
-	$hayDatos=false;
-        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula';";
+	$periodo=0;
+	
+		
+		$query2="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula'";
+        $result2=mysql_query($query2) or die(mysql_error());
+        $rows2=mysql_fetch_array($result2);
+        $periodo=$rows2['periodoalu'];
+        
+        $query="SELECT EvaluacionHist,periodoalu FROM historial_alumno_ss_fca WHERE matriculaalu='$matricula' ";
         $result=mysql_query($query) or die(mysql_error());
-        $hayDatos=mysql_num_rows($result);
-        if($hayDatos<=0){
-        	$hayDatos=true;
-        }
-        if($hayDatos){
-        	$query="SELECT periodoalu FROM alumno_ss_fca WHERE matriculaalu='$matricula';";
-        	$result=mysql_query($query) or die(mysql_error());
-        	$rows=mysql_fetch_array($result);
-        	$periodo=$rows['periodoalu'];
-        	
-        }else{
+    
         	while ($rows=mysql_fetch_array($result))
         	{
 	        	$calif=$rows['EvaluacionHist'];
@@ -33,11 +29,11 @@ if($usr[0]=='z')
 	        		$periodo=$rows['periodoalu'];
 	        	}
 	        }
-        }
       
 	$sql="select nombrealu,passalu from alumno_ss_fca where matriculaalu='$matricula' and periodoalu='$periodo' limit 1; ";
 	$result=mysql_query($sql) or die(mysql_error());
-	if(mysql_num_rows($result)==1){
+	if(mysql_num_rows($result)==1)
+	{
 		$datos=mysql_fetch_array($result);
 		$nombre=$datos['nombrealu'];
 		$pass=$datos['passalu'];
@@ -109,6 +105,12 @@ if($usr[0]=='z')
 					location.href = "ss-evaluacion/index.php";
 				</script>
 	<?  	}
+			elseif($_SESSION['nivel']=='editor'){ ?>
+	            <script>
+					location.href = "ss-evaluacion/editor.php";
+				</script>
+	<?  	}
+	
 		}
 		else
 		{

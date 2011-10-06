@@ -9,7 +9,7 @@ $result1=mysql_query($query1) or die(mysql_error());
 ?>
 <? if($_SESSION['nivel']=='admin'){ ?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera',document.buscar.patron.value+',<?echo $carrera;?>','../ss-evaluacion/buscar.php');">
-<?}elseif($_SESSION['nivel']=='evaluador'){?>
+<?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
 <form id="buscar" name="buscar" method="post" action="javascript:crearContenidosArreglo('buscar,carrera',document.buscar.patron.value+',<?echo $carrera;?>','buscar.php');">
 <? } ?>
     <input type="text" name="patron" tabindex="1" size="30" placeholder="Que desea buscar" />
@@ -28,7 +28,7 @@ $result1=mysql_query($query1) or die(mysql_error());
     <td><? echo $n++; ?></td>
     <? if($_SESSION['nivel']=='admin'){ ?>
     <td><a href="#" onClick="javascript:crearContenidosArreglo('IdEmp','<? echo $rows['IdEmp']; ?>','../ss-empresa/empresa.php');"><? echo utf8_encode($rows['NombreEmp']); ?></a></td>
-    <?}elseif($_SESSION['nivel']=='evaluador'){?>
+    <?}elseif($_SESSION['nivel']=='evaluador' || $_SESSION['nivel']=='editor'){?>
     <td><a href="#" onClick="javascript:crearContenidosArreglo('IdEmp','<? echo $rows['IdEmp']; ?>','../ss-empresa/empresa.php');"><? echo utf8_encode($rows['NombreEmp']); ?></a></td>
     <? } ?>
 

@@ -19,6 +19,7 @@ if($rows=mysql_fetch_array($result)){
 <strong>Nivel:</strong>
 	<select id="nivel">
 		<option value="evaluador" <?if($rows['nivel']=="evaluador"){ echo "selected=\"selected\"";} ?> >Evaluador</option>
+		<option value="editor" <?if($rows['nivel']=="editor"){ echo "selected=\"selected\"";} ?> >Evaluador(editor)</option>
 		<option value="admin" <?if($rows['nivel']=="admin"){ echo "selected=\"selected\"";} ?>  >Administrador</option>
 	</select>	
 <br /><br />

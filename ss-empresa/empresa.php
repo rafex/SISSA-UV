@@ -42,7 +42,7 @@ if($rows=mysql_fetch_array($result)){
 <strong> Municipio:</strong><em> <?echo strtoupper($rows['MunicipioEmp']); ?></em>
 <strong> Localidad:</strong><em> <?echo strtoupper($rows['LocalidadEmp']); ?></em>
 </p>
-
+<input name="modificar" id="modificar" type="button" value="Lista" onclick="javascript:cargarContenido('../ss-empresa/listaempresas.php');" />
 <input name="modificar" id="modificar" type="button" value="Modificar" onclick="javascript:crearContenidosArreglo('IdEmp','<? echo $empresa; ?>','../ss-empresa/modificandoEmpresa.php');" />
 </div>
 <?	}	?>
